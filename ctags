@@ -1,4 +1,4 @@
---lanngdef=typescript
+--langdef=typescript
 --langmap=typescript:.ts
 --regex-typescript=/^[ \t]*(export)?[ \t]*class[ \t]+([a-zA-Z0-9_]+)/\2/c,classes/
 --regex-typescript=/^[ \t]*(export)?[ \t]*module[ \t]+([a-zA-Z0-9_]+)/\2/n,modules/
