@@ -1,0 +1,4 @@
+--color-match=blue
+--type-set=markdown:ext:md,markdown
+--ignore-file=is:tags
+--type-set=ts:ext:ts
