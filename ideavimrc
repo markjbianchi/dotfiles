@@ -1,0 +1,10 @@
+set clipboard=unnamed
+set history=1000
+set nohlsearch
+set ignorecase
+set matchpairs+=<:>
+set number
+set scrolloff=2
+set showmode
+set sidescroll=1
+set smartcase

@@ -6,8 +6,18 @@ who advocates the use of the [rcm] package. There is also some excellent resourc
 online at <https://dotfiles.github.io>.
 
 I am mostly running on Mac OS X, sometimes linux and cygwin. On OS X, I am using
-Homebrew + iTerm2 most of the time. I also have been integrating most of Jake's
-[vim-as-ide][ide] for vim configuration.
+Homebrew + iTerm2 most of the time.
+
+## Current brew packages
+ack           ascii         autoconf
+automake      cscope        ctags
+dos2unix      fzf           gdbm
+gettext       git libtool
+macvim        openssl       pcre
+pkg-config    pyenv         python3
+rcm           readline      scons
+sqlite        subversion    the_silver_searcher
+tree          xz
 
 ## RCM installation
 
@@ -25,7 +35,22 @@ After the initial installation, you can run `rcup` without the one-time variable
 runs of `rcup`). [See
 example](https://github.com/thoughtbot/dotfiles/blob/master/rcrc).
 
+## Vim configuration
+
+I have mostly followed Jake's [vim-as-an-ide][ide] for vim configuration, with
+some deviations of plugins based on some quick research of alternative packages.
+I have also used [Vim as IDE][as-ide] for some addition input.
+
+I am using [vim-plug](https://github.com/junegunn/vim-plug) as the plugin manager -
+install that first, then you can add lines like `Plug 'tpope/vim-sensible'` to
+`.vimrc.bundles` and run `:PlugInstall` to to download the plugin. Install it:
+```
+mkdir -p ~/.vim/autoload
+curl -fLo ~/vim/autoload/plug.vim \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master
+```
 
 [rcm]: https://github.com/thoughtbot/rcm
 [jez_dot]: https://github.com/jez/dotfiles
 [ide]: https://github.com/jez/vim-as-ide
+[as-ide]: http://yannesposito.com/Scratch/en/blog/Vim-as-IDE
