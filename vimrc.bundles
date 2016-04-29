@@ -17,12 +17,12 @@ Plug 'bling/vim-bufferline'
 Plug 'junegunn/goyo.vim'
 
 " -- vim as a project/program's text editor ---
+Plug 'amiorin/vim-project'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'majutsushi/tagbar'
-Plug 'amiorin/vim-project'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'                 "fixes the . cmd when using a surround
 "Plug 'jiangmiao/auto-pairs'
@@ -44,7 +44,8 @@ Plug 'vim-scripts/a.vim'
 
 " --- utilities ---
 Plug 'jez/vim-superman'                 "man pages insitu
-Plug 'junegunn/vim-peekaboo'            "show register contents
+"Plug 'junegunn/vim-peekaboo'            "show register contents
+"Plug 'junegunn/vim-peekaboo'            "show register contents
 
 call plug#end()
 
@@ -121,14 +122,19 @@ let g:tagbar_type_typescript = {
   \ ]
 \ }
 
+" ----- amiorin/vim-project -----
+"let g:proj_flags = 'imstvcg'
+
 " ----- jiangmiao/auto-pairs settings -----
 " uncomment to enable Fly Mode
 let g:AutoPairsFlyMode = 1
 
 " ----- ntpeters/vim-better-whitespace settings -----
+nmap <silent> <leader>W :StripWhitespace<CR>
 nmap <silent> <leader>w :ToggleWhitespace<CR>
 
 " ----- junegunn/vim-easy-align -----
+" Easy alighn interactive
 vnoremap <silent> <Enter> :EasyAlign<cr>
 " Start interactive EasyAlign in a visual mode (e.g., vipga)
 "xmap ga <Plug>(EasyAlign)
@@ -143,9 +149,13 @@ try
 catch
 endtry
 " Search a file in the filetree
-"nnoremap <space><space> :split<cr> :<c-u>Unite -start-insert file_rec/a
-" Reset not it is <C-l> normally
-":nnoremap <space>r <Plug>(unite_restart)
+"nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
+"nnoremap <space>f :split<cr> :<C-u>Unite file<cr>
+"nnoremap <space>g :split<cr> :<C-u>Unite -start-insert file_rec/git<cr>
+" see the yank history
+" nnoremap <space>y :split<cr>:<C-u>Unite history/yank<cr>
+" " reset not it is <C-l> normally
+" :nnoremap <space>r <Plug>(unite_restart)
 
 " ----- rking/ag.vim settings -----
 " Type & to search the word in all files in the current dir
@@ -163,4 +173,4 @@ noremap K :SuperMan <cword><cr>
 " " Compact display; do not display the names of the register groups
 " let g:peekaboo_compact = 1
 
-"vim:ft=vim
+"vim:ft=vim ts=2 sw=2 tw=2

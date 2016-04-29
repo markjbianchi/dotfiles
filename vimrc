@@ -23,34 +23,43 @@ endif
 
 "set wildmode=list:longest
 set showcmd             " show incomplete commands at : prompt
+set modeline            " allow per-file settings via mode line
 set number              " line numbers
-set expandtab           " turn tabs into spaces (use <C-V>Tab to insert real tabs
-set tabstop=2           " default to 2 spaces for hard tab
-set softtabstop=2       " default to 2 spaces for the soft tab
-set shiftwidth=2        " for when <tab> is pressed at the beginning of a line
-set smartindent         " indents after <CR> appropriately
+set nofoldenable        " I fucking hate code folding
+set winaltkeys=no       " turn off stupid fucking alt shortcuts
 set showmatch           " highlights matching bracket
 set matchpairs+=<:>     " adds < > to bracket list
 set matchtime=4
-"set ignorecase         " should i keep this?
-"set mapleader=",       " leader character, \ by default
-set hlsearch            " highlights the searched pattern
+set hlsearch ignorecase smartcase
 " toggles highlighting of search
 noremap <silent> <leader>n : set hlsearch!<CR>
 noremap <silent> <leader><space> : set nohlsearch<CR>
-set smartcase
-set nobackup
+"set mapleader=",       " leader character, \ by default
+set nobackup nowritebackup noswapfile
 set noerrorbells
-set visualbell t_vb=
-set hidden              " not sure if I want this set
+set visualbell
+set hidden              " don't unload buffer when switching away
 set guifont=Sauce\ Code\ Powerline:h11
-set cinkeys-=0#         " let #define, #pragma directives appear at any column
 set tildeop             " use ~ to toggle case as operator, not a motion
 if has('mouse')
   set mouse=a
 endif
+set nomousehide         " don't hide the mouse cursor while typing
 
 set ttyfast             " smoother performance since we are using modern terminals
+
+""""""""""""""""""""""
+" formatting
+""""""""""""""""""""""
+set shiftwidth=2 tabstop=2 softtabstop=2
+set expandtab           " turn tabs into spaces (use <C-V>Tab to insert real tabs
+set smartindent         " indents after <CR> appropriately
+autocmd filetype c,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd filetype make setlocal noexpandtab
+set cindent             " c
+set cinkeys-=0#         " let #define, #pragma directives appear at any column
+
+set tags=./tags,tags;$HOME
 
 " ----- misc mappings ---
 "helptags $VIMFILES/docs
@@ -61,6 +70,24 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" sudo save
+cmap w!! w !sudo tee >/dev/null %
+
+" underline a line with hyphens
+noremap <leader>- yypVr-
+" underline a line with equals
+noremap <leader>= yypVr=
+
+" reload ~/.vimrc
+noremap <leader>rc :source ~/.vimrc<cr>
+
+" sort selection
+noremap <leader>s :sort<cr>
+
+" break a comma-delimited list onto new lines
+vmap <leader>, :s/,/,\r/g<cr>
+
 
 " --- Set the colorscheme
 "  Toggle thie to 'light' for light colorschemes
