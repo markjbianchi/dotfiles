@@ -35,7 +35,7 @@ set hlsearch ignorecase smartcase
 noremap <silent> <leader>n : set hlsearch!<CR>
 noremap <silent> <leader><space> : set nohlsearch<CR>
 "set mapleader=",       " leader character, \ by default
-set nobackup nowritebackup noswapfile
+set nowritebackup noswapfile
 set noerrorbells
 set visualbell
 set hidden              " don't unload buffer when switching away

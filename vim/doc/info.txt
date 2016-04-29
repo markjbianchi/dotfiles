@@ -1,0 +1,93 @@
+set hidden, discussed in NERDtree FAQ and a stackoverflow question "using-vims-tabs-like-buffers"
+
+:map shows all the key mappings by plugins
+
+\t for showing NERDtree panel
+
+:help NERD_tree.txt for help page
+\b for Tagbar panel
+
+\n toggle highlight search (maybe set \<space>)
+
+\w removes trailing whitespace
+
+\a toggles files with A.vim (.c <-> .h)
+
+<C-H> left, <C-L> right, <C-K> up, <C-j>  move between windows
+
+<C-E> <C-Y>   scroll up/down 1 line
+<C-U> <C-D>   scroll up/down half a screen
+<C-F> <C-B>   scroll foward/backward a full screen (minus 2 lines)
+zz     puts line w/ cursor in middle of window
+zt zb  puts line w/ cursor at top/bottom
+
+<C-N> and <C-P>  are basic built-in auto completions
+
+Look at using - or , for <leader>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-- goyo.vim --
+:Goyo  for distraction-free writing
+
+-- vim-easy-align --
+highlight in visual mode, then hit <Enter> then column number, then <space>
+
+-- vim-surround (add vim-repeat with this) --
+ds['"(t]   delete surround (t is html tag)
+cs['"(t]   create surround
+
+-- vim-commentary --
+gcc     comment out a line
+gc<motion>  comment out target of motion
+gc      in viusal mode to comment out selection
+:7,15Commentary
+:g/TODO/Commentary
+
+-- auto-pairs --
+Insert parens:
+  1. use Ctrl-V) to insert paren without triggering plugin
+  2. use Alt-P to turn off the plugin
+  3. use DEL or x to delete the character inserted by plugin
+
+System Shortcuts:
+    <CR>  : Insert new indented line after return if cursor in blank brackets or quotes.
+    <BS>  : Delete brackets in pair
+    <M-p> : Toggle Autopairs (g:AutoPairsShortcutToggle)
+    <M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
+    <M-n> : Jump to next closed pair (g:AutoPairsShortcutJump)
+    <M-b> : BackInsert (g:AutoPairsShortcutBackInsert)
+
+If <M-p> <M-e> or <M-n> conflict with another keys or want to bind to another keys, add
+    let g:AutoPairsShortcutToggle = '<another key>'
+to .vimrc, if the key is empty string '', then the shortcut will be disabled.
+
+-- superman --
+K  on word launches man page into vim
+
+
+-- vim-better-whitespace --
+:ToggleWhitespace
+:StripWhitespace
+:CurrentLineWhitespaceOff <level>    soft or hard
+:CurrentLineWhitespaceOn
+:ToggleStripWhitespaceOnSave
+
+
+#######################################################################
+
+Things I want to add/change:
+1. Suppress error bell
+2. Simplified (previous jah config) when using xterm vs iTerm or maybe use
+   if hasgui() and have macvim use all the plugins and simplified one for
+   no gui (i.e. xterm or iTermg).
+3. Remove the autoinsert of matching ", ', ), } or figure out how to jump
+   out of it and continue
+4. Is auto generation of tags happening already? How to limit where/when
+   they are created so only in code dirs.
+5. Look into vim-ctrlspace
+6. Save a window/tabs/buffer setup - perhaps project file in vim-ctrlspace
+7. Disable ex mode?
+8. Mapping to disable trailing space highlighting
+9. Snipmate and Supertab might be competing for <tab> mapping
+10. Move from NERDTree to unite
+11. 80th column is too orange in terminals - should be light grey.

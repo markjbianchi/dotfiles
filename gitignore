@@ -29,12 +29,16 @@
 
 # Other
 ######################
-*.sw[nop]
-*~
 *.bak
 .idea
 .settings
 .launches
+
+# Vim
+######################
+*.sw[nop]
+.netrwhist
+*~
 
 # OS generated files #
 ######################
