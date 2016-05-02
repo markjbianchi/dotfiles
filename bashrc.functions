@@ -191,7 +191,6 @@ git_rev() {
 }
 
 # Aliases for git
-alias st="git st"
 alias add="git add"
 alias dff="git df"
 

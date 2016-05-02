@@ -5,9 +5,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-" --- universally agreed settings ---
-Plug 'tpope/vim-sensible'
-
 " --- make vim look pretty ---
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
@@ -44,7 +41,6 @@ Plug 'vim-scripts/a.vim'
 
 " --- utilities ---
 Plug 'jez/vim-superman'                 "man pages insitu
-"Plug 'junegunn/vim-peekaboo'            "show register contents
 "Plug 'junegunn/vim-peekaboo'            "show register contents
 
 call plug#end()

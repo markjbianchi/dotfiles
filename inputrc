@@ -1,4 +1,4 @@
-et up Vim-style tab completion
+# set up Vim-style tab completion
 TAB: menu-complete
 set show-all-if-ambiguous on
 

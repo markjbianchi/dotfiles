@@ -1,7 +1,8 @@
 # modify the PATH, remove duplicate paths
-PATH="$HOME/bin:/usr/local/bin:${PATH}"
-TMPPATH="${PATH}"
-#export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":" | head -c -1`
+#PATH="$HOME/bin:/usr/local/bin:${PATH}"
+PATH="$HOME/bin:${PATH}"
+#TMPPATH="${PATH}"
+#export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":"`
 
 alias path='echo $PATH | tr ":" "\n"'
 
@@ -55,6 +56,7 @@ alias bk='echo && echo && echo =================================================
 alias tree='/usr/local/bin/tree -nF'
 alias g='gvim'
 alias e='vim'
+alias vi='vim'
 # setup 'ls'
 alias l='/bin/ls -hF --color=never'
 alias lsf='ls -b -FC -G'
@@ -63,5 +65,6 @@ alias ll='ls -Alo -G'
 alias la=hidden
 
 # Include bash functions
-[[ -f $HOME/.bash.functions ]] && source $HOME/.bash.functions
+[[ -f $HOME/.bashrc.functions ]] && source $HOME/.bashrc.functions
 
+#vim:ft=bash ts=2 sw=2 tw=2

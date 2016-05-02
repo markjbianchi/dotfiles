@@ -1,19 +1,31 @@
-set hidden, discussed in NERDtree FAQ and a stackoverflow question "using-vims-tabs-like-buffers"
+Done
+==================================================
 
-:map shows all the key mappings by plugins
+-- General (intrinsic, in .vimrc or other places) ---
+:map          shows all the key mappings by plugins
+\n            toggle highlight search
+\<space>      toggle highlight search (keep or remove?)
+<C-H>         left move between windows
+<C-L>         right
+<C-K>         up
+<C-j>         down move between windows
+<C-P>         autocomplete searching backward
+<C-N>         autocomplete searching downward
 
-\t for showing NERDtree panel
 
-:help NERD_tree.txt for help page
-\b for Tagbar panel
+-- NERDtree --
+\t                    for showing NERDtree panel
+:help NERD_tree.txt   for help page
 
-\n toggle highlight search (maybe set \<space>)
+-- goyo.vim --
+:Goyo  for distraction-free writing
 
-\w removes trailing whitespace
+\b                    for Tagbar panel
 
-\a toggles files with A.vim (.c <-> .h)
+\w                    removes trailing whitespace
 
-<C-H> left, <C-L> right, <C-K> up, <C-j>  move between windows
+\a                    toggles files with A.vim (.c <-> .h)
+
 
 <C-E> <C-Y>   scroll up/down 1 line
 <C-U> <C-D>   scroll up/down half a screen
@@ -21,14 +33,10 @@ set hidden, discussed in NERDtree FAQ and a stackoverflow question "using-vims-t
 zz     puts line w/ cursor in middle of window
 zt zb  puts line w/ cursor at top/bottom
 
-<C-N> and <C-P>  are basic built-in auto completions
 
 Look at using - or , for <leader>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
--- goyo.vim --
-:Goyo  for distraction-free writing
-
 -- vim-easy-align --
 highlight in visual mode, then hit <Enter> then column number, then <space>
 
@@ -91,3 +99,4 @@ Things I want to add/change:
 9. Snipmate and Supertab might be competing for <tab> mapping
 10. Move from NERDTree to unite
 11. 80th column is too orange in terminals - should be light grey.
+12. macvim vs gvim - settings and differences
