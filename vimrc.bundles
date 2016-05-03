@@ -6,9 +6,10 @@
 call plug#begin('~/.vim/plugged')
 
 " --- make vim look pretty ---
-Plug 'altercation/vim-colors-solarized'
+Plug 'crusoexia/vim-monokai'
+Plug 'crusoexia/vim-dracula'
 Plug 'tomasr/molokai'
-Plug 'zenorocha/dracula-theme'
+Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'junegunn/goyo.vim'

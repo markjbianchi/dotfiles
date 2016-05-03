@@ -42,6 +42,7 @@ set wildmode=longest:full,full
 set wildignore+=tags,*.o,*.obj,*.bak,*.exe,*.a,*.lib,*.pyc
 set ttyfast             " smoother performance since we are using modern terminals
 set fileformats=mac,dos,unix
+set nojoinspaces        " use one space, not two after punctuation
 
 "filetype plugin indent on
 
@@ -67,8 +68,6 @@ set smarttab
 set expandtab           " turn tabs into spaces (use <C-V>Tab to insert real tabs
 set formatoptions+=j
 set nrformats-=octal
-set cindent             " c
-set cinkeys-=0#         " let #define, #pragma directives appear at any column
 set nofoldenable        " I fucking hate code folding
 set complete-=i         " searching includes can be slow, so don't
 set showmatch           " highlights matching bracket
@@ -76,7 +75,10 @@ set matchtime=4         " tenths of second to show matching parens
 set matchpairs+=<:>     " adds < > to bracket list
 set tildeop             " use ~ to toggle case as operator, not a motion
 set tags=./tags,tags;$HOME
+"set list listchars=tab:»·,trail:·,nbsp:·
 
+set cindent             " c
+set cinkeys-=0#         " let #define, #pragma directives appear at any column
 autocmd filetype c,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd filetype make setlocal noexpandtab
 
@@ -91,7 +93,7 @@ endif
 set nomousehide         " don't hide the mouse cursor while typing
 if has('gui_running')
   if has("gui_macvim")
-    set guifont=Menlo\ Regular:h12
+    "set guifont=Menlo\ Regular:h12
   elseif has("gui_win32")
     "set guifont=Lucida_Sans_Typewriter:h10
     "set guifont=DejaVu_Sans_Mono:h10
@@ -103,9 +105,10 @@ endif
 "  Toggle thie to 'light' for light colorschemes
 set background=dark
 try
-"    colorscheme solarized
-    colorscheme molokai
+    colorscheme monokai
 "    colorscheme dracula
+"    colorscheme solarized
+"    colorscheme molokai
 catch
 endtry
 

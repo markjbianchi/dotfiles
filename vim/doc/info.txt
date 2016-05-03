@@ -97,6 +97,15 @@ Things I want to add/change:
 7. Disable ex mode?
 8. Mapping to disable trailing space highlighting
 9. Snipmate and Supertab might be competing for <tab> mapping
-10. Move from NERDTree to unite
+10. Move from NERDTree to unite?
 11. 80th column is too orange in terminals - should be light grey.
 12. macvim vs gvim - settings and differences
+13. Mapping to toggle on/off list/listchars to see tabs
+
+
+* Project file so the it acts like an IDE; can re-open as left it
+* Tab completion for var, methods, etc.
+* Search through all files in project
+* Code snippet insert
+* Easy navigation between buffers, windows, tabs; loading multiples of each
+
