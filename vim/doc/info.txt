@@ -2,15 +2,17 @@ Done
 ==================================================
 
 -- General (intrinsic, in .vimrc or other places) ---
-:map          shows all the key mappings by plugins
-\n            toggle highlight search
-\<space>      toggle highlight search (keep or remove?)
-<C-H>         left move between windows
-<C-L>         right
-<C-K>         up
-<C-j>         down move between windows
-<C-P>         autocomplete searching backward
-<C-N>         autocomplete searching downward
+:mapping		shows all the key mappings by plugins
+:set param?		shows what parm is set to
+:reg			shows registers
+\/				turn off highlight search
+\<space>		toggle highlight search
+gh				left move between windows
+gl				right
+gk				up
+gj				down move between windows
+<C-P>			autocomplete searching backward
+<C-N>			autocomplete searching downward
 
 
 -- NERDtree --
@@ -19,19 +21,16 @@ Done
 
 -- goyo.vim --
 :Goyo  for distraction-free writing
-
 \b                    for Tagbar panel
-
 \w                    removes trailing whitespace
-
 \a                    toggles files with A.vim (.c <-> .h)
 
 
-<C-E> <C-Y>   scroll up/down 1 line
-<C-U> <C-D>   scroll up/down half a screen
-<C-F> <C-B>   scroll foward/backward a full screen (minus 2 lines)
-zz     puts line w/ cursor in middle of window
-zt zb  puts line w/ cursor at top/bottom
+<C-E> <C-Y>		scroll up/down 1 line
+<C-U> <C-D>		scroll up/down half a screen
+<C-F> <C-B>		scroll foward/backward a full screen (minus 2 lines)
+zz				puts line w/ cursor in middle of window
+zt zb			puts line w/ cursor at top/bottom
 
 
 Look at using - or , for <leader>
@@ -74,8 +73,8 @@ K  on word launches man page into vim
 
 
 -- vim-better-whitespace --
-:ToggleWhitespace
-:StripWhitespace
+:ToggleWhitespace                   mapped to <leader>w
+:StripWhitespace                    mapped to <leader>W
 :CurrentLineWhitespaceOff <level>    soft or hard
 :CurrentLineWhitespaceOn
 :ToggleStripWhitespaceOnSave
@@ -84,7 +83,6 @@ K  on word launches man page into vim
 #######################################################################
 
 Things I want to add/change:
-1. Suppress error bell
 2. Simplified (previous jah config) when using xterm vs iTerm or maybe use
    if hasgui() and have macvim use all the plugins and simplified one for
    no gui (i.e. xterm or iTermg).
@@ -95,11 +93,9 @@ Things I want to add/change:
 5. Look into vim-ctrlspace
 6. Save a window/tabs/buffer setup - perhaps project file in vim-ctrlspace
 7. Disable ex mode?
-8. Mapping to disable trailing space highlighting
 9. Snipmate and Supertab might be competing for <tab> mapping
 10. Move from NERDTree to unite?
 11. 80th column is too orange in terminals - should be light grey.
-12. macvim vs gvim - settings and differences
 13. Mapping to toggle on/off list/listchars to see tabs
 
 
