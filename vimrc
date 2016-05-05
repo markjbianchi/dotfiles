@@ -207,7 +207,7 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 "nnoremap <C-l> <C-w>l
 nnoremap <silent> gh :wincmd h<cr>
 nnoremap <silent> gj :wincmd j<cr>
-nnoremap <silent> gj :wincmd j<cr>
+nnoremap <silent> gk :wincmd k<cr>
 nnoremap <silent> gl :wincmd l<cr>
 
 " previous window

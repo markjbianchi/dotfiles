@@ -64,6 +64,9 @@ let g:airline_detect_paste = 1
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
 
+" ----- bling/vim-bufferline -----
+let g:bufferline_echo = 0
+
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
 nmap <silent> <leader>t :NERDTreeTabsToggle<cr>
