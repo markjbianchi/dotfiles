@@ -10,27 +10,34 @@ Plug 'crusoexia/vim-monokai'
 Plug 'crusoexia/vim-dracula'
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
+Plug 'nanotech/jellybeans.vim'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'junegunn/goyo.vim'
 
-" -- vim as a project/program's text editor ---
+" -- vim IDE GUI and such ---
 Plug 'amiorin/vim-project'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'majutsushi/tagbar'
+
+" -- vim as a project/program's text editor ---
 Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
-Plug 'majutsushi/tagbar'
+Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'                 "fixes the . cmd when using a surround
 "Plug 'jiangmiao/auto-pairs'
-Plug 'tomtom/tcomment_vim'
+
 Plug 'garbas/vim-snipmate'
+
 Plug 'MarcWeber/vim-addon-mw-utils'     "required for vim-snipmate
 Plug 'tomtom/tlib_vim'                  "required for vim-snipmate
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align',     { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+Plug 'valloric/youcompleteme'
+"Plug 'easymotion/vim-easymotion'
+"Plug 'terryma/vim-multiple-cursors'
 
 " --- file, fuzzy searching ---
 Plug 'Shougo/vimproc.vim'               "needed by unite.vim
@@ -68,9 +75,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:bufferline_echo = 0
 
 " ----- jistr/vim-nerdtree-tabs -----
-" Open/close NERDTree Tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<cr>
-" To have NERDTree always open on startup
+nmap <silent> <leader>n :NERDTreeTabsToggle<cr>
+let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
 
 " ----- scrooloose/syntastic settings -----
@@ -96,20 +102,6 @@ nnoremap <leader>S :SyntasticToggleMode<CR>
 nmap <silent> <leader>b :TagbarToggle<cr>
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
-" Treat .ts in Vim as .ts in ctags
-"let g:tagbar_type_typescript = {
-"  \ 'ctagstype': 'typescript',
-"  \ 'kinds': [
-"    \ 'c:classes',
-"    \ 'n:modules',
-"    \ 'f:functions',
-"    \ 'v:variables',
-"    \ 'v:varlambdas',
-"    \ 'm:members',
-"    \ 'i:interfaces',
-"    \ 'e:enums',
-"  \ ]
-"\ }
 " Treat .ts in Vim as .js in ctags
 let g:tagbar_type_typescript = {
   \ 'ctagstype': 'JavaScript',
@@ -124,10 +116,6 @@ let g:tagbar_type_typescript = {
 
 " ----- amiorin/vim-project -----
 "let g:proj_flags = 'imstvcg'
-
-" ----- jiangmiao/auto-pairs settings -----
-" uncomment to enable Fly Mode
-let g:AutoPairsFlyMode = 1
 
 " ----- ntpeters/vim-better-whitespace settings -----
 nmap <silent> <leader>W :StripWhitespace<CR>

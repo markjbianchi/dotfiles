@@ -33,7 +33,7 @@
   show-rev = !sh -c 'git rev-list --reverse HEAD | awk NR==$0'
 
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/mbianchi/.gitignore
   pager        = less -r
   safecrlf     = true
   editor       = vim
@@ -42,9 +42,9 @@
   default = simple
 
 [difftool "sourcetree"]
-  cmd  = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 
 [mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

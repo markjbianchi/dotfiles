@@ -21,7 +21,8 @@ endif
 " UI
 "---------------------
 set ruler
-set number              " line numbers
+set number              " absolute line numbers
+set relativenumber      " plus relative line numbers
 set nowrap              " line wrapping off
 set laststatus=2        " always show the statusline
 "set cmdheight=2         " make command area 2 lines high
@@ -66,12 +67,14 @@ set incsearch           " incremental search
 set hlsearch            " highlight search results
 set gdefault            " make search/replace global by default
 set iskeyword+=\$,-     " add extra characters that are valid parts of vars
-set wildignore+=*.o,*.obj,*.bak,*.exe,*.a,*.lib,*.pyc,*.class,.git,tags
+set wildignore+=*.o,*.obj,*.bak,*.exe,*.a,*.lib,*.pyc,*.class
+set wildignore+=.git,.DS_Store,.svn,*.swp,*.tmp
 " toggles highlighting of search
 noremap <silent> <leader><space> :set hlsearch!<cr>
-noremap <silent> <leader>/ :nohls<cr>
+" Ctrl-l to turn off higlighting and repaint
+noremap <silent> <C-l> :nohlsearch<cr><C-l>
 " highlight search word under cursor without jumping to next
-nnoremap <leader>h *<C-o>
+nnoremap * *``
 
 "---------------------
 " Text/Programming features
@@ -121,9 +124,14 @@ endif
 " --- Set the colorscheme
 "  Toggle thie to 'light' for light colorschemes
 set background=dark
+if $TERM =~ '-256color'
+  set t_Co=256
+endif
+
 try
-"   colorscheme monokai
-    colorscheme dracula
+   colorscheme monokai
+"    colorscheme dracula
+"    colorscheme jellybeans
 "    colorscheme solarized
 "    colorscheme molokai
 catch
@@ -137,13 +145,19 @@ endif
 "---------------------
 " Misc mappings
 "---------------------
-helptags $VIMFILES/doc
 " reload ~/.vimrc
 noremap <leader>rc :source $MYVIMRC<cr>
+
+" help system
+nnoremap <M-F1> :helptags $VIMFILES/doc
+nnoremap <C-F1> :execute "help " . expand("<cword>")<cr>:w
+noremap <silent> <F1> <nop>
+
 
 " jk in insert mode to replace <esc>
 inoremap jk <esc>
 inoremap <esc> <nop>
+inoremap <F1> <nop>
 
 " make Y behanve like other capital commands
 noremap <silent> Y y$
@@ -164,8 +178,6 @@ nnoremap ` '
 " select entire buffer (like Ctrl-A)
 nnoremap vy ggVG
 
-" 
-
 " underline a line with hyphens
 noremap <leader>- yypVr-
 " underline a line with equals
@@ -174,6 +186,14 @@ noremap <leader>= yypVr=
 " surround word with " or ':w
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+
+" use <tab> to indent in visual mode
+vnoremap <Tab> >'<0v'>$
+vnoremap <S-Tab> <'<0v'>$
+
+" tag navigation
+nnoremap <C-}> :tnext<cr>
+nnoremap <C-{> :tprev<cr>
 
 " sort selection
 noremap <leader>S :sort<cr>
@@ -185,9 +205,12 @@ vnoremap <leader>, :s/,/,\r/g<cr>
 "nnoremap go o<esc>k
 "nnoremap gO O<esc>j
 
-"inoremap <C-U> <C-G>u<C-U>
-" I think this copies what was just inserted
-"inoremap <C-c> <esc>`^
+" command line editing
+map <C-k> :<Up>
+cnoremap <C-H> <Left>
+cnoremap <C-L> <Right>
+cnoremap <C-J> <Down>
+cnoremap <C-K> <Up>
 
 "---------------------
 " Autocommands
@@ -200,6 +223,10 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 "---------------------
 " Window commands
 "---------------------
+" More natural to split panes to right and bottom
+set splitbelow
+set splitright
+
 " navigate splits by adding the Ctrl-modifier to the analogous vim motion
 "nnoremap <C-h> <C-w>h
 "nnoremap <C-j> <C-w>j
@@ -209,20 +236,39 @@ nnoremap <silent> gh :wincmd h<cr>
 nnoremap <silent> gj :wincmd j<cr>
 nnoremap <silent> gk :wincmd k<cr>
 nnoremap <silent> gl :wincmd l<cr>
+" move and maximize window
+nnoremap <M-j> <C-w>j<C-w>_
+nnoremap <M-k> <C-w>k<C-w>_
 
-" previous window
+" go to previous, top left, bottom right window; cycle through windows
 nnoremap <silent> gp :wincmd p<cr>
+nnoremap <silent> gt :wincmd t<cr>
+nnoremap <silent> gb :wincmd b<cr>
+nnoremap <silent> gw :wincmd w<cr>
+
 " equal size windows
 nnoremap <silent> g= :wincmd =<cr>
 " swap windows
 nnoremap <silent> gx :wincmd x<cr>
 
-" split window veritcally or horizontaly *and* switch to the new split
+" split window horizontally or veritcally *and* switch to the new split
 nnoremap <silent> <leader>hs :split<bar>:wincmd j<cr>
 nnoremap <silent> <leader>vs :vsplit<bar>:wincmd l<cr>
 
+" resize windows veritcally or horizontaly
+nnoremap - <C-w>-
+nnoremap + <C-w>-
+nnoremap <A-S-<> <C-w><
+nnoremap <A-S->> <C-w>>
+
 " close the current window
 nnoremap <silent> <leader>sc :close<cr>
+
+"---------------------
+" Buffer commands
+"---------------------
+nnoremap <C-Tab> :bnext<cr>
+nnoremap <C-S-Tab> :bprev<cr>
 
 "---------------------
 " Abbreviations/Typo fixes
@@ -233,8 +279,6 @@ iabbrev #i #include
 iabbrev #d #define
 iabbrev ddate <C-r>=strftime("%Y-%m-%d")<cr>
 
-noremap <F1> <esc>
-inoremap <F1> <esc>
 cnoremap w' w<cr>
 
 " disable the ever-annoying Ex mode shortcut key. make Q repeat the last macro
@@ -244,5 +288,15 @@ nnoremap Q @@
 " remove doc lookup maping because it's easy to fat finger and never useful
 nnoremap K k
 vnoremap K k
+
+
+"---------------------
+" .vim.local file sourcing
+"---------------------
+let s:localvim = findfile(".vim.local", ".;")
+if s:localvim != ''
+  execute "source " . s:localvim
+endif
+
 
 "vim:ft=vim ts=2 sw=2 tw=2
