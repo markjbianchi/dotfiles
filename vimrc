@@ -26,7 +26,6 @@ set relativenumber      " plus relative line numbers
 set nowrap              " line wrapping off
 set laststatus=2        " always show the statusline
 "set cmdheight=2         " make command area 2 lines high
-set noshowmode          " don't show the mode since airline shows it
 set title               " set the title of the window to the file
 set visualbell
 set noerrorbells
@@ -34,13 +33,23 @@ set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 set ttyfast             " smoother performance since we are using modern terminals
+" Status Line
+" We no longer use this status line. However it is a good fallback in case
+" vim-airline breaks.
+"set laststatus=2                " Always show status bar
+"set statusline+=%<%F            " Full File path
+"set statusline+=\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]
+                                " Display file encoding and format
+"set statusline+=%h%m%r%y        " Various metadata
+"set statusline+=%=              " Begin Right aligned block
+"set statusline+=%{TagName()}    " Display current tag through Ctags
+"set statusline+=\ %c,%l/%L\ %P  " File Nav info
 
 "---------------------
 " Behaviors
 "---------------------
 set nobackup
 set autoread            " automatically reload file changes if detected
-set wildmenu
 set backspace=indent,eol,start
 set showcmd             " show incomplete commands at : prompt
 set hidden              " change buffer - without saving
@@ -48,15 +57,20 @@ set clipboard+=unnamed,unnamedplus
 set modeline            " allow per-file settings via mode line
 set nobomb              " no byte order mark at start of file
 set history=768
+set viminfo='50,n$VIMFILES/viminfo
 set ttimeout
 set timeoutlen=1200     " time to wait for a command (e.g., after a leader)
 set ttimeoutlen=50      " make <esc> work faster
 set scrolloff=1
 set sidescrolloff=3     " keep 3 lines below the last line when scrolling
-set wildmode=longest:full,full
+set wildmenu
+set wildmode=longest,list
+set wildignore+=*.o,*.obj,*.bak,*.exe,*.a,*.lib,*.pyc,*.class
+set wildignore+=.git,.DS_Store,.svn,*.swp,*.tmp
 set fileformats=mac,dos,unix
 set nostartofline       " don't go to start of line after some scroll commands
 set nojoinspaces        " use one space, not two after punctuation
+set lazyredraw          " delay redrawing screen during macros - performance boost
 
 "---------------------
 " Search options
@@ -67,14 +81,15 @@ set incsearch           " incremental search
 set hlsearch            " highlight search results
 set gdefault            " make search/replace global by default
 set iskeyword+=\$,-     " add extra characters that are valid parts of vars
-set wildignore+=*.o,*.obj,*.bak,*.exe,*.a,*.lib,*.pyc,*.class
-set wildignore+=.git,.DS_Store,.svn,*.swp,*.tmp
+set nowrapscan          " search doesn't wrap around EOF
 " toggles highlighting of search
 noremap <silent> <leader><space> :set hlsearch!<cr>
 " Ctrl-l to turn off higlighting and repaint
 noremap <silent> <C-l> :nohlsearch<cr><C-l>
 " highlight search word under cursor without jumping to next
 nnoremap * *``
+" mark position before search (mark "s")
+nnoremap / ms/
 
 "---------------------
 " Text/Programming features
@@ -97,8 +112,6 @@ set tildeop             " use ~ to toggle case as operator, not a motion
 set tags=./tags,tags;$HOME
 "set list listchars=tab:»·,trail:·,nbsp:·,extends:>,precedes:<
 
-set cindent             " c
-set cinkeys-=0#         " let #define, #pragma directives appear at any column
 autocmd filetype c,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd filetype make setlocal noexpandtab
 
@@ -106,19 +119,24 @@ autocmd filetype make setlocal noexpandtab
 " GUI features
 "---------------------
 set winaltkeys=no       " turn off stupid fucking alt shortcuts
-set guifont=Sauce\ Code\ Powerline:h11
 if has('mouse')
   set mouse=a           " mouse in all modes
 endif
 set nomousehide         " don't hide the mouse cursor while typing
+set guifont=Sauce\ Code\ Powerline:h11
 if has('gui_running')
+  set cursorline
+  "set cursorcolumn
   if has("gui_macvim")
+    set macmeta
     "set guifont=Menlo\ Regular:h12
   elseif has("gui_win32")
     "set guifont=Lucida_Sans_Typewriter:h10
     "set guifont=DejaVu_Sans_Mono:h10
     set guifont=Consolas:h11:cANSI
   endif
+else
+  set nocursorline
 endif
 
 " --- Set the colorscheme
@@ -134,6 +152,7 @@ try
 "    colorscheme jellybeans
 "    colorscheme solarized
 "    colorscheme molokai
+"    colorscheme vivichalk
 catch
 endtry
 " mark the 80th column
@@ -153,9 +172,9 @@ nnoremap <M-F1> :helptags $VIMFILES/doc
 nnoremap <C-F1> :execute "help " . expand("<cword>")<cr>:w
 noremap <silent> <F1> <nop>
 
-
 " jk in insert mode to replace <esc>
 inoremap jk <esc>
+inoremap kj <esc>
 inoremap <esc> <nop>
 inoremap <F1> <nop>
 
@@ -212,13 +231,58 @@ cnoremap <C-L> <Right>
 cnoremap <C-J> <Down>
 cnoremap <C-K> <Up>
 
+cnoremap cwd lcd %:p:h
+
 "---------------------
 " Autocommands
 "---------------------
-" always switch to the current file directory
-autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-" auto save buffer
-"autocmd BufLeave,CursorHold,CursorHoldI,FocusLost * silent ! wa
+augroup vimrcEx
+  " Reset autocmds
+  " When a vimrc is sourced, the autocommands may be added again. Hence, clear
+  " all the autocommands before defining any of our own
+  autocmd!
+
+  " always switch to the current file directory
+  autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
+  " auto save buffer
+  "autocmd BufLeave,CursorHold,CursorHoldI,FocusLost * silent ! wa
+augroup END
+
+"---------------------
+" Buffer commands
+"---------------------
+" buffer access mappins (don't us '\p' because a delay
+" before pressing 'p' would accidentally paste).
+" \l        : list buffers
+" \b \f \g  : go back, forwared, last-used
+" \1 \2 \3  : go to buffer 1, 2, 3, etc.
+nnoremap <leader>l :ls<cr>
+nnoremap <leader>p :bprev<cr>
+nnoremap <leader>f :bnext<cr>
+nnoremap <leader>g :e#<cr>
+nnoremap <leader>1 :1b<cr>
+nnoremap <leader>2 :2b<cr>
+nnoremap <leader>3 :3b<cr>
+nnoremap <leader>4 :4b<cr>
+nnoremap <leader>5 :5b<cr>
+nnoremap <leader>6 :6b<cr>
+nnoremap <leader>7 :7b<cr>
+nnoremap <leader>8 :8b<cr>
+nnoremap <leader>9 :9b<cr>
+nnoremap <leader>0 :10b<cr>
+
+" close the current buffer and go to previous one
+nnoremap <leader>bq :bp <bar> bd #<cr>
+
+" list buffers with ability to select one in command line
+nnoremap <F5> :buffers<cr>:buffer<space>
 
 "---------------------
 " Window commands
@@ -226,6 +290,13 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 " More natural to split panes to right and bottom
 set splitbelow
 set splitright
+
+" split window horizontally or veritcally *and* switch to the new split
+nnoremap <silent> <leader>hs :split<bar>:wincmd j<cr>
+nnoremap <silent> <leader>vs :vsplit<bar>:wincmd l<cr>
+
+" close the current window
+nnoremap <silent> <leader>sc :close<cr>
 
 " navigate splits by adding the Ctrl-modifier to the analogous vim motion
 "nnoremap <C-h> <C-w>h
@@ -250,25 +321,20 @@ nnoremap <silent> gw :wincmd w<cr>
 nnoremap <silent> g= :wincmd =<cr>
 " swap windows
 nnoremap <silent> gx :wincmd x<cr>
-
-" split window horizontally or veritcally *and* switch to the new split
-nnoremap <silent> <leader>hs :split<bar>:wincmd j<cr>
-nnoremap <silent> <leader>vs :vsplit<bar>:wincmd l<cr>
+" maximize window height, width
+nnoremap <silent> gH <C-w>_
+nnoremap <silent> gV <C-w><bar>
 
 " resize windows veritcally or horizontaly
 nnoremap - <C-w>-
 nnoremap + <C-w>-
-nnoremap <A-S-<> <C-w><
-nnoremap <A-S->> <C-w>>
-
-" close the current window
-nnoremap <silent> <leader>sc :close<cr>
+nnoremap <S-A-<> <C-w><
+nnoremap <S-A->> <C-w>>
 
 "---------------------
-" Buffer commands
+" Tab commands
 "---------------------
-nnoremap <C-Tab> :bnext<cr>
-nnoremap <C-S-Tab> :bprev<cr>
+nnoremap <leader>T :enew<cr>
 
 "---------------------
 " Abbreviations/Typo fixes
