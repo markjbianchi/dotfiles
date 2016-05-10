@@ -34,12 +34,15 @@ tags
 .idea
 .settings
 .launches
+*.lock
 
 # Vim
 ######################
 *.sw[nop]
 .netrwhist
 *~
+viminfo
+last-session.txt
 
 # OS generated files #
 ######################

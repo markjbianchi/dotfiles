@@ -20,8 +20,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar'
-Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
 
 " -- vim as a project/program's text editor ---
 Plug 'scrooloose/syntastic'
@@ -86,6 +86,15 @@ let g:bufferline_echo = 0
 nmap <silent> <leader>n :NERDTreeTabsToggle<cr>
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
+
+" ----- xolox/vim-osession -----
+let g:session_autosave = 'yes'
+let g:session_autoload = 'no'
+let g:session_default_to_last = 1
+" don't save/restore help windows in sessions
+set sessionoptions-=help
+" don't save/restore hidden and unloaded buffers in sessions
+set sessionoptions-=buffers
 
 " ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
@@ -170,7 +179,11 @@ endtry
 
 " ----- rking/ag.vim settings -----
 " Type & to search the word in all files in the current dir
-nmap & :Ag <c-r>=expand("<cword>")<cr><cr>
+nnoremap & :Ag <c-r>=expand("<cword>")<cr><cr>
+"nnoremap <space>/ :Ag
+
+" ----- vim-scripts/a.vim settings -----
+nnoremap <leader>a :A<cr>
 "nnoremap <space>/ :Ag
 
 " ----- jez/vim-superman settings -----

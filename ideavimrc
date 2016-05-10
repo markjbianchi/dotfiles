@@ -1,4 +1,4 @@
-set clipboard=unnamed
+set clipboard+=unnamed
 set gdefault            " the ":substitute" flag 'g' is default on
 set history=768
 set nohlsearch
@@ -7,12 +7,14 @@ set ignorecase
 set matchpairs+=<:>
 set nrformats-=octal    " number formats recognized for CTRL-A command
 set number
+set relativenumber
 set scrolloff=1
 set showmode
 set sidescroll=3
 set smartcase
 set timeoutlen=1200     " time that is waited for a mapped key sequence
 set visualbell          " use visual bell instead of beeping
+set nowrapscan
 """"""""""""""""""""""""""""""""""""""""
 " supported set commands:
 """"""""""""""""""""""""""""""""""""""""
@@ -50,4 +52,12 @@ set visualbell          " use visual bell instead of beeping
 " set mapleader ,
 " set surround             " vim-surround
 "     ys  cs  ds S    commands for comments using vim-surround
-"
+
+" split window horizontally or veritcally *and* switch to the new split
+nnoremap <silent> <leader>hs :split<bar>:wincmd j<cr>
+nnoremap <silent> <leader>vs :vsplit<bar>:wincmd l<cr>
+" navigate splits with g command prepended to the analogous vim motion
+nnoremap <silent> gh :wincmd h<cr>
+nnoremap <silent> gj :wincmd j<cr>
+nnoremap <silent> gk :wincmd k<cr>
+nnoremap <silent> gl :wincmd l<cr>

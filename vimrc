@@ -86,8 +86,6 @@ set nowrapscan          " search doesn't wrap around EOF
 noremap <silent> <leader><space> :set hlsearch!<cr>
 " Ctrl-l to turn off higlighting and repaint
 noremap <silent> <C-l> :nohlsearch<cr><C-l>
-" highlight search word under cursor without jumping to next
-nnoremap * *``
 " mark position before search (mark "s")
 nnoremap / ms/
 
@@ -123,10 +121,9 @@ if has('mouse')
   set mouse=a           " mouse in all modes
 endif
 set nomousehide         " don't hide the mouse cursor while typing
+set nocursorline
 set guifont=Sauce\ Code\ Powerline:h11
 if has('gui_running')
-  set cursorline
-  "set cursorcolumn
   if has("gui_macvim")
     set macmeta
     "set guifont=Menlo\ Regular:h12
@@ -135,8 +132,18 @@ if has('gui_running')
     "set guifont=DejaVu_Sans_Mono:h10
     set guifont=Consolas:h11:cANSI
   endif
-else
-  set nocursorline
+endif
+
+" only remap escape keys and cursorline if in a gui or good terminal
+if has('gui_running') || $TERM =~ '-256color'
+  " jk in insert mode to replace <esc>
+  inoremap jk <esc>
+  inoremap kj <esc>
+  inoremap <esc> <nop>
+  inoremap <F1> <nop>
+
+  set cursorline
+  "set cursorcolumn
 endif
 
 " --- Set the colorscheme
@@ -147,12 +154,12 @@ if $TERM =~ '-256color'
 endif
 
 try
-   colorscheme monokai
-"    colorscheme dracula
-"    colorscheme jellybeans
-"    colorscheme solarized
-"    colorscheme molokai
-"    colorscheme vivichalk
+  colorscheme monokai
+"  colorscheme dracula
+"  colorscheme jellybeans
+"  colorscheme solarized
+"  colorscheme molokai
+"  colorscheme vividchalk
 catch
 endtry
 " mark the 80th column
@@ -171,12 +178,6 @@ noremap <leader>rc :source $MYVIMRC<cr>
 nnoremap <M-F1> :helptags $VIMFILES/doc
 nnoremap <C-F1> :execute "help " . expand("<cword>")<cr>:w
 noremap <silent> <F1> <nop>
-
-" jk in insert mode to replace <esc>
-inoremap jk <esc>
-inoremap kj <esc>
-inoremap <esc> <nop>
-inoremap <F1> <nop>
 
 " make Y behanve like other capital commands
 noremap <silent> Y y$
@@ -288,8 +289,7 @@ nnoremap <F5> :buffers<cr>:buffer<space>
 " Window commands
 "---------------------
 " More natural to split panes to right and bottom
-set splitbelow
-set splitright
+set splitbelow splitright
 
 " split window horizontally or veritcally *and* switch to the new split
 nnoremap <silent> <leader>hs :split<bar>:wincmd j<cr>
@@ -298,11 +298,7 @@ nnoremap <silent> <leader>vs :vsplit<bar>:wincmd l<cr>
 " close the current window
 nnoremap <silent> <leader>sc :close<cr>
 
-" navigate splits by adding the Ctrl-modifier to the analogous vim motion
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
-"nnoremap <C-l> <C-w>l
+" navigate splits with g command prepended to the analogous vim motion
 nnoremap <silent> gh :wincmd h<cr>
 nnoremap <silent> gj :wincmd j<cr>
 nnoremap <silent> gk :wincmd k<cr>

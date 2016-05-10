@@ -5,7 +5,7 @@ Done
 :mapping		shows all the key mappings by plugins
 :set param?		shows what parm is set to
 :reg			shows registers
-\/				turn off highlight search
+<C-L>			turn off highlight search
 \<space>		toggle highlight search
 gh				left move between windows
 gl				right
@@ -91,8 +91,6 @@ Things I want to add/change:
 4. Is auto generation of tags happening already? How to limit where/when
    they are created so only in code dirs.
 5. Look into vim-ctrlspace
-6. Save a window/tabs/buffer setup - perhaps project file in vim-ctrlspace
-7. Disable ex mode?
 9. Snipmate and Supertab might be competing for <tab> mapping
 10. Move from NERDTree to unite?
 11. 80th column is too orange in terminals - should be light grey.
