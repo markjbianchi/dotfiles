@@ -23,7 +23,7 @@ endif
 set ruler
 set number              " absolute line numbers
 set relativenumber      " plus relative line numbers
-set nowrap              " line wrapping off
+set wrap                " line wrapping on
 set laststatus=2        " always show the statusline
 "set cmdheight=2         " make command area 2 lines high
 set title               " set the title of the window to the file
@@ -59,8 +59,8 @@ set nobomb              " no byte order mark at start of file
 set history=768
 set viminfo='50,n$VIMFILES/viminfo
 set ttimeout
-set timeoutlen=1200     " time to wait for a command (e.g., after a leader)
 set ttimeoutlen=50      " make <esc> work faster
+set timeoutlen=1200     " time to wait for a command (e.g., after a leader)
 set scrolloff=1
 set sidescrolloff=3     " keep 3 lines below the last line when scrolling
 set wildmenu
@@ -78,10 +78,10 @@ set lazyredraw          " delay redrawing screen during macros - performance boo
 set ignorecase          " case insensitive search
 set smartcase           " search string determines case matching
 set incsearch           " incremental search
-set hlsearch            " highlight search results
+set nohlsearch          " turn off highlight search results
 set gdefault            " make search/replace global by default
 set iskeyword+=\$,-     " add extra characters that are valid parts of vars
-set nowrapscan          " search doesn't wrap around EOF
+set wrapscan            " search doesn't wrap around EOF
 " toggles highlighting of search
 noremap <silent> <leader><space> :set hlsearch!<cr>
 " Ctrl-l to turn off higlighting and repaint
@@ -142,8 +142,8 @@ if has('gui_running') || $TERM =~ '-256color'
   inoremap <esc> <nop>
   inoremap <F1> <nop>
 
-  set cursorline
-  "set cursorcolumn
+"  set cursorline
+"  set cursorcolumn
 endif
 
 " --- Set the colorscheme

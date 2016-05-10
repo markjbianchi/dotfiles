@@ -1,6 +1,6 @@
 " ~/.dotfiles/vim/sessions/divi.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 10 May 2016 at 06:54:06.
+" Created by session.vim 2.13.1 on 10 May 2016 at 08:20:15.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=gmrL
@@ -86,11 +86,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 75 - ((45 * winheight(0) + 23) / 47)
+let s:l = 47 - ((17 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-75
+47
 normal! 0
 lcd ~/_Projects/divi/fw/common/source
 wincmd w
@@ -105,12 +105,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 96 - ((45 * winheight(0) + 23) / 47)
+let s:l = 46 - ((1 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-96
-normal! 013|
+46
+normal! 0
 lcd ~/_Projects/divi/fw/common/source
 wincmd w
 argglobal
@@ -124,12 +124,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 73 - ((36 * winheight(0) + 23) / 47)
+let s:l = 62 - ((25 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-73
-normal! 0
+62
+normal! 037|
 lcd ~/_Projects/divi/fw/common/include
 wincmd w
 argglobal
@@ -143,12 +143,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 124 - ((36 * winheight(0) + 23) / 47)
+let s:l = 108 - ((20 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-124
-normal! 05|
+108
+normal! 02|
 lcd ~/_Projects/divi/fw/common/source
 wincmd w
 argglobal
@@ -164,7 +164,7 @@ setlocal fdn=20
 setlocal nofen
 lcd ~/_Projects/divi/fw/divifob/source
 wincmd w
-5wincmd w
+3wincmd w
 exe 'vert 1resize ' . ((&columns * 31 + 145) / 291)
 exe '2resize ' . ((&lines * 47 + 49) / 98)
 exe 'vert 2resize ' . ((&columns * 109 + 145) / 291)
@@ -204,7 +204,7 @@ if !getbufvar(s:bufnr_save, '&modified')
 endif
 execute "cd" fnameescape(s:cwd_save)
 1resize 95|vert 1resize 31|2resize 47|vert 2resize 109|3resize 47|vert 3resize 109|4resize 47|vert 4resize 108|5resize 47|vert 5resize 108|6resize 95|vert 6resize 40|
-5wincmd w
+3wincmd w
 tabnext 1
 if exists('s:wipebuf')
   if empty(bufname(s:wipebuf))

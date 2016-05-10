@@ -11,8 +11,8 @@ Plug 'crusoexia/vim-dracula'
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
-Plug 'bling/vim-airline'
-Plug 'bling/vim-bufferline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/goyo.vim'
 
 " -- vim IDE GUI and such ---
@@ -63,24 +63,23 @@ call plug#end()
 " Uncomment the next line if your terminal is not configured for solarized
 "let g:solarized_termcolors=256
 
-" ----- bling/vim-airline settings -----
+" ----- vim-airline/vim-airline settings -----
 set noshowmode          " don't show the mode since airline shows it
 " Uncomment below if using patched fonts
 let g:airline_powerline_fonts = 1
 " Show PASTE if in paste mode
 let g:airline_detect_paste = 1
 " Disable extentions/plugins that I don't use
-let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#cvs#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#eclim#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
-" Show airline for tabs too
+" Automatically show all buffers when only one tab open
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extentions#tabline#fnamemod = ':t'
-
-" ----- bling/vim-bufferline -----
-let g:bufferline_echo = 0
+" Disable bufferline integration
+let g:airline#extentions#bufferline#enabled = 0
 
 " ----- jistr/vim-nerdtree-tabs -----
 nmap <silent> <leader>n :NERDTreeTabsToggle<cr>
