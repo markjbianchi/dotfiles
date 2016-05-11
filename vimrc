@@ -138,7 +138,6 @@ endif
 if has('gui_running') || $TERM =~ '-256color'
   " jk in insert mode to replace <esc>
   inoremap jk <esc>
-  inoremap kj <esc>
   inoremap <esc> <nop>
   inoremap <F1> <nop>
 

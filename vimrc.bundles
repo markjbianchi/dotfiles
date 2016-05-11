@@ -43,8 +43,8 @@ Plug 'valloric/youcompleteme'
 
 " --- file, fuzzy searching ---
 Plug 'Shougo/vimproc.vim'               "needed by unite.vim
-Plug 'Shougo/unite.vim'                 "you have to go to .vim/plugged/vimproc.vim and do a ./make
-"Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'Shougo/unite.vim'                 "you have to go to .vim/plugged/vimproc.vim and do a ./make
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'vim-scripts/a.vim'
 "Plug 'derekwyatt/vim-fswitch'          "upgrade to a.vim
@@ -129,9 +129,6 @@ let g:tagbar_type_typescript = {
     \ 'v:globals',
   \ ]
 \ }
-
-" ----- amiorin/vim-project -----
-"let g:proj_flags = 'imstvcg'
 
 " ----- ntpeters/vim-better-whitespace settings -----
 nmap <silent> <leader>W :StripWhitespace<CR>
