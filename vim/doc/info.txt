@@ -1,44 +1,84 @@
-Done
-==================================================
+--- Intrinsic commands ---
+c   :map			    shows all the key mappings by plugins
+c   :verbose map	shows all the key mappings by plugins
+c   :set param?		shows what parm is set to
+c   :reg			    shows registers
+c   :ls				    list buffers
+n   <C-E> <C-Y>		scroll up/down 1 line
+n   <C-U> <C-D>		scroll up/down half a screen
+n   <C-F> <C-B>		scroll foward/backward a full screen (minus 2 lines)
+n   zz				    puts line w/ cursor in middle of window
+n   zt zb			    puts line w/ cursor at top/bottom
+n   <C-P>			    autocomplete searching upward
+n   <C-N>			    autocomplete searching downward
 
--- General (intrinsic, in .vimrc or other places) ---
-:mapping		shows all the key mappings by plugins
-:set param?		shows what parm is set to
-:reg			shows registers
-<C-L>			turn off highlight search
-\<space>		toggle highlight search
-gh				left move between windows
-gl				right
-gk				up
-gj				down move between windows
-<C-P>			autocomplete searching backward
-<C-N>			autocomplete searching downward
+-- Mappings (in .vimrc) ---
+n   <C-L>			    turn off highlight search
+n   \<space>		  toggle highlight search
+n   \X				    turn on syntax highlighting - if accidentally turned off
+n   \N				    turn on non-printable (tab, \n, etc) chars
+n   <F2>			    toggle line wrap mode
+n   \rc				    source vimrc file
+n   <F1>			    disabled
+n   <M-F1>			  run helptags on vim/doc dir
+n   <C-F1>			  help on word under cursor
+n   S				      split (sister to [J]oin command
+n   vy				    select entire buffer
+n   \-  \=			  underline word with - or =
+n   \'  \"			  surround word with ' or "
+v   <Tab> <S-Tab>	indent in visual mode
+n   <C-}> <C-{>		next/previous tag navigation
+n   \,				    split comma-delimited list into new lines
+c   w!!				    sudo (over)write of file
+c   <C-K>			    ex command recall, ctrl-j,k to scroll dwn/up
+n   \bq				    close current buffer and go to previous one
+n   \l				    switch to last-used buffer
+n   <F5>			    list buffers and prompt for selection
+n   \hs				    horizontal split window with current buffer
+n   \vs				    vertical split window with current buffer
+n   \sc				    close current window
+n   gh				    left move between windows
+n   gl				    right
+n   gk				    up
+n   gj				    down move between windows
+n   <M-j>			    move down and maximize window
+n   <M-k>			    move up and maximize window
+n   gp				    go to previous window
+n   gt				    go to top left window
+n   gb				    go to bottom right window
+n   gw				    cycle through window (clockwise)
+n   g=				    make all windows equal size
+n   gx				    swap windows
+n   gH				    maximize window height
+n   gV				    maximize window width
+n   + -				    increase/decrease window height
+n   <S-A->> <S-A-<>	increase/decrease window width
+n   \T				    create new tab
+
+-- Plugin Mappings (in .vimrc.bundles) ---
+n   \G				    Goyo - for distraction-free writing
+n   <F3>			    NERDtree panel toggle
+n   \\				    open buffer explorer in current window
+n   \S				    Syntastic toggle
+n   <F4>			    Tagbar panel toggle
+n   \w				    Better-WS toggle on/off trailing whitespace
+n   \W				    Better-WS removes trailing whitespace
+v   <Enter>       Easy-Align start interactive
+                    highlight in visual mode, then hit <Enter> then column number, then <space>
+n   &				      search for word in all files in current dir
+n   \a				    A.vim toggles companion files (.c <-> .h)
+n   <C-P>			    CtrlP start search
+n   \bb				    CtrlP search for buffers
+n   \bm				    CtrlP search in buffers and files
+n   \bu				    CtrlP search in most recently used
 
 
--- NERDtree --
-\t                    for showing NERDtree panel
+
+
 :help NERD_tree.txt   for help page
 
--- goyo.vim --
-:Goyo  for distraction-free writing
-\b                    for Tagbar panel
-\w                    removes trailing whitespace
-\a                    toggles files with A.vim (.c <-> .h)
-
-
-<C-E> <C-Y>		scroll up/down 1 line
-<C-U> <C-D>		scroll up/down half a screen
-<C-F> <C-B>		scroll foward/backward a full screen (minus 2 lines)
-zz				puts line w/ cursor in middle of window
-zt zb			puts line w/ cursor at top/bottom
-
-
-Look at using - or , for <leader>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
--- vim-easy-align --
-highlight in visual mode, then hit <Enter> then column number, then <space>
-
 -- vim-surround (add vim-repeat with this) --
 ds['"(t]   delete surround (t is html tag)
 cs['"(t]   create surround
@@ -68,18 +108,6 @@ If <M-p> <M-e> or <M-n> conflict with another keys or want to bind to another ke
     let g:AutoPairsShortcutToggle = '<another key>'
 to .vimrc, if the key is empty string '', then the shortcut will be disabled.
 
--- superman --
-K  on word launches man page into vim
-
-
--- vim-better-whitespace --
-:ToggleWhitespace                   mapped to <leader>w
-:StripWhitespace                    mapped to <leader>W
-:CurrentLineWhitespaceOff <level>    soft or hard
-:CurrentLineWhitespaceOn
-:ToggleStripWhitespaceOnSave
-
-
 #######################################################################
 
 Things I want to add/change:
@@ -94,7 +122,6 @@ Things I want to add/change:
 9. Snipmate and Supertab might be competing for <tab> mapping
 10. Move from NERDTree to unite?
 11. 80th column is too orange in terminals - should be light grey.
-13. Mapping to toggle on/off list/listchars to see tabs
 
 
 * Project file so the it acts like an IDE; can re-open as left it

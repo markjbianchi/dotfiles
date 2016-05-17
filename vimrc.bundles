@@ -16,12 +16,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/goyo.vim'
 
 " -- vim IDE GUI and such ---
-"Plug 'amiorin/vim-project'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar'
 Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc'
+Plug 'xolox/vim-misc'                   "required by vim-session
+Plug 'bufexplorer.zip'
 
 " -- vim as a project/program's text editor ---
 Plug 'scrooloose/syntastic'
@@ -29,10 +29,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'                 "fixes the . cmd when using a surround
-"Plug 'jiangmiao/auto-pairs'
-
 Plug 'garbas/vim-snipmate'
-
 Plug 'MarcWeber/vim-addon-mw-utils'     "required for vim-snipmate
 Plug 'tomtom/tlib_vim'                  "required for vim-snipmate
 Plug 'ntpeters/vim-better-whitespace'
@@ -40,53 +37,45 @@ Plug 'junegunn/vim-easy-align',     { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'valloric/youcompleteme'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'terryma/vim-multiple-cursors'
+"Plug 'jiangmiao/auto-pairs'
 
 " --- file, fuzzy searching ---
-Plug 'Shougo/vimproc.vim'               "needed by unite.vim
-"Plug 'Shougo/unite.vim'                 "you have to go to .vim/plugged/vimproc.vim and do a ./make
 Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'Shougo/vimproc.vim'               "needed by unite.vim
+"Plug 'Shougo/unite.vim'                 "you have to go to .vim/plugged/vimproc.vim and do a ./make
 Plug 'rking/ag.vim'
 Plug 'vim-scripts/a.vim'
 "Plug 'derekwyatt/vim-fswitch'          "upgrade to a.vim
 
 " --- utilities ---
+Plug 'tpope/vim-fugitive'
 Plug 'jez/vim-superman'                 "man pages insitu
-"Plug 'junegunn/vim-peekaboo'            "show register contents
+Plug 'junegunn/vim-peekaboo'            "show register contents
 
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin-Specific Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" ----- altercation/vim-colors-solarized settings -----
-" Uncomment the next line if your terminal is not configured for solarized
-"let g:solarized_termcolors=256
-
 " ----- vim-airline/vim-airline settings -----
 set noshowmode          " don't show the mode since airline shows it
 " Uncomment below if using patched fonts
 let g:airline_powerline_fonts = 1
-" Show PASTE if in paste mode
-let g:airline_detect_paste = 1
-" Disable extentions/plugins that I don't use
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#cvs#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#eclim#enabled = 0
-let g:airline#extensions#wordcount#enabled = 0
 " Automatically show all buffers when only one tab open
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extentions#tabline#fnamemod = ':t'
 " Disable bufferline integration
 let g:airline#extentions#bufferline#enabled = 0
 
+" ----- junegunn/goyo.vim -----
+nnoremap <LEADER>G :Goyo<CR>
+
 " ----- jistr/vim-nerdtree-tabs -----
-nmap <silent> <leader>n :NERDTreeTabsToggle<cr>
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
+nnoremap <F3> :NERDTreeMirrorToggle<CR>
 
-" ----- xolox/vim-osession -----
+" ----- xolox/vim-session -----
 let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
 let g:session_default_to_last = 1
@@ -94,6 +83,9 @@ let g:session_default_to_last = 1
 set sessionoptions-=help
 " don't save/restore hidden and unloaded buffers in sessions
 set sessionoptions-=buffers
+
+" ----- bufexplorer -----
+nnoremap <LEADER>\ :BufExplorer<CR>
 
 " ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
@@ -111,11 +103,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-nnoremap <leader>S :SyntasticToggleMode<CR>
+
+nnoremap <LEADER>S :SyntasticToggleMode<CR>
 
 " ----- majutsushi/tagbar settings -----
-"  Open/close tagbar with \b
-nmap <silent> <leader>t :TagbarToggle<cr>
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 " Treat .ts in Vim as .js in ctags
@@ -129,18 +120,19 @@ let g:tagbar_type_typescript = {
     \ 'v:globals',
   \ ]
 \ }
+nnoremap <F4> :TagbarToggle<CR>
 
 " ----- ntpeters/vim-better-whitespace settings -----
-nmap <silent> <leader>W :StripWhitespace<CR>
-nmap <silent> <leader>w :ToggleWhitespace<CR>
+nnoremap <LEADER>W :StripWhitespace<CR>
+nnoremap <LEADER>w :ToggleWhitespace<CR>
 
 " ----- junegunn/vim-easy-align -----
-" Easy alighn interactive
-vnoremap <silent> <Enter> :EasyAlign<cr>
+" Easy align interactive
+vnoremap <ENTER> :EasyAlign<CR>
 " Start interactive EasyAlign in a visual mode (e.g., vipga)
-"xmap ga <Plug>(EasyAlign)
+"xnoremap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g., gaip)
-"nmap ga <Plug>(EasyAlign)
+"noremap ga <Plug>(EasyAlign)
 
 " ----- ctrlpvim/ctrlp.vim settings -----
 "  setup some default ignores
@@ -150,12 +142,10 @@ let g:ctrlp_custom_ignore = {
 \}
 " use the nearest .git directory as the cwd
 let g:ctrlp_working_path_mode = 'r'
-" use a leader instead of the actual named binding
-nnoremap <leader>] ::CtrlP<cr>
 " easy bindings for its various modes
-nnoremap <leader>bb :CtrlPBuffer<cr>
-nnoremap <leader>bm :CtrlPMixed<cr>
-nnoremap <leader>bs :CtrlPMRU<cr>
+nnoremap <LEADER>bb :CtrlPBuffer<CR>
+nnoremap <LEADER>bm :CtrlPMixed<CR>
+nnoremap <LEADER>bu :CtrlPMRU<CR>
 
 " ----- Shougo/unite.vim settings -----
 let g:unite_source_history_yank_enable = 1
@@ -165,32 +155,37 @@ try
 catch
 endtry
 " Search a file in the filetree
-"nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
-"nnoremap <space>f :split<cr> :<C-u>Unite file<cr>
-"nnoremap <space>g :split<cr> :<C-u>Unite -start-insert file_rec/git<cr>
+"nnoremap <SPACE><SPACE> :split<CR> :<C-U>Unite -start-insert file_rec/async<CR>
+"nnoremap <SPACE>f :split<CR> :<C-U>Unite file<CR>
+"nnoremap <SPACE>g :split<CR> :<C-U>Unite -start-insert file_rec/git<CR>
 " see the yank history
-" nnoremap <space>y :split<cr>:<C-u>Unite history/yank<cr>
-" " reset not it is <C-l> normally
-" :nnoremap <space>r <Plug>(unite_restart)
+" nnoremap <SPACE>y :split<CR>:<C-U>Unite history/yank<CR>
+" :nnoremap <SPACE>r <Plug>(unite_restart)
 
 " ----- rking/ag.vim settings -----
 " Type & to search the word in all files in the current dir
-nnoremap & :Ag <c-r>=expand("<cword>")<cr><cr>
-"nnoremap <space>/ :Ag
+nnoremap & :Ag <C-R>=expand("<CWORD>")<CR><CR>
+"nnoremap <SPACE>/ :Ag
 
 " ----- vim-scripts/a.vim settings -----
-nnoremap <leader>a :A<cr>
-"nnoremap <space>/ :Ag
+nnoremap <LEADER>a :A<CR>
 
-" ----- jez/vim-superman settings -----
-noremap K :SuperMan <cword><cr>
+" ----- tpope/vim-fugitive -----
+" Hack to delete fugitive buffers when we leave them - otherwise
+" the buffer list gets polluted
+autocmd BufReadPost fugitive://* set bufhidden=delete
+" Mapping on .. to view parent tree
+autocmd BufReadPost fugitive://* 
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <BUFFER> .. :edit %:h<CR> |
+  \ endif
 
 " ----- junegunn/vim-peekaboo -----
 " Default peekaboo window
-" let g:peekaboo_window = 'vertical botright 30new'
+let g:peekaboo_window = 'vertical botright 30new'
 " " Delay opening of peekaboo window (in ms. default: 0)
-" let g:peekaboo_delay = 750
+let g:peekaboo_delay = 750
 " " Compact display; do not display the names of the register groups
-" let g:peekaboo_compact = 1
+let g:peekaboo_compact = 1
 
 "vim:ft=vim ts=2 sw=2 tw=2

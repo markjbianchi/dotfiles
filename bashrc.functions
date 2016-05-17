@@ -193,6 +193,7 @@ git_rev() {
 # Aliases for git
 alias add="git add"
 alias dff="git df"
+alias st="git st"
 
 #------------------------------------------------------------------------------
 # setup python env
