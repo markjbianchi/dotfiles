@@ -15,9 +15,12 @@ n   <C-N>			    autocomplete searching downward
 -- Mappings (in .vimrc) ---
 n   <C-L>			    turn off highlight search
 n   \<space>		  toggle highlight search
+n   n             keep search results in the middle of the window
+n   N             keep search results in the middle of the window
 n   \X				    turn on syntax highlighting - if accidentally turned off
 n   \N				    turn on non-printable (tab, \n, etc) chars
-n   <F2>			    toggle line wrap mode
+n   <F6>			    toggle line wrap mode
+n   <F7>			    show stack of syntax highlighting classes affecting word
 n   \rc				    source vimrc file
 n   <F1>			    disabled
 n   <M-F1>			  run helptags on vim/doc dir
@@ -57,10 +60,13 @@ n   \T				    create new tab
 
 -- Plugin Mappings (in .vimrc.bundles) ---
 n   \G				    Goyo - for distraction-free writing
-n   <F3>			    NERDtree panel toggle
-n   \\				    open buffer explorer in current window
+n   <F2>			    NERDtree panel toggle
+n   \\				    BufExplorer open explorer in current window
+n   \bs           BufExplorer open explorer in new horizontal split window
+n   \bv           BufExplorer open explorer in new vertical split window
 n   \S				    Syntastic toggle
-n   <F4>			    Tagbar panel toggle
+n   \C				    Syntastic check
+n   <F3>			    Tagbar panel toggle
 n   \w				    Better-WS toggle on/off trailing whitespace
 n   \W				    Better-WS removes trailing whitespace
 v   <Enter>       Easy-Align start interactive
@@ -73,9 +79,6 @@ n   \bm				    CtrlP search in buffers and files
 n   \bu				    CtrlP search in most recently used
 
 
-
-
-:help NERD_tree.txt   for help page
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -121,7 +124,6 @@ Things I want to add/change:
 5. Look into vim-ctrlspace
 9. Snipmate and Supertab might be competing for <tab> mapping
 10. Move from NERDTree to unite?
-11. 80th column is too orange in terminals - should be light grey.
 
 
 * Project file so the it acts like an IDE; can re-open as left it

@@ -35,7 +35,7 @@ set relativenumber      " plus relative line numbers
 set laststatus=2        " always show the statusline
 set history=768
 "set list                " shows unprintable chars
-"set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set lazyredraw          " delay redrawing screen during macros - performance boost
 set matchtime=3         " tenths of second to show matching parens
 set showbreak=↪         " char to put at start of lines that have been wrapped
@@ -77,6 +77,9 @@ noremap <C-L> :nohlsearch<CR><C-L>
 " Use python/java regex search and mark position before search (mark 's')
 nnoremap / ms/\v
 vnoremap / ms/\v
+" Keep searching in the middle of the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " Text/Programming features ----------------------------------------------
 syntax enable
@@ -92,6 +95,7 @@ set complete -=i        " searching includes can be slow, so don't
 set showmatch           " highlights matching bracket
 set matchpairs+=<:>     " adds < > to bracket list
 set tildeop             " use ~ to toggle case as operator, not a motion
+set completeopt-=preview  " don't show extra info in a preview window
 set tags=./tags,tags;$HOME
 
 " Various things seem to turn off syntax highlighting, so make a quick toggle
@@ -102,6 +106,11 @@ nnoremap <LEADER>N :set list!<CR>
 
 autocmd filetype c,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd filetype make setlocal noexpandtab
+" Show the stack of syntax hilighting classes affecting whatever is under the cursor.
+function! SynStack()
+  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), > ")
+endfunc
+nnoremap <F7> :call SynStack()<CR>
 
 " Backups ----------------------------------------------------------------
 set noswapfile
@@ -122,7 +131,7 @@ endif
 
 " UI ---------------------------------------------------------------------
 set nowrap                " line wrapping on
-nnoremap <F2> :set wrap!<CR>
+nnoremap <F6> :set wrap!<CR>
 "set cmdheight=2         " make command area 2 lines high
 set termencoding=utf-8
 set splitbelow splitright " More natural to split windows to right and bottom
@@ -141,14 +150,49 @@ au VimResized * :wincmd =
 
 " GUI features -----------------------------------------------------------
 set winaltkeys=no       " turn off stupid fucking alt shortcuts
+set nomousehide         " don't hide the mouse cursor while typing
 if has('mouse')
   set mouse=a           " mouse in all modes
 endif
-set nomousehide         " don't hide the mouse cursor while typing
-set guifont=Sauce\ Code\ Powerline:h11
 if has('gui_running')
+  set guifont=Sauce\ Code\ Powerline:h11  "Menlo\ Regular\ for\ Powerline:h12
+  " Remove all the UI cruft
+  set go-=T
+  set go-=l
+  set go-=L
+  set go-=r
+  set go-=R
+  " Different cursors for different modes.
+  "set guicursor=n-c:block-Cursor-blinkon0
+  "set guicursor+=v:block-vCursor-blinkon0
+  "set guicursor+=i-ci:ver20-iCursor
+
   if has("gui_macvim")
-    set macmeta                       "Menlo\ Regular:h12
+    set macmeta
+    " Full screen means FULL screen
+    "set fuoptions=maxvert,maxhorz
+    " Use the normal HIG movements, except for M-Up/Down
+    let macvim_skip_cmd_opt_movement = 1
+    no  <D-Left> <Home>
+    no! <D-Left> <Home>
+    no  <M-Left> <C-Left>
+    no! <M-Left> <C-Left>
+
+    no  <D-Right> <End>
+    no! <D-Right> <End>
+    no  <M-Right> <C-Right>
+    no! <M-Right> <C-Right>
+
+    no   <D-Up> <C-Home>
+    ino  <D-Up> <C-Home>
+    imap <M-Up> <C-o>{
+
+    no   <D-Down> <C-End>
+    ino  <D-Down> <C-End>
+    imap <M-Down> <C-o>}
+
+    imap     <M-BS> <C-w>
+    inoremap <D-BS> <esc>my0c`y
   elseif has("gui_win32")
     set guifont=Consolas:h11:cANSI    "Lucida_Sans_Typewriter:h10 DejaVu_Sans_Mono:h10
   endif
@@ -203,6 +247,7 @@ nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
 " Make movement to beginning/endo of line easier
 nnoremap H ^
 nnoremap L $
+vnoremap L g_
 
 " Use ; for : in normal and visual mode, less keystrokes
 nnoremap ; :

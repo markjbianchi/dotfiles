@@ -66,6 +66,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extentions#tabline#fnamemod = ':t'
 " Disable bufferline integration
 let g:airline#extentions#bufferline#enabled = 0
+let g:airline#extensions#whitespace#enabled = 1
 
 " ----- junegunn/goyo.vim -----
 nnoremap <LEADER>G :Goyo<CR>
@@ -73,15 +74,19 @@ nnoremap <LEADER>G :Goyo<CR>
 " ----- jistr/vim-nerdtree-tabs -----
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
-nnoremap <F3> :NERDTreeMirrorToggle<CR>
+let NERDTreeChDirMode = 2
+let NERDTreeHighlightCursorline = 1
+let NERDTreeIgnore = ['\~$', '*.pyc$', '*\.pdf$' ]
+nnoremap <F2> :NERDTreeMirrorToggle<CR>
+inoremap <F2> <ESC>:TagbarToggle<CR>
 
 " ----- xolox/vim-session -----
 let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
 let g:session_default_to_last = 1
-" don't save/restore help windows in sessions
+" Don't save/restore help windows in sessions
 set sessionoptions-=help
-" don't save/restore hidden and unloaded buffers in sessions
+" Don't save/restore hidden and unloaded buffers in sessions
 set sessionoptions-=buffers
 
 " ----- bufexplorer -----
@@ -105,6 +110,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 nnoremap <LEADER>S :SyntasticToggleMode<CR>
+nnoremap <LEADER>C :SyntasticCheck<CR>
 
 " ----- majutsushi/tagbar settings -----
 " Uncomment to open tagbar automatically whenever possible
@@ -120,7 +126,8 @@ let g:tagbar_type_typescript = {
     \ 'v:globals',
   \ ]
 \ }
-nnoremap <F4> :TagbarToggle<CR>
+nnoremap <F3> :TagbarToggle<CR>
+inoremap <F3> <ESC>:TagbarToggle<CR>
 
 " ----- ntpeters/vim-better-whitespace settings -----
 nnoremap <LEADER>W :StripWhitespace<CR>
@@ -134,15 +141,19 @@ vnoremap <ENTER> :EasyAlign<CR>
 " Start interactive EasyAlign for a motion/text object (e.g., gaip)
 "noremap ga <Plug>(EasyAlign)
 
+" ----- 'valloric/youcompleteme' -----
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_add_preview_to_completeopt = 0
+
 " ----- ctrlpvim/ctrlp.vim settings -----
-"  setup some default ignores
+" Setup some default ignores
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
-" use the nearest .git directory as the cwd
+" Use the nearest .git directory as the cwd
 let g:ctrlp_working_path_mode = 'r'
-" easy bindings for its various modes
+" Easy bindings for its various modes
 nnoremap <LEADER>bb :CtrlPBuffer<CR>
 nnoremap <LEADER>bm :CtrlPMixed<CR>
 nnoremap <LEADER>bu :CtrlPMRU<CR>
@@ -167,6 +178,36 @@ endtry
 nnoremap & :Ag <C-R>=expand("<CWORD>")<CR><CR>
 "nnoremap <SPACE>/ :Ag
 
+" ----- Ack          settings -----
+nnoremap <LEADER>k :Ack!<SPACE>
+let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
+
+" Ack motions
+" Motions to Ack for things. Works with pretty much everything, including:
+"   w, W, e, E, b, B, t*, f*, i*, a*, and custom text objects
+" Note: If the text covered by a motion contains a newline it won't work.
+" Ack searches line-by-line.
+"nnoremap <LEADER>K :set opfunc=<SID>AckMotion<CR>g@
+"" xnoremap <silent> <leader>K :<C-U>call <SID>AckMotion(visualmode())<CR>
+
+"nnoremap <LEADER>K :Ack! '\b<C-R><C-W>\b'<CR>
+"nnoremap <BS> :Ack! '\b<C-R><C-W>\b'<CR>
+"xnoremap <SILENT> <BS> :<C-U>call <SID>AckMotion(visualmode())<CR>
+
+function! s:CopyMotionForType(type)
+  if a:type ==# 'v'
+    silent execute "normal! `<" . a:type . "`>y"
+  elseif a:type ==# 'char'
+    silent execute "normal! `[v`]y"
+  endif
+endfunction
+
+function! s:AckMotion(type) abort
+  let reg_save = @@
+  call s:CopyMotionForType(a:type)
+  execute "normal! :Ack! --literal " . shellescape(@@) . "\<cr>"
+  let @@ = reg_save
+endfunction
 " ----- vim-scripts/a.vim settings -----
 nnoremap <LEADER>a :A<CR>
 
@@ -175,7 +216,7 @@ nnoremap <LEADER>a :A<CR>
 " the buffer list gets polluted
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " Mapping on .. to view parent tree
-autocmd BufReadPost fugitive://* 
+autocmd BufReadPost fugitive://*
   \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
   \   nnoremap <BUFFER> .. :edit %:h<CR> |
   \ endif
