@@ -1,6 +1,6 @@
-" ~/.dotfiles/vim/sessions/divi.vim:
+" ~/.dotfiles/vim/sessions/nuoptic.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 17 May 2016 at 19:53:50.
+" Created by session.vim 2.13.1 on 19 May 2016 at 16:08:40.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=gm
@@ -13,24 +13,23 @@ if &background != 'dark'
 	set background=dark
 endif
 if !exists('g:colors_name') || g:colors_name != 'monokai' | colorscheme monokai | endif
-call setqflist([{'lnum': 8753, 'col': 129, 'valid': 1, 'vcol': 0, 'nr': 0, 'type': '', 'pattern': '', 'filename': '/Users/mbianchi/tags', 'text': 'currencyAmt	common/include/offline_db_svc.h	/^    uint8       currencyAmt[3];     \/\/ in currency, uint24 (little endian)$/;"	m	struct:_DevDbRecord'}, {'lnum': 8830, 'col': 75, 'valid': 1, 'vcol': 0, 'nr': 0, 'type': '', 'pattern': '', 'filename': '/Users/mbianchi/tags', 'text': 'deviceId	common/include/offline_db_svc.h	/^    MacAddr     deviceId;$/;"	m	struct:_DevDbRecord'}, {'lnum': 8877, 'col': 117, 'valid': 1, 'vcol': 0, 'nr': 0, 'type': '', 'pattern': '', 'filename': '/Users/mbianchi/tags', 'text': 'durationSecs	common/include/offline_db_svc.h	/^    uint8       durationSecs[3];    \/\/ uint24 (little endian)$/;"	m	struct:_DevDbRecord'}, {'lnum': 11347, 'col': 75, 'valid': 1, 'vcol': 0, 'nr': 0, 'type': '', 'pattern': '', 'filename': '/Users/mbianchi/tags', 'text': 'schemeId	common/include/offline_db_svc.h	/^    uint16      schemeId;$/;"	m	struct:_DevDbRecord'}])
+call setqflist([])
 let SessionLoad = 1
 if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/_Projects/divi/fw/common/include
+cd ~/_Projects/VIS/svn/firmware/app/trunk
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +53 offline_db_svc.h
-badd +360 ~/_Projects/divi/fw/common/source/offline_db_svc.c
-badd +56 analytlog_svc.h
+badd +20 source/monitor_task.c
+badd +1 source/core_task.c
+badd +1 source/hardware.c
 argglobal
 silent! argdel *
-argadd ~/_Projects/divi/fw/makefile
-edit analytlog_svc.h
+edit source/hardware.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -38,22 +37,22 @@ wincmd _ | wincmd |
 vsplit
 2wincmd h
 wincmd w
-wincmd w
 wincmd _ | wincmd |
 split
 1wincmd k
 wincmd w
+wincmd w
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 26 + 93) / 187)
-exe 'vert 2resize ' . ((&columns * 80 + 93) / 187)
-exe '3resize ' . ((&lines * 26 + 28) / 57)
-exe 'vert 3resize ' . ((&columns * 79 + 93) / 187)
-exe '4resize ' . ((&lines * 27 + 28) / 57)
-exe 'vert 4resize ' . ((&columns * 79 + 93) / 187)
+exe 'vert 1resize ' . ((&columns * 31 + 102) / 205)
+exe '2resize ' . ((&lines * 27 + 29) / 58)
+exe 'vert 2resize ' . ((&columns * 86 + 102) / 205)
+exe '3resize ' . ((&lines * 27 + 29) / 58)
+exe 'vert 3resize ' . ((&columns * 86 + 102) / 205)
+exe 'vert 4resize ' . ((&columns * 86 + 102) / 205)
 argglobal
 enew
-" file NERD_tree_1
+" file NERD_tree_2
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -73,16 +72,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 56 - ((16 * winheight(0) + 27) / 54)
+let s:l = 1371 - ((13 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-56
-normal! 036|
-lcd ~/_Projects/divi/fw/common/include
+1371
+normal! 012|
+lcd ~/_Projects/VIS/svn/firmware/app/trunk/source
 wincmd w
 argglobal
-edit ~/_Projects/divi/fw/common/include/offline_db_svc.h
+edit ~/_Projects/VIS/svn/firmware/app/trunk/source/core_task.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -92,21 +91,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 53 - ((14 * winheight(0) + 13) / 26)
+let s:l = 1884 - ((11 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-53
-let s:c = 32 - ((28 * winwidth(0) + 39) / 79)
-if s:c > 0
-  exe 'normal! ' . s:c . '|zs' . 32 . '|'
-else
-  normal! 032|
-endif
-lcd ~/_Projects/divi/fw/common/include
+1884
+normal! 039|
+lcd ~/_Projects/VIS/svn/firmware/app/trunk/source
 wincmd w
 argglobal
-edit ~/_Projects/divi/fw/common/source/offline_db_svc.c
+edit ~/_Projects/VIS/svn/firmware/app/trunk/source/monitor_task.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -116,21 +110,21 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 79 - ((3 * winheight(0) + 13) / 27)
+let s:l = 592 - ((51 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-79
+592
 normal! 0
-lcd ~/_Projects/divi/fw/common/source
+lcd ~/_Projects/VIS/svn/firmware/app/trunk/source
 wincmd w
-4wincmd w
-exe 'vert 1resize ' . ((&columns * 26 + 93) / 187)
-exe 'vert 2resize ' . ((&columns * 80 + 93) / 187)
-exe '3resize ' . ((&lines * 26 + 28) / 57)
-exe 'vert 3resize ' . ((&columns * 79 + 93) / 187)
-exe '4resize ' . ((&lines * 27 + 28) / 57)
-exe 'vert 4resize ' . ((&columns * 79 + 93) / 187)
+3wincmd w
+exe 'vert 1resize ' . ((&columns * 31 + 102) / 205)
+exe '2resize ' . ((&lines * 27 + 29) / 58)
+exe 'vert 2resize ' . ((&columns * 86 + 102) / 205)
+exe '3resize ' . ((&lines * 27 + 29) / 58)
+exe 'vert 3resize ' . ((&columns * 86 + 102) / 205)
+exe 'vert 4resize ' . ((&columns * 86 + 102) / 205)
 tabnext 1
 if exists('s:wipebuf')
 "   silent exe 'bwipe ' . s:wipebuf
@@ -151,7 +145,7 @@ let &so = s:so_save | let &siso = s:siso_save
 tabnext 1
 let s:bufnr_save = bufnr("%")
 let s:cwd_save = getcwd()
-NERDTree ~/_Projects/divi/fw/common/source
+NERDTree ~/_Projects/VIS/svn/firmware/app/trunk
 if !getbufvar(s:bufnr_save, '&modified')
   let s:wipebuflines = getbufline(s:bufnr_save, 1, '$')
   if len(s:wipebuflines) <= 1 && empty(get(s:wipebuflines, 0, ''))
@@ -159,8 +153,8 @@ if !getbufvar(s:bufnr_save, '&modified')
   endif
 endif
 execute "cd" fnameescape(s:cwd_save)
-1resize 54|vert 1resize 26|2resize 54|vert 2resize 80|3resize 26|vert 3resize 79|4resize 27|vert 4resize 79|
-4wincmd w
+1resize 55|vert 1resize 31|2resize 27|vert 2resize 86|3resize 27|vert 3resize 86|4resize 55|vert 4resize 86|
+3wincmd w
 tabnext 1
 if exists('s:wipebuf')
   if empty(bufname(s:wipebuf))

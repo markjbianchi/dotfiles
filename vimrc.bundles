@@ -34,7 +34,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'     "required for vim-snipmate
 Plug 'tomtom/tlib_vim'                  "required for vim-snipmate
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/vim-easy-align',     { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
-Plug 'valloric/youcompleteme'
+"Plug 'valloric/youcompleteme'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'jiangmiao/auto-pairs'
@@ -74,7 +74,7 @@ nnoremap <LEADER>G :Goyo<CR>
 " ----- jistr/vim-nerdtree-tabs -----
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
-let NERDTreeChDirMode = 2
+let NERDTreeChDirMode = 0
 let NERDTreeHighlightCursorline = 1
 let NERDTreeIgnore = ['\~$', '*.pyc$', '*\.pdf$' ]
 nnoremap <F2> :NERDTreeMirrorToggle<CR>
@@ -97,8 +97,8 @@ let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
 augroup mySyntastic
   au!
-  au FileType tex let b:syntastic_mode = "passive"
   au FileType cpp let b:syntastic_mode = "passive"
+  au FileType c   let b:syntastic_mode = "passive"
 augroup END
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -106,7 +106,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 nnoremap <LEADER>S :SyntasticToggleMode<CR>
