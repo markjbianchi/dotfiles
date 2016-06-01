@@ -24,23 +24,23 @@ Plug 'xolox/vim-misc'                   "required by vim-session
 Plug 'bufexplorer.zip'
 
 " -- vim as a project/program's text editor ---
-Plug 'scrooloose/syntastic'
-Plug 'sheerun/vim-polyglot'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'                 "fixes the . cmd when using a surround
-Plug 'garbas/vim-snipmate'
-Plug 'MarcWeber/vim-addon-mw-utils'     "required for vim-snipmate
-Plug 'tomtom/tlib_vim'                  "required for vim-snipmate
+"Plug 'scrooloose/syntastic'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'tomtom/tcomment_vim'
+"Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-repeat'                 "fixes the . cmd when using a surround
+"Plug 'garbas/vim-snipmate'
+"Plug 'MarcWeber/vim-addon-mw-utils'     "required for vim-snipmate
+"Plug 'tomtom/tlib_vim'                  "required for vim-snipmate
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'junegunn/vim-easy-align',     { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+Plug 'junegunn/vim-easy-align',
 "Plug 'valloric/youcompleteme'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'jiangmiao/auto-pairs'
 
 " --- file, fuzzy searching ---
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'Shougo/vimproc.vim'               "needed by unite.vim
 "Plug 'Shougo/unite.vim'                 "you have to go to .vim/plugged/vimproc.vim and do a ./make
 Plug 'rking/ag.vim'
@@ -49,7 +49,6 @@ Plug 'vim-scripts/a.vim'
 
 " --- utilities ---
 Plug 'tpope/vim-fugitive'
-Plug 'jez/vim-superman'                 "man pages insitu
 Plug 'junegunn/vim-peekaboo'            "show register contents
 
 call plug#end()
@@ -100,17 +99,17 @@ augroup mySyntastic
   au FileType cpp let b:syntastic_mode = "passive"
   au FileType c   let b:syntastic_mode = "passive"
 augroup END
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+""set statusline+=%#warningmsg#
+""set statusline+=%{SyntasticStatuslineFlag()}
+""set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
-nnoremap <LEADER>S :SyntasticToggleMode<CR>
-nnoremap <LEADER>C :SyntasticCheck<CR>
+""nnoremap <LEADER>S :SyntasticToggleMode<CR>
+""nnoremap <LEADER>C :SyntasticCheck<CR>
 
 " ----- majutsushi/tagbar settings -----
 " Uncomment to open tagbar automatically whenever possible
@@ -154,9 +153,9 @@ let g:ctrlp_custom_ignore = {
 " Use the nearest .git directory as the cwd
 let g:ctrlp_working_path_mode = 'r'
 " Easy bindings for its various modes
-nnoremap <LEADER>bb :CtrlPBuffer<CR>
-nnoremap <LEADER>bm :CtrlPMixed<CR>
-nnoremap <LEADER>bu :CtrlPMRU<CR>
+""nnoremap <LEADER>bb :CtrlPBuffer<CR>
+""nnoremap <LEADER>bm :CtrlPMixed<CR>
+""nnoremap <LEADER>bu :CtrlPMRU<CR>
 
 " ----- Shougo/unite.vim settings -----
 let g:unite_source_history_yank_enable = 1
@@ -165,18 +164,10 @@ try
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
 catch
 endtry
-" Search a file in the filetree
-"nnoremap <SPACE><SPACE> :split<CR> :<C-U>Unite -start-insert file_rec/async<CR>
-"nnoremap <SPACE>f :split<CR> :<C-U>Unite file<CR>
-"nnoremap <SPACE>g :split<CR> :<C-U>Unite -start-insert file_rec/git<CR>
-" see the yank history
-" nnoremap <SPACE>y :split<CR>:<C-U>Unite history/yank<CR>
-" :nnoremap <SPACE>r <Plug>(unite_restart)
 
 " ----- rking/ag.vim settings -----
 " Type & to search the word in all files in the current dir
 nnoremap & :Ag <C-R>=expand("<CWORD>")<CR><CR>
-"nnoremap <SPACE>/ :Ag
 
 " ----- Ack          settings -----
 nnoremap <LEADER>k :Ack!<SPACE>
@@ -208,6 +199,7 @@ function! s:AckMotion(type) abort
   execute "normal! :Ack! --literal " . shellescape(@@) . "\<cr>"
   let @@ = reg_save
 endfunction
+
 " ----- vim-scripts/a.vim settings -----
 nnoremap <LEADER>a :A<CR>
 

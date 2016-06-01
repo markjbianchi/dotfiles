@@ -12,7 +12,6 @@ set tabstop=4
 set expandtab           " turn tabs into spaces (use <C-V>Tab to insert real tabs
 set shiftround          " round indent to multiple of shiftwidth
 set shiftwidth=4
-set iskeyword+=\$,-     " add extra characters that are valid parts of vars
 set clipboard+=unnamed,unnamedplus
 set wrapscan            " search wraps around EOF
 
@@ -69,7 +68,7 @@ noremap \- yypVr-
 " Underline a line with equals
 noremap \= yypVr=
 
-" Surround word with " or ':w
+" Surround word with " or '
 nnoremap \" viw<ESC>a"<ESC>hbi"<ESC>lel
 nnoremap \' viw<ESC>a'<ESC>hbi'<ESC>lel
 
@@ -81,23 +80,23 @@ vnoremap <S-Tab> <'<0v'>$
 vnoremap \, :s/,/,\r/g<RETURN>
 
 " split window horizontally or veritcally *and* switch to the new split
-nnoremap \hs :split<BAR><C-W> j<RETURN>
-nnoremap \vs :vsplit<BAR><C-W> l<RETURN>
+""nnoremap \hs :split<BAR><C-W> j<RETURN>
+""nnoremap \vs :vsplit<BAR><C-W> l<RETURN>
 " close the current window
-nnoremap \sc :close<RETURN>
+""nnoremap \sc :close<RETURN>
 
 " navigate splits with g command prepended to the analogous vim motion
-nnoremap gh <C-W> h<RETURN>
-nnoremap gj <C-W> j<RETURN>
-nnoremap gk <C-W> k<RETURN>
-nnoremap gl <C-W> l<RETURN>
+""nnoremap gh <C-W> h<RETURN>
+""nnoremap gj <C-W> j<RETURN>
+""nnoremap gk <C-W> k<RETURN>
+""nnoremap gl <C-W> l<RETURN>
 
 " go to previous, top left, bottom right window; cycle through windows
-nnoremap gp <C-W> p<RETURN>
-nnoremap gt <C-W> t<RETURN>
-nnoremap gb <C-W> b<RETURN>
-nnoremap gw <C-W> w<RETURN>
+""nnoremap gp <C-W> p<RETURN>
+""nnoremap gt <C-W> t<RETURN>
+""nnoremap gb <C-W> b<RETURN>
+""nnoremap gw <C-W> w<RETURN>
 
 " equal size windows
-nnoremap g= <C-W> =<RETURN>
+""nnoremap g= <C-W> =<RETURN>
 

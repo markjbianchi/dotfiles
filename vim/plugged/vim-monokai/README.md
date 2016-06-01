@@ -8,9 +8,9 @@ Refined monokai color scheme for vim.
 Install
 -------
 
-### [Vundle](https://github.com/gmarik/Vundle.vim) (recommend)
+### [vim-plug](https://github.com/junegunn/vim-plug) (recommend)
 
-    Plugin 'crusoexia/vim-monokai'
+    Plug 'crusoexia/vim-monokai'
 
 ### Manually
 
@@ -19,19 +19,25 @@ Download the syntax/monokai.vim file, move it into your __~/.vim/syntax/__ folde
 Usage
 -----
 
-Paste below command in your `~/.vimrc`:
+Copy below command to your `~/.vimrc`:
 
-    syntax on
-    colorscheme monokai
+```VimL
+syntax on
+colorscheme monokai
+set t_Co=256  " vim-monokai now only support 256 colours in terminal.
+```
 
 Configuration
 -------------
 
-### Terminal Italic
+### Italic
+
+By default the gui enables italic but terminal. They both can be configured.
     
-If you are using a font in terminal which support italic, paste below command in `.vimrc` to turn on terminal italic:
+If you are using a font support italic, paste below command in `.vimrc` to turn on terminal italic:
 
     let g:monokai_term_italic = 1
+    let g:monokai_gui_italic = 1
 
 Javascript
 ----------

@@ -64,8 +64,8 @@ n   <F2>			    NERDtree panel toggle
 n   \\				    BufExplorer open explorer in current window
 n   \bs           BufExplorer open explorer in new horizontal split window
 n   \bv           BufExplorer open explorer in new vertical split window
-n   \S				    Syntastic toggle
-n   \C				    Syntastic check
+#n   \S				    Syntastic toggle
+#n   \C				    Syntastic check
 n   <F3>			    Tagbar panel toggle
 n   \w				    Better-WS toggle on/off trailing whitespace
 n   \W				    Better-WS removes trailing whitespace
@@ -73,62 +73,8 @@ v   <Enter>       Easy-Align start interactive
                     highlight in visual mode, then hit <Enter> then column number, then <space>
 n   &				      search for word in all files in current dir
 n   \a				    A.vim toggles companion files (.c <-> .h)
-n   <C-P>			    CtrlP start search
-n   \bb				    CtrlP search for buffers
-n   \bm				    CtrlP search in buffers and files
-n   \bu				    CtrlP search in most recently used
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
--- vim-surround (add vim-repeat with this) --
-ds['"(t]   delete surround (t is html tag)
-cs['"(t]   create surround
-
--- vim-commentary --
-gcc     comment out a line
-gc<motion>  comment out target of motion
-gc      in viusal mode to comment out selection
-:7,15Commentary
-:g/TODO/Commentary
-
--- auto-pairs --
-Insert parens:
-  1. use Ctrl-V) to insert paren without triggering plugin
-  2. use Alt-P to turn off the plugin
-  3. use DEL or x to delete the character inserted by plugin
-
-System Shortcuts:
-    <CR>  : Insert new indented line after return if cursor in blank brackets or quotes.
-    <BS>  : Delete brackets in pair
-    <M-p> : Toggle Autopairs (g:AutoPairsShortcutToggle)
-    <M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
-    <M-n> : Jump to next closed pair (g:AutoPairsShortcutJump)
-    <M-b> : BackInsert (g:AutoPairsShortcutBackInsert)
-
-If <M-p> <M-e> or <M-n> conflict with another keys or want to bind to another keys, add
-    let g:AutoPairsShortcutToggle = '<another key>'
-to .vimrc, if the key is empty string '', then the shortcut will be disabled.
-
-#######################################################################
-
-Things I want to add/change:
-2. Simplified (previous jah config) when using xterm vs iTerm or maybe use
-   if hasgui() and have macvim use all the plugins and simplified one for
-   no gui (i.e. xterm or iTermg).
-3. Remove the autoinsert of matching ", ', ), } or figure out how to jump
-   out of it and continue
-4. Is auto generation of tags happening already? How to limit where/when
-   they are created so only in code dirs.
-5. Look into vim-ctrlspace
-9. Snipmate and Supertab might be competing for <tab> mapping
-10. Move from NERDTree to unite?
-
-
-* Project file so the it acts like an IDE; can re-open as left it
-* Tab completion for var, methods, etc.
-* Search through all files in project
-* Code snippet insert
-* Easy navigation between buffers, windows, tabs; loading multiples of each
+#n   <C-P>			    CtrlP start search
+#n   \bb				    CtrlP search for buffers
+#n   \bm				    CtrlP search in buffers and files
+#n   \bu				    CtrlP search in most recently used
 
