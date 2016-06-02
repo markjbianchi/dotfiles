@@ -43,24 +43,26 @@ set title               " set the title of the window to the file
 set autoread            " automatically reload file changes if detected
 set clipboard+=unnamed,unnamedplus
 set nobomb              " no byte order mark at start of file
-set viminfo='50,n$VIMFILES/viminfo
+set viminfo=h,'50,n$VIMFILES/viminfo
 set ttimeout
 set ttimeoutlen=50      " make <ESC> work faster
 set timeoutlen=1200     " time to wait for a command (e.g., after a leader)
-set scrolloff=3         " keep 3 lines above/below the cursor when scrolling
+set scrolloff=2         " keep 2 lines above/below the cursor when scrolling
 set sidescrolloff=7     " keep 7 columns to left/right of cursor when scrolling
 set sidescroll=1        " minimum of 1 column to scroll
 set fileformats=mac,dos,unix
 set nostartofline       " don't go to start of line after some scroll commands
 set nojoinspaces        " use one space, not two after punctuation
+set virtualedit=block   " Square up visual selections...
 
 " Wildmenu completion ----------------------------------------------------
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,full
 set wildignore+=.git,.svn
 set wildignore+=*.jpg,*.jpeg,*.bmp,*.gif,*.png
 set wildignore+=*.o,*.obj,*.a,*.exe,*.dll,*.lib,*.pyc,*.class
 set wildignore+=.DS_Store,.*.sw?,*.tmp,*.bak
+set infercase           " adjust completions to match case
 
 " Search options ---------------------------------------------------------
 set ignorecase          " case insensitive search
@@ -95,7 +97,7 @@ set complete -=i        " searching includes can be slow, so don't
 set showmatch           " highlights matching bracket
 set matchpairs+=<:>     " adds < > to bracket list
 set tildeop             " use ~ to toggle case as operator, not a motion
-set completeopt-=preview  " don't show extra info in a preview window
+set completeopt -=preview  " don't show extra info in a preview window
 set tags=./tags,tags;$HOME
 
 " Various things seem to turn off syntax highlighting, so make a quick toggle
@@ -173,26 +175,26 @@ if has('gui_running')
     "set fuoptions=maxvert,maxhorz
     " Use the normal HIG movements, except for M-Up/Down
     let macvim_skip_cmd_opt_movement = 1
-    no  <D-Left> <Home>
-    no! <D-Left> <Home>
-    no  <M-Left> <C-Left>
-    no! <M-Left> <C-Left>
+    no  <D-LEFT> <HOME>
+    no! <D-LEFT> <HOME>
+    no  <M-LEFT> <C-LEFT>
+    no! <M-LEFT> <C-LEFT>
 
-    no  <D-Right> <End>
-    no! <D-Right> <End>
-    no  <M-Right> <C-Right>
-    no! <M-Right> <C-Right>
+    no  <D-RIGHT> <END>
+    no! <D-RIGHT> <END>
+    no  <M-RIGHT> <C-RIGHT>
+    no! <M-RIGHT> <C-RIGHT>
 
-    no   <D-Up> <C-Home>
-    ino  <D-Up> <C-Home>
-    imap <M-Up> <C-o>{
+    no   <D-UP> <C-HOME>
+    ino  <D-UP> <C-HOME>
+    imap <M-UP> <C-O>{
 
-    no   <D-Down> <C-End>
-    ino  <D-Down> <C-End>
-    imap <M-Down> <C-o>}
+    no   <D-DOWN> <C-END>
+    ino  <D-DOWN> <C-END>
+    imap <M-DOWN> <C-O>}
 
-    imap     <M-BS> <C-w>
-    inoremap <D-BS> <esc>my0c`y
+    imap     <M-BS> <C-W>
+    inoremap <D-BS> <ESC>my0c`y
   elseif has("gui_win32")
     set guifont=Consolas:h11:cANSI    "Lucida_Sans_Typewriter:h10 DejaVu_Sans_Mono:h10
   endif
@@ -236,9 +238,15 @@ nnoremap <M-F1> :helptags $VIMFILES/doc<CR>
 nnoremap <C-F1> :execute "help " . expand("<CWORD>")<CR>:w
 noremap <SILENT> <F1> <NOP>
 
+" Use <space> and ctrl-space to page down and up
+"nnoremap <SPACE> <PAGEDOWN>
+"vnoremap <SPACE> <PAGEDOWN>
+"nnoremap <C-SPACE> <PAGEUP>
+"vnoremap <C-SPACE> <PAGEUP>
+
 " Make Y and D behanve like other capital commands
-noremap <SILENT> Y y$
-noremap <SILENT> D d$
+noremap Y y$
+noremap D d$
 
 " Split line (sister to [J]oin lines)
 " The normal use of S is covered by cc, so don't worry about shadowing it.
@@ -252,6 +260,12 @@ vnoremap L g_
 " Use ; for : in normal and visual mode, less keystrokes
 nnoremap ; :
 vnoremap ; :
+
+" Visual block mode is far more useful than visual, so swap
+nnoremap v <C-V>
+nnoremap <C-V> v
+vnoremap v <C-V>
+vnoremap <C-V> v
 
 " Swap implementations of ` and ' jump-to markers
 " By default, ' jumps to the marked line, ` jumps to the mark line and column
@@ -285,15 +299,15 @@ vnoremap <LEADER>, :s/,/,\r/g<CR>
 cnoremap w!! w !sudo tee % >/dev/null
 
 " Create newlines without entering insert mode
-"nnoremap go o<ESC>k
-"nnoremap gO O<ESC>j
+nnoremap go o<ESC>k
+nnoremap gO O<ESC>j
 
 " Command line editing
 map <C-K> :<Up>
-cnoremap <C-H> <Left>
-cnoremap <C-L> <Right>
-cnoremap <C-J> <Down>
-cnoremap <C-K> <Up>
+cnoremap <C-H> <LEFT>
+cnoremap <C-L> <RIGHT>
+cnoremap <C-J> <DOWN>
+cnoremap <C-K> <UP>
 
 " Set the working directory of that of the current file
 cnoremap cwd lcd %:p:h
@@ -307,6 +321,16 @@ nnoremap Q @@
 " remove doc lookup maping because it's easy to fat finger and never useful
 nnoremap K k
 vnoremap K k
+
+" Convenience mappings ---------------------------------------------------
+" Make arrow keys move visual blocks around
+vmap <UP>    <Plug>SchleppUp
+vmap <DOWN>  <Plug>SchleppDown
+vmap <LEFT>  <Plug>SchleppLeft
+vmap <RIGHT> <Plug>SchleppRight
+
+vmap D       <Plug>SchleppDupLeft
+vmap <C-D>   <Plug>SchleppDupLeft
 
 " Autocommands -----------------------------------------------------------
 augroup bufcmds
@@ -330,12 +354,12 @@ nnoremap <F5> :buffers<CR>:buffer<space>
 " \l        : switch to last-used buffer
 nnoremap <LEADER>l :e#<CR>
 " close the current buffer and go to previous one
-nnoremap <LEADER>bq :bp <bar> bd #<CR>
+nnoremap <LEADER>bq :bp <BAR> bd #<CR>
 
 " Window commands --------------------------------------------------------
 " split window horizontally or veritcally *and* switch to the new split
-nnoremap <LEADER>hs :split<bar>:wincmd j<CR>
-nnoremap <LEADER>vs :vsplit<bar>:wincmd l<CR>
+nnoremap <LEADER>hs :split<BAR>:wincmd j<CR>
+nnoremap <LEADER>vs :vsplit<BAR>:wincmd l<CR>
 " close the current window
 nnoremap <LEADER>sc :close<CR>
 
@@ -345,8 +369,8 @@ nnoremap gj :wincmd j<CR>
 nnoremap gk :wincmd k<CR>
 nnoremap gl :wincmd l<CR>
 " move and maximize window
-nnoremap <M-j> <C-W>j<C-W>_
-nnoremap <M-k> <C-W>k<C-W>_
+nnoremap <M-J> <C-W>j<C-W>_
+nnoremap <M-K> <C-W>k<C-W>_
 
 " go to previous, top left, bottom right window; cycle through windows
 nnoremap gp :wincmd p<CR>
@@ -374,6 +398,8 @@ nnoremap <LEADER>T :tabnew<CR>
 " Abbreviations/Typo fixes -----------------------------------------------
 iabbrev teh the
 iabbrev tehn then
+iabbrev retrun return
+iabbrev pritn print
 iabbrev #i #include
 iabbrev #d #define
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>

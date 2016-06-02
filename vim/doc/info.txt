@@ -33,6 +33,7 @@ v   <Tab> <S-Tab>	indent in visual mode
 n   <C-}> <C-{>		next/previous tag navigation
 n   \,				    split comma-delimited list into new lines
 c   w!!				    sudo (over)write of file
+n   go gO         open lines without entering insert mode
 c   <C-K>			    ex command recall, ctrl-j,k to scroll dwn/up
 n   \bq				    close current buffer and go to previous one
 n   \l				    switch to last-used buffer
