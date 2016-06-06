@@ -26,15 +26,15 @@ command Retab retab!
 
 " Mappings ---------------------------------------------------------------
 " Toggles highlighting of search
-noremap \<SPACE> :set hlsearch!<RETURN>
+noremap \<SPACE> :set hlsearch!<CR>
 " Ctrl-l to turn off higlighting and repaint
-noremap <C-L> :nohlsearch<RETURN><C-L>
+noremap <C-L> :nohlsearch<CR><C-L>
 " Keep searching in the middle of the window
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Toggle [N]on-printable characters
-nnoremap \N :set list!<RETURN>
+nnoremap \N :set list!<CR>
 
 inoremap jk <ESC>
 
@@ -44,7 +44,7 @@ noremap D d$
 
 " Split line (sister to [J]oin lines)
 " The normal use of S is covered by cc, so don't worry about shadowing it.
-nnoremap S i<RETURN><ESC>^mwgk:silent! s/\v +$//<RETURN>:noh<RETURN>`w
+nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
 
 " Make movement to beginning/endo of line easier
 nnoremap H ^
@@ -77,26 +77,26 @@ vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
 
 " Break a comma-delimited list onto new lines
-vnoremap \, :s/,/,\r/g<RETURN>
+vnoremap \, :s/,/,\r/g<CR>
 
 " split window horizontally or veritcally *and* switch to the new split
-""nnoremap \hs :split<BAR><C-W> j<RETURN>
-""nnoremap \vs :vsplit<BAR><C-W> l<RETURN>
+""nnoremap \hs :split<BAR><C-W>j<CR>
+""nnoremap \vs :vsplit<BAR><C-W>l<CR>
 " close the current window
-""nnoremap \sc :close<RETURN>
+""nnoremap \sc :close<CR>
 
 " navigate splits with g command prepended to the analogous vim motion
-""nnoremap gh <C-W> h<RETURN>
-""nnoremap gj <C-W> j<RETURN>
-""nnoremap gk <C-W> k<RETURN>
-""nnoremap gl <C-W> l<RETURN>
+""nnoremap gh <C-W>h
+""nnoremap gj <C-W>j
+""nnoremap gk <C-W>k
+""nnoremap gl <C-W>l
 
 " go to previous, top left, bottom right window; cycle through windows
-""nnoremap gp <C-W> p<RETURN>
-""nnoremap gt <C-W> t<RETURN>
-""nnoremap gb <C-W> b<RETURN>
-""nnoremap gw <C-W> w<RETURN>
+""nnoremap gp <C-W>p
+""nnoremap gt <C-W>t
+""nnoremap gb <C-W>b
+""nnoremap gw <C-W>w
 
 " equal size windows
-""nnoremap g= <C-W> =<RETURN>
+""nnoremap g= <C-W>=
 

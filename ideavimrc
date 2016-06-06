@@ -5,9 +5,9 @@ set nohlsearch
 set incsearch           " show where search pattern typed so far matches
 set ignorecase
 set matchpairs+=<:>
-set nrformats-=octal    " number formats recognized for CTRL-A command
+set nrformats -=octal   " number formats recognized for CTRL-A command
 set number
-set relativenumber
+"set relativenumber
 set scrolloff=1
 set showmode
 set sidescroll=3
@@ -43,6 +43,53 @@ set nowrapscan
 "set viminfo             " information to remember after restart
 "set visualbell          " use visual bell instead of beeping
 "set wrapscan            " searches wrap around the end of the file
+" Mappings ---------------------------------------------------------------
+" Toggles highlighting of search
+noremap <LEADER><SPACE> :set hlsearch!<CR>
+" Ctrl-l to turn off higlighting and repaint
+noremap <C-L> :nohlsearch<CR><C-L>
+" Keep searching in the middle of the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+inoremap jk <ESC>
+
+" Make Y and D behanve like other capital commands
+noremap Y y$
+noremap D d$
+
+" Split line (sister to [J]oin lines)
+" The normal use of S is covered by cc, so don't worry about shadowing it.
+nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
+
+" Make movement to beginning/endo of line easier
+nnoremap H ^
+nnoremap L $
+vnoremap L g_
+
+" Use ; for : in normal and visual mode, less keystrokes
+nnoremap ; :
+vnoremap ; :
+
+" Swap implementations of ` and ' jump-to markers
+" By default, ' jumps to the marked line, ` jumps to the mark line and column
+nnoremap ' `
+nnoremap ` '
+
+" Select entire buffer (like Ctrl-A)
+nnoremap vy ggVG
+
+" Surround word with " or '
+nnoremap <LEADER>" viw<ESC>a"<ESC>hbi"<ESC>lel
+nnoremap <LEADER>' viw<ESC>a'<ESC>hbi'<ESC>lel
+
+" Use <tab> to indent in visual mode
+vnoremap <Tab> >'<0v'>$
+vnoremap <S-Tab> <'<0v'>$
+
+" Break a comma-delimited list onto new lines
+vnoremap <LEADER>, :s/,/,\r/g<CR>
+
 """"""""""""""""""""""""""""""""""""""""
 " supported commands
 """"""""""""""""""""""""""""""""""""""""
@@ -54,10 +101,11 @@ set nowrapscan
 "     ys  cs  ds S    commands for comments using vim-surround
 
 " split window horizontally or veritcally *and* switch to the new split
-nnoremap <silent> <leader>hs :split<bar>:wincmd j<cr>
-nnoremap <silent> <leader>vs :vsplit<bar>:wincmd l<cr>
+nnoremap <LEADER>hs :split<BAR><C-W>j
+nnoremap <LEADER>vs :vsplit<BAR><C-W>l
 " navigate splits with g command prepended to the analogous vim motion
-nnoremap <silent> gh :wincmd h<cr>
-nnoremap <silent> gj :wincmd j<cr>
-nnoremap <silent> gk :wincmd k<cr>
-nnoremap <silent> gl :wincmd l<cr>
+nnoremap gh <C-W>h
+nnoremap gj <C-W>j
+nnoremap gk <C-W>k
+nnoremap gl <C-W>l
+
