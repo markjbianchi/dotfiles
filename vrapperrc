@@ -22,11 +22,11 @@ set startnormalmode
 set novisualmouse
 
 " Custom commands --------------------------------------------------------
-command Retab retab!
+
 
 " Mappings ---------------------------------------------------------------
 " Toggles highlighting of search
-noremap \<SPACE> :set hlsearch!<CR>
+noremap <LEADER><SPACE> :set hlsearch!<CR>
 " Ctrl-l to turn off higlighting and repaint
 noremap <C-L> :nohlsearch<CR><C-L>
 " Keep searching in the middle of the window
@@ -55,6 +55,12 @@ vnoremap L g_
 nnoremap ; :
 vnoremap ; :
 
+" Visual block mode is far more useful than visual, so swap
+nnoremap v <C-V>
+nnoremap <C-V> v
+vnoremap v <C-V>
+vnoremap <C-V> v
+
 " Swap implementations of ` and ' jump-to markers
 " By default, ' jumps to the marked line, ` jumps to the mark line and column
 nnoremap ' `
@@ -62,11 +68,6 @@ nnoremap ` '
 
 " Select entire buffer (like Ctrl-A)
 nnoremap vy ggVG
-
-" Underline a line with hyphens
-noremap \- yypVr-
-" Underline a line with equals
-noremap \= yypVr=
 
 " Surround word with " or '
 nnoremap \" viw<ESC>a"<ESC>hbi"<ESC>lel
@@ -91,12 +92,9 @@ vnoremap \, :s/,/,\r/g<CR>
 ""nnoremap gk <C-W>k
 ""nnoremap gl <C-W>l
 
-" go to previous, top left, bottom right window; cycle through windows
-""nnoremap gp <C-W>p
-""nnoremap gt <C-W>t
-""nnoremap gb <C-W>b
-""nnoremap gw <C-W>w
-
-" equal size windows
-""nnoremap g= <C-W>=
+" go to previous, next, top left, bottom right splits/tabs
+nnoremap gp :tabprevious<CR>
+nnoremap gw :tabnext<CR>
+nnoremap gt :tabrewind<CR>
+nnoremap gb :tablast<CR>
 
