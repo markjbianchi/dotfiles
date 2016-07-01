@@ -203,7 +203,7 @@ endif
 " Only remap escape keys and cursorline if in a gui or good terminal
 if has('gui_running') || $TERM =~ '-256color'
   inoremap jk <ESC>
-  inoremap <ESC> <NOP>
+  "inoremap <ESC> <NOP>
 endif
 
 " Only show cursorline in the current window and in normal mode

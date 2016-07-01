@@ -55,12 +55,6 @@ vnoremap L g_
 nnoremap ; :
 vnoremap ; :
 
-" Visual block mode is far more useful than visual, so swap
-nnoremap v <C-V>
-nnoremap <C-V> v
-vnoremap v <C-V>
-vnoremap <C-V> v
-
 " Swap implementations of ` and ' jump-to markers
 " By default, ' jumps to the marked line, ` jumps to the mark line and column
 nnoremap ' `

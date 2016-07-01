@@ -69,3 +69,5 @@ alias la=hidden
 [[ -f $HOME/.bashrc.functions ]] && source $HOME/.bashrc.functions
 
 #vim:ft=bash ts=2 sw=2 tw=2
+
+export PATH="$PATH:"/Applications/microchip/xc8/v1.37/bin""
