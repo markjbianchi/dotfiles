@@ -50,7 +50,7 @@ set timeoutlen=1200     " time to wait for a command (e.g., after a leader)
 set scrolloff=2         " keep 2 lines above/below the cursor when scrolling
 set sidescrolloff=7     " keep 7 columns to left/right of cursor when scrolling
 set sidescroll=1        " minimum of 1 column to scroll
-set fileformats=mac,dos,unix
+set fileformats=unix,dos
 set nostartofline       " don't go to start of line after some scroll commands
 set nojoinspaces        " use one space, not two after punctuation
 set virtualedit=block   " Square up visual selections...
