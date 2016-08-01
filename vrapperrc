@@ -16,7 +16,7 @@ set tabstop=4
 set expandtab           " turn tabs into spaces (use <C-V>Tab to insert real tabs
 set shiftround          " round indent to multiple of shiftwidth
 set shiftwidth=4
-set iskeyword+=\$,-     " add extra characters that are valid parts of vars
+"set iskeyword+=\$,-     " (THIS BREAKS MOVEMENT CMDS) add extra characters that are valid parts of vars
 set clipboard+=unnamed,unnamedplus
 set wrapscan            " search wraps around EOF
 
