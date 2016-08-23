@@ -1,3 +1,8 @@
+# Source the global definitions
+if [ -f /etc/bashrc ] ; then
+   . /etc/bashrc
+ fi
+
 # modify the PATH, remove duplicate paths
 #PATH="$HOME/bin:/usr/local/bin:${PATH}"
 PATH="$HOME/bin:${PATH}"
@@ -64,6 +69,7 @@ alias lsf='ls -b -FC -G'
 alias lsr='ls -R -G'
 alias ll='ls -Alo -G'
 alias la=hidden
+alias ackc='ack --cc'
 
 # Include bash functions
 [[ -f $HOME/.bashrc.functions ]] && source $HOME/.bashrc.functions

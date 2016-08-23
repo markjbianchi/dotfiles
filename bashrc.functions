@@ -12,6 +12,10 @@ hidden() {
   ls -AF "$@" |  grep '^\.';
 }
 
+A () {
+  ack --cc "$1" source
+}
+
 # Simple recursive grep function that ignores .svn|.git directories
 # Usage: f "pattern" [dir_to_search]
 #        default dir_to_search is current dir (the ./ dir)
