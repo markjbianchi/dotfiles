@@ -58,7 +58,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias defines="gcc -DM -E - </dev/null"
 alias bk='echo && echo && echo =============================================================================='
-alias tree='/usr/local/bin/tree -nF'
+alias tree='tree -nF'
 alias g='gvim'
 alias e='vim'
 alias vi='vim'
