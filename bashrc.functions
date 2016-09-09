@@ -13,7 +13,7 @@ hidden() {
 }
 
 A () {
-  ack --cc "$1" source
+  ack --cc "$1" source src 2>/dev/null
 }
 
 # Simple recursive grep function that ignores .svn|.git directories

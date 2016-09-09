@@ -20,7 +20,7 @@
   l        = log --stat
   ll       = log --stat --abbrev-commit
   last     = log -p -n1
-  lg       = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  hist     = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lol      = log --graph --decorate --pretty=oneline --abbrev-commit
   undo     = checkout HEAD --
   unstage  = reset HEAD --

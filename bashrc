@@ -20,6 +20,9 @@ export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Hom
 # This ignores file tab completion of hidden dirs/files (great for .svn|.git dirs)
 bind 'set match-hidden-files off'
 bind 'set completion-ignore-case on'    # case-insensitive completion
+# add brew's bash completion if installed
+[[ -f $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
+
 
 # set vi command line
 set -o vi
@@ -74,6 +77,7 @@ alias ackc='ack --cc'
 # Include bash functions
 [[ -f $HOME/.bashrc.functions ]] && source $HOME/.bashrc.functions
 
-#vim:ft=bash ts=2 sw=2 tw=2
-
+# Added by Microchip
 export PATH="$PATH:"/Applications/microchip/xc8/v1.37/bin""
+
+#vim:ft=bash ts=2 sw=2 tw=2
