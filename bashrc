@@ -12,7 +12,7 @@ PATH="$HOME/bin:${PATH}"
 alias path='echo $PATH | tr ":" "\n"'
 
 # set up CDPATH to be able to jump to Project dirs more easily
-export CDPATH=".:$HOME:$HOME/_Projects:$HOME/_Projects/divi:$HOME/_Projects/VIS/svn"
+export CDPATH=".:$HOME:$HOME/_Projects"
 
 #export JAVA_HOME='/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home'
