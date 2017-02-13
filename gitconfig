@@ -33,7 +33,7 @@
   show-rev = !sh -c 'git rev-list --reverse HEAD | awk NR==$0'
 
 [core]
-	excludesfile = /Users/mbianchi/.gitignore
+  excludesfile = /Users/mbianchi/.gitignore
   pager        = less -r
   safecrlf     = true
   editor       = vim
