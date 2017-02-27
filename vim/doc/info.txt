@@ -1,81 +1,97 @@
 --- Intrinsic commands ---
-c   :map			    shows all the key mappings by plugins
-c   :verbose map	shows all the key mappings by plugins
-c   :set param?		shows what parm is set to
-c   :reg			    shows registers
-c   :ls				    list buffers
-n   <C-E> <C-Y>		scroll up/down 1 line
-n   <C-U> <C-D>		scroll up/down half a screen
-n   <C-F> <C-B>		scroll foward/backward a full screen (minus 2 lines)
-n   zz				    puts line w/ cursor in middle of window
-n   zt zb			    puts line w/ cursor at top/bottom
-n   <C-P>			    autocomplete searching upward
-n   <C-N>			    autocomplete searching downward
+c   :map          shows all the key mappings by plugins
+c   :verbose map  shows all the key mappings by plugins
+c   :set param?   shows what parm is set to
+c   :reg          shows registers
+c   :ls           list buffers
+c   :cd ..        move to parent directory
+c   :h xyz<tab>   type <tab> to get list all help topics containing xyz
+c   :Ex           file explorer (netrw)
+c   :history      list of all your commands
+
+
+n   <C-E> <C-Y>   scroll up/down 1 line
+n   <C-U> <C-D>   scroll up/down half a screen
+n   <C-F> <C-B>   scroll foward/backward a full screen (minus 2 lines)
+n   H  M  L       put cursor at home (top), middle, last (bottom)
+n   zz            puts line w/ cursor in middle of window
+n   zt zb         puts line w/ cursor at top/bottom
+n   <C-P> <C-N>   autocomplete searching upward / downward
+n   *             find word under cursor forward / backward
+n   %             match brackets {}[]()
+n   fx            find (move cursor to) next occurance of x on line
+n   Fx            find (move cursor to) previous occurance of x on line
+n   tx            find the character before next occurance of x on line
+n   Tx            find the character after previous occurance of x on line
+n   guu           lowercase entire line
+n   gUU           uppercase entire line
+n   gf            open file name under cursor
+n   ga            display dec,hex,octal value of ascii character under cursor
+n   <C-A> <C-X>   increment, decrement number under cursor
+n   '.            jump to last modification line
+n   `.            jump to exact spot in last modification line
+n   "A5yy         append 5 yanked lines into register a (use CAPITAL)
+
+# Recording
+n   qa            start recording commands to a register (or any other reg)
+n   q             quit recording
+n   @a            to execute recording in a reg
+n   @@            to repeat last executed recording
+n   /fred\|joe    search for fred OR joe
+
+
 
 -- Mappings (in .vimrc) ---
-n   <C-L>			    turn off highlight search
-n   \<space>		  toggle highlight search
+n   \<space>      toggle highlight search
+n   <C-L>         turn off highlight search and repaint screen
 n   n             keep search results in the middle of the window
 n   N             keep search results in the middle of the window
-n   \X				    turn on syntax highlighting - if accidentally turned off
-n   \N				    turn on non-printable (tab, \n, etc) chars
-n   <F6>			    toggle line wrap mode
-n   <F7>			    show stack of syntax highlighting classes affecting word
-n   \rc				    source vimrc file
-n   <F1>			    disabled
-n   <M-F1>			  run helptags on vim/doc dir
-n   <C-F1>			  help on word under cursor
-n   S				      split (sister to [J]oin command
-n   vy				    select entire buffer
-n   \-  \=			  underline word with - or =
-n   \'  \"			  surround word with ' or "
-v   <Tab> <S-Tab>	indent in visual mode
-n   <C-}> <C-{>		next/previous tag navigation
-n   \,				    split comma-delimited list into new lines
-c   w!!				    sudo (over)write of file
+n   \X            turn on syntax highlighting - if accidentally turned off
+n   \N            turn on non-printable (tab, \n, etc) chars
+n   <F6>          toggle line wrap mode
+n   \rc           source vimrc file
+n   <M-F1>        run helptags on vim/doc dir
+n   S             split (sister to [J]oin command
+n   vy            select entire buffer
+n   \-  \=        underline word with - or =
+n   \'  \"        surround word with ' or "
+v   <Tab> <S-Tab> indent in visual mode
+n   <C-}> <C-{>   next/previous tag navigation
+n   \,            split comma-delimited list into new lines
+c   w!!           sudo (over)write of file
 n   go gO         open lines without entering insert mode
-c   <C-K>			    ex command recall, ctrl-j,k to scroll dwn/up
-n   \bq				    close current buffer and go to previous one
-n   \l				    switch to last-used buffer
-n   <F5>			    list buffers and prompt for selection
-n   \hs				    horizontal split window with current buffer
-n   \vs				    vertical split window with current buffer
-n   \sc				    close current window
-n   gh				    left move between windows
-n   gl				    right
-n   gk				    up
-n   gj				    down move between windows
-n   <M-j>			    move down and maximize window
-n   <M-k>			    move up and maximize window
-n   gp				    go to previous window
-n   gt				    go to top left window
-n   gb				    go to bottom right window
-n   gw				    cycle through window (clockwise)
-n   g=				    make all windows equal size
-n   gx				    swap windows
-n   gH				    maximize window height
-n   gV				    maximize window width
-n   + -				    increase/decrease window height
-n   <S-A->> <S-A-<>	increase/decrease window width
-n   \T				    create new tab
+c   <C-K>         ex command recall, ctrl-j,k to scroll dwn/up
+n   <F5>          list buffers and prompt for selection
+n   \hs           horizontal split window with current buffer
+n   \vs           vertical split window with current buffer
+n   \sc           close current window
+n   gh            left move between windows
+n   gl            right
+n   gk            up
+n   gj            down move between windows
+n   <M-j>         move down and maximize window
+n   <M-k>         move up and maximize window
+n   gp            go to previous window
+n   gt            go to top left window
+n   gb            go to bottom right window
+n   gw            cycle through window (clockwise)
+n   g=            make all windows equal size
+n   gx            swap windows
+n   gH            maximize window height
+n   gV            maximize window width
+n   + -           increase/decrease window height
 
 -- Plugin Mappings (in .vimrc.bundles) ---
-n   \G				    Goyo - for distraction-free writing
-n   <F2>			    NERDtree panel toggle
-n   \\				    BufExplorer open explorer in current window
+n   \G            Goyo - for distraction-free writing
+n   <F2>          NERDtree panel toggle
+n   <F3>          Tagbar panel toggle
+n   \\            BufExplorer open explorer in current window
 n   \bs           BufExplorer open explorer in new horizontal split window
 n   \bv           BufExplorer open explorer in new vertical split window
-#n   \S				    Syntastic toggle
-#n   \C				    Syntastic check
-n   <F3>			    Tagbar panel toggle
-n   \w				    Better-WS toggle on/off trailing whitespace
-n   \W				    Better-WS removes trailing whitespace
+n   \w            Better-WS toggle on/off trailing whitespace
+n   \W            Better-WS removes trailing whitespace
 v   <Enter>       Easy-Align start interactive
                     highlight in visual mode, then hit <Enter> then column number, then <space>
-n   &				      search for word in all files in current dir
-n   \a				    A.vim toggles companion files (.c <-> .h)
-#n   <C-P>			    CtrlP start search
-#n   \bb				    CtrlP search for buffers
-#n   \bm				    CtrlP search in buffers and files
-#n   \bu				    CtrlP search in most recently used
+n   &             search for word in all files in current dir
+n   \a            A.vim toggles companion files (.c <-> .h)
 

@@ -10,5 +10,5 @@ set show-all-if-ambiguous on
 # set colored-stats on
 #
 # # Edit with Vi keybindings
-# set editing-mode vi
-# set keymap vi
+set editing-mode vi
+set keymap vi

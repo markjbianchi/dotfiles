@@ -17,7 +17,7 @@ Plug 'junegunn/goyo.vim'
 
 " -- vim IDE GUI and such ---
 Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'                   "required by vim-session
@@ -33,7 +33,7 @@ Plug 'bufexplorer.zip'
 "Plug 'MarcWeber/vim-addon-mw-utils'     "required for vim-snipmate
 "Plug 'tomtom/tlib_vim'                  "required for vim-snipmate
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'junegunn/vim-easy-align',
+Plug 'junegunn/vim-easy-align'
 "Plug 'valloric/youcompleteme'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'terryma/vim-multiple-cursors'
@@ -43,12 +43,12 @@ Plug 'junegunn/vim-easy-align',
 "Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'Shougo/vimproc.vim'               "needed by unite.vim
 "Plug 'Shougo/unite.vim'                 "you have to go to .vim/plugged/vimproc.vim and do a ./make
-Plug 'rking/ag.vim'
+"Plug 'rking/ag.vim'
 Plug 'vim-scripts/a.vim'
 "Plug 'derekwyatt/vim-fswitch'          "upgrade to a.vim
 
 " --- utilities ---
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 Plug 'junegunn/vim-peekaboo'            "show register contents
 
 call plug#end()
@@ -91,26 +91,6 @@ set sessionoptions-=buffers
 " ----- bufexplorer -----
 nnoremap <LEADER>\ :BufExplorer<CR>
 
-" ----- scrooloose/syntastic settings -----
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-augroup mySyntastic
-  au!
-  au FileType cpp let b:syntastic_mode = "passive"
-  au FileType c   let b:syntastic_mode = "passive"
-augroup END
-""set statusline+=%#warningmsg#
-""set statusline+=%{SyntasticStatuslineFlag()}
-""set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-""nnoremap <LEADER>S :SyntasticToggleMode<CR>
-""nnoremap <LEADER>C :SyntasticCheck<CR>
-
 " ----- majutsushi/tagbar settings -----
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
@@ -139,23 +119,6 @@ vnoremap <ENTER> :EasyAlign<CR>
 "xnoremap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g., gaip)
 "noremap ga <Plug>(EasyAlign)
-
-" ----- 'valloric/youcompleteme' -----
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_add_preview_to_completeopt = 0
-
-" ----- ctrlpvim/ctrlp.vim settings -----
-" Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
-" Use the nearest .git directory as the cwd
-let g:ctrlp_working_path_mode = 'r'
-" Easy bindings for its various modes
-""nnoremap <LEADER>bb :CtrlPBuffer<CR>
-""nnoremap <LEADER>bm :CtrlPMixed<CR>
-""nnoremap <LEADER>bu :CtrlPMRU<CR>
 
 " ----- Shougo/unite.vim settings -----
 let g:unite_source_history_yank_enable = 1
@@ -202,16 +165,6 @@ endfunction
 
 " ----- vim-scripts/a.vim settings -----
 nnoremap <LEADER>a :A<CR>
-
-" ----- tpope/vim-fugitive -----
-" Hack to delete fugitive buffers when we leave them - otherwise
-" the buffer list gets polluted
-autocmd BufReadPost fugitive://* set bufhidden=delete
-" Mapping on .. to view parent tree
-autocmd BufReadPost fugitive://*
-  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-  \   nnoremap <BUFFER> .. :edit %:h<CR> |
-  \ endif
 
 " ----- junegunn/vim-peekaboo -----
 " Default peekaboo window

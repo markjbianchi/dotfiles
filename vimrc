@@ -71,7 +71,7 @@ set incsearch           " incremental search
 set nohlsearch          " turn off highlight search results
 set gdefault            " make search/replace global by default
 set iskeyword+=\$,-     " add extra characters that are valid parts of vars
-set wrapscan            " search wraps around EOF
+set nowrapscan          " search stops at EOF
 " Toggles highlighting of search
 noremap <LEADER><SPACE> :set hlsearch!<CR>
 " Ctrl-l to turn off higlighting and repaint
@@ -108,11 +108,6 @@ nnoremap <LEADER>N :set list!<CR>
 
 autocmd filetype c,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd filetype make setlocal noexpandtab
-" Show the stack of syntax hilighting classes affecting whatever is under the cursor.
-function! SynStack()
-  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), > ")
-endfunc
-nnoremap <F7> :call SynStack()<CR>
 
 " Backups ----------------------------------------------------------------
 set noswapfile
@@ -158,7 +153,7 @@ if has('mouse')
 endif
 if has('gui_running')
   set guifont=Sauce\ Code\ Powerline:h11  "Menlo\ Regular\ for\ Powerline:h12
-  " Remove all the UI cruft
+  " Remove all the UI cruft from guioptions (or go)
   set go-=T
   set go-=l
   set go-=L
@@ -235,8 +230,7 @@ noremap <LEADER>rc :source $MYVIMRC<CR>
 
 " Help system
 nnoremap <M-F1> :helptags $VIMFILES/doc<CR>
-nnoremap <C-F1> :execute "help " . expand("<CWORD>")<CR>:w
-noremap <SILENT> <F1> <NOP>
+"nnoremap <C-F1> :execute "help " . expand("<CWORD>")<CR>:w
 
 " Use <space> and ctrl-space to page down and up
 "nnoremap <SPACE> <PAGEDOWN>
@@ -312,8 +306,6 @@ cnoremap <C-K> <UP>
 " Set the working directory of that of the current file
 cnoremap cwd lcd %:p:h
 
-cnoremap w' w<CR>
-
 " disable the ever-annoying Ex mode shortcut key. make Q repeat the last macro
 " instead.
 nnoremap Q @@
@@ -352,9 +344,9 @@ augroup END
 " list buffers with ability to select one in command line
 nnoremap <F5> :buffers<CR>:buffer<space>
 " \l        : switch to last-used buffer
-nnoremap <LEADER>l :e#<CR>
+"nnoremap <LEADER>l :e#<CR>
 " close the current buffer and go to previous one
-nnoremap <LEADER>bq :bp <BAR> bd #<CR>
+"nnoremap <LEADER>bq :bp <BAR> bd #<CR>
 
 " Window commands --------------------------------------------------------
 " split window horizontally or veritcally *and* switch to the new split
@@ -389,11 +381,6 @@ nnoremap gV <C-W><BAR>
 " resize windows vertically or horizontally
 nnoremap - <C-W>-
 nnoremap + <C-W>+
-nnoremap <S-A-<> <C-W><
-nnoremap <S-A->> <C-W>>
-
-" Tab commands -----------------------------------------------------------
-nnoremap <LEADER>T :tabnew<CR>
 
 " Abbreviations/Typo fixes -----------------------------------------------
 iabbrev teh the
