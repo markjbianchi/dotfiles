@@ -229,8 +229,8 @@ endif
 noremap <LEADER>rc :source $MYVIMRC<CR>
 
 " Help system
+nnoremap <LEADER><F1> :help mjb<CR>
 nnoremap <M-F1> :helptags $VIMFILES/doc<CR>
-"nnoremap <C-F1> :execute "help " . expand("<CWORD>")<CR>:w
 
 " Use <space> and ctrl-space to page down and up
 "nnoremap <SPACE> <PAGEDOWN>

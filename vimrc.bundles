@@ -120,49 +120,6 @@ vnoremap <ENTER> :EasyAlign<CR>
 " Start interactive EasyAlign for a motion/text object (e.g., gaip)
 "noremap ga <Plug>(EasyAlign)
 
-" ----- Shougo/unite.vim settings -----
-let g:unite_source_history_yank_enable = 1
-try
-  let g:unite_source_rec_async_command = 'ag --nocolor --nogroup -g ""'
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-catch
-endtry
-
-" ----- rking/ag.vim settings -----
-" Type & to search the word in all files in the current dir
-nnoremap & :Ag <C-R>=expand("<CWORD>")<CR><CR>
-
-" ----- Ack          settings -----
-nnoremap <LEADER>k :Ack!<SPACE>
-let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
-
-" Ack motions
-" Motions to Ack for things. Works with pretty much everything, including:
-"   w, W, e, E, b, B, t*, f*, i*, a*, and custom text objects
-" Note: If the text covered by a motion contains a newline it won't work.
-" Ack searches line-by-line.
-"nnoremap <LEADER>K :set opfunc=<SID>AckMotion<CR>g@
-"" xnoremap <silent> <leader>K :<C-U>call <SID>AckMotion(visualmode())<CR>
-
-"nnoremap <LEADER>K :Ack! '\b<C-R><C-W>\b'<CR>
-"nnoremap <BS> :Ack! '\b<C-R><C-W>\b'<CR>
-"xnoremap <SILENT> <BS> :<C-U>call <SID>AckMotion(visualmode())<CR>
-
-function! s:CopyMotionForType(type)
-  if a:type ==# 'v'
-    silent execute "normal! `<" . a:type . "`>y"
-  elseif a:type ==# 'char'
-    silent execute "normal! `[v`]y"
-  endif
-endfunction
-
-function! s:AckMotion(type) abort
-  let reg_save = @@
-  call s:CopyMotionForType(a:type)
-  execute "normal! :Ack! --literal " . shellescape(@@) . "\<cr>"
-  let @@ = reg_save
-endfunction
-
 " ----- vim-scripts/a.vim settings -----
 nnoremap <LEADER>a :A<CR>
 

@@ -1,14 +1,10 @@
-*jah.txt*        Jason Heddings' customizations, tips, and tricks
-
-Author: Jason Heddings (jason@heddings.com)
-For Vim version 6.0 and above
+*mjb.txt*        Mark Bianchi's customizations, tips, and tricks
 
 1. Custom Mappings                              |custom-mappings|
 2. Command Line Editing                         |command-line-editing|
-3. Configuration                                |jah-configure|
+3. Configuration                                |mjb-configure|
 4. Handy Vim Mappings                           |handy-vim-mappings|
 5. Helpful Vim Resources                        |vim-help-files|
-6. My Vim Contributions                         |jah-contrib|
 
 ==============================================================================
                                                 *custom-mappings*
@@ -82,7 +78,7 @@ commands to something that makes a little more sense.
       <C-C>     -- copy to command line from the history window
 
 ==============================================================================
-                                                *jah-configure*
+                                                *mjb-configure*
 3. Configuration~
 
 There are a few options that can be set for the plugin.  These are defined in
@@ -189,29 +185,6 @@ These are resources in the Vim online help documentation.
 
     * Online version of PDF manual: >
         http://www.eandem.co.uk/mrw/vim/usr_doc/doc_ltrc.pdf
-
-==============================================================================
-                                                *jah-contrib*
-6. My Vim Contributions~
-
-These are tips and scripts that I have written for Vim.
-
-                                                *jah-tips*
-Tips~
-    Background :grep Searches >
-        http://www.vim.org/tips/tip.php?tip_id=986
-<   Toggle quickfix Window >
-        http://www.vim.org/tips/tip.php?tip_id=1008
-<
-                                                *jah-plugins*
-Plugins~
-    QFixToggle >
-        http://www.vim.org/scripts/script.php?script_id=1375
-<   TailMinusF >
-        http://www.vim.org/scripts/script.php?script_id=1374
-<   SessionMgr >
-        http://www.vim.org/scripts/script.php?script_id=1383
 <
 ==============================================================================
-$Id: jah.txt 14 2007-11-21 06:32:43Z jheddings $
 vim:textwidth=78:tabstop=8:noexpandtab:filetype=help
