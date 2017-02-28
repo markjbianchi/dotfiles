@@ -106,6 +106,9 @@ nnoremap <LEADER>X :syntax on<CR>
 " Toggle [N]on-printable characters
 nnoremap <LEADER>N :set list!<CR>
 
+" Change tabs to spaces in buffer
+nnoremap <LEADER><TAB> :retab<CR>
+
 autocmd filetype c,python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd filetype make setlocal noexpandtab
 

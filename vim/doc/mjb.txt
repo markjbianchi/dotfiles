@@ -1,9 +1,9 @@
 *mjb.txt*        Mark Bianchi's customizations, tips, and tricks
 
 1. Custom Mappings                              |custom-mappings|
-2. Command Line Editing                         |command-line-editing|
-3. Configuration                                |mjb-configure|
-4. Handy Vim Mappings                           |handy-vim-mappings|
+2. Plugin Mappings                              |plugin-mappings|
+3. Window Mappings                              |window-mappings|
+4. Handy Vim Commands                           |handy-vim-commands|
 5. Helpful Vim Resources                        |vim-help-files|
 
 ==============================================================================
@@ -13,123 +13,155 @@
 Wherever it makes sense, I try to stick to the original Vim commands.  These
 are the cases where I have found it easier to create my own mapping.
 
-    * Buffer navigation & management:
-      <C-Tab>   -- next buffer |:bnext|
-      <C-S-Tab> -- previous buffer |:bprev|
-
-    * Vim searching:
-      \/        -- start case-insensitive search |/ignorecase|
-      \n        -- toggle search highlighting |hlsearch|
-
-    * Navigating & using tag files:
-      <M-]>     -- go to tag definition for word under cursor |CTRL-]|
-      <M-[>     -- return to previous tag location |CTRL-T|
-      <M-\>     -- split window on tag definition |:ptag|
-      <M-}>     -- next tag match |:tnext|
-      <M-{>     -- previous tag match |:tprev|
-
-    * Editing shortcuts:
-      <Tab>     -- indent 1 level (visual mode) |>|
-      <S-Tab>   -- outdent 1 level (visual mode) |<|
-      <S-Enter> -- enter new line above cursor (normal mode)
-      <C-Enter> -- enter new line below cursor (normal mode)
-
-    * For using plugins:
-      \\        -- toggle buffer list (requires bufferlist plugin)
-      \`        -- toggle TagList window (requires taglist plugin)
-      \a        -- alternate header/source file (requires 'a.vim' plugin)
-      \s        -- display current syntax links |syntax|
-
-    * Using the |quickfix| window:
-      <M-.>     -- jump to next item in quickfix |:cnext|
-      <M-,>     -- jump to previous item in quickfix |:cprev|
-
     * Getting help
       \<F1>     -- load this help file
       <M-F1>    -- rebuild user help files |:helptags|
       <C-F1>    -- show help topic for word under cursor |{subject}|
 
+    * Vim searching:
+      \<space>  -- toggle search highlighting |hlsearch|
+      <C-L>     -- turn off hilight search and repaint screen |nohls|
+      n N 	-- search forward keeping results in middle of window
+
+    * Display control:
+      \X	-- turn on syntax highlighting |syntax|
+      \N	-- toggle non-printable (tab, \n, etc) chars
+
+    * Editing shortcuts:
+      <Tab>     -- indent 1 level (visual mode) |>|
+      <S-Tab>   -- outdent 1 level (visual mode) |<|
+      go	-- open line below w/o entering insert mode (normal mode)
+      gO	-- open line above w/o entering insert mode (normal mode)
+      S		-- split (sister to [J]oin command
+      \,	-- split comma-delimited list into new lines
+      \-	-- underline word with -
+      \=	-- underline word with +
+      \'	-- surround word with '
+      \"	-- surround word with "
+
     * Miscellaneous
-      <C-S>     -- save the current buffer |:write|
-      <C-A>     -- select all text in current buffer
       \<Tab>    -- apply current tab settings to file |:retab|
+      <C-K>     -- ex command recall, <C-J>, <C-K to scroll dwn/up |cmdline-history|
+      vy	-- select entire buffer
+      <F5>	-- list buffers and prompt for selection
+      <F6>	-- toggle line wrap mode
+      \rc	-- source vimrc file
+      w!!	-- sudo (over)write of file
 
-    * Filetype Specific -- only applies to certain filetypes
-      <Tab>     -- smart complete: next (insert mode) |i_CTRL-N|
-      <S-Tab>   -- smart complete: previous (insert mode) |i_CTRL-P|
+    * Navigating & using tag files:
+      <C-}>     -- next tag match |:tnext|
+      <C-{>     -- previous tag match |:tprev|
+      <M-]>     -- go to tag definition for word under cursor |CTRL-]|
+      <M-[>     -- return to previous tag location |CTRL-T|
+      <M-\>     -- split window on tag definition |:ptag|
 
-==============================================================================
-                                                *command-line-editing*
-2. Command-Line Editing~
-
-These commands have been remapped from the original Vim |cmdline-history|
-commands to something that makes a little more sense.
-
-      <C-K>     -- scroll up through command history
-      <C-O>     -- move to beginning of command line
-      <C-B>     -- move one word left
-      <C-J>     -- scroll down through command history
-      <C-G>     -- move to end of command line
-      <C-W>     -- move one word right
-      <C-BS>    -- delete word before cursor
-      <C-H>     -- move cursor left
-      <C-D>     -- delete after before cursor
-      <C-J>     -- move cursor right
-      <C-C>     -- copy to command line from the history window
 
 ==============================================================================
-                                                *mjb-configure*
-3. Configuration~
+                                                *plugin-mappings*
+2. Plugin Mappings~
 
-There are a few options that can be set for the plugin.  These are defined in
-the .vimrc file using |let|, before the plugins are loaded.  The default
-values for the options are shown in square brackets.
+These mappings are specific to and dependent on the installation of
+particular plugins (which are primarily installed via the vim-plug
+plugin manager http://github.com/junegunn/vim-plugin)
 
-|'jah_SmartTabCompletion'|      Enable keyword completion with <Tab> key [1]
-|'jah_CwdFollowsBuffer'|        Working directory follows active buffer [1]
-|'jah_WhiteSpaceEOL'|           Highlight trailing whitespace on a line [1]
-|'jah_LocalVimSearch'|          Search for a local command file to source [1]
+    * BufExplorer:
+      \\	-- open buffer list in current window
+      \bs	-- open buffer list in new horizontal split window
+      \bv	-- open buffer list in new vertical   split window
 
-                                                *'jah_SmartTabCompletion'*
-jah_SmartTabCompletion~
-    This feature allows keyword completion using the <Tab> key.  If the word
-    at the cursor is not recognized as a possible keyword, a <Tab> is
-    inserted.
+    * A.vim:
+      \a	-- toggles companion files (.c <-> .h)
 
-                                                *'jah_CwdFollowsBuffer'*
-jah_CwdFollowsBuffer~
-    This feature automatically sets the working directory to that of the
-    buffer being edited.
+    * Goyo:
+      \G	-- for distraction-free writing
 
-                                                *'jah_WhiteSpaceEOL'*
-jah_WhiteSpaceEOL~
-    This feature makes trailing whitespace at the end of a line visible.
+    * Better-WS:
+      \w	-- toggle on/off trailing whitespace
+      \W	-- remove trailing whitespace
 
-                                                *'jah_LocalVimSearch'*
-jah_LocalVimSearch~
-    This enables the plugin to search for a file named 'local.vim' upward in
-    the directory tree.  If this file is found in any ancestor of the working
-    directory, it will be automatically sourced.  Only the first occurence of
-    this file will be used.  The search is run only once when Vim is launched.
+    * Schlepp:
+
+    * NERDtree pannel and Tagbar panel:
+      <F2>	-- NERDtree panel toggle
+      <F3>	-- Tagbar panel toggle
+
+    * Easy-Align:
+      <Enter>	-- interactive, highlight in visual mode, then hit
+		   <Enter> then column number, then <space>
+    * Peekaboo:
+      "{delay}	-- opens right vert window showing register contents
+      @{delay}	-- opens right vert window showing macro reg contents
+
+==============================================================================
+                                                *window-mappings*
+3. Window Mappings~
+
+These mappings facilitate dealing with Vim |window| control, movement
+between windows, etc.
+
+      \hs	-- horizontal split window with current buffer |:split|
+      \vs	-- vertical   split window with current buffer |:vsplit|
+      \sc	-- close current window |:close|
+      gh	-- left  move between windows |:wincmd|
+      gl	-- right move between windows |:wincmd|
+      gk	-- up    move between windows |:wincmd|
+      gj	-- down  move between windows |:wincmd|
+      gp	-- go to prev      window |:wincmd|
+      gt	-- go to top left  window |:wincmd|
+      gb	-- go to bot right window |:wincmd|
+      gw	-- cycle through windows (clockwise) |:wincmd|
+      <M-j>     -- move down and maximize window
+      <M-k>     -- move up and maximize window
+      g=        -- make all windows equal size
+      gx        -- swap windows
+      gH        -- maximize window height
+      gV        -- maximize window width
+      +         -- increase window height
+      -         -- decrease window height
 
 ==============================================================================
                                                 *handy-vim-commands*
 4. Handy Vim Commands (Built In)~
 
+    * Screen navigation
+      <C-E>     -- scroll up   one line |CTRL-E|
+      <C-Y>     -- scroll down one line |CTRL-Y|
+      <C-U>     -- scroll up   half screen |CTRL_U|
+      <C-D>     -- scroll down half screen |CTRL-D|
+      <C-F>     -- scroll up   full screen |CTRL_F|
+      <C-B>     -- scroll down full screen |CTRL-B|
+      |M|	-- jump to middle of screen
+      |zz|	-- puts line w/ cursor in middle of window
+      |zt|	-- puts line w/ cursor at top of window
+      |zb|	-- puts line w/ cursor at top of window
+
     * Navigation and searching
-     |gf|       -- open file under cursor
-     |gg|       -- jump to first line in buffer
-     |G|        -- jump to last line in buffer
+      |gg|	-- jump to first line in buffer
+      |G|	-- jump to last line in buffer
       m{name}   -- set mark using a single character name |mark|
       '{name}   -- jump to mark with given character name |'|
-      * or #    -- find next occurrence of word in file |star|
+      *		-- find next forward  occurrence of word |star|
+      #		-- find next backward occurrence of word |star|
+      f{name}	-- find (move cursor to) next occurance of single char |f|
+      F{name}	-- find (move cursor to) prev occurance of single char |F|
+      t{name}	-- find the char before next occurance of char name |t|
+      T{name}	-- find the char after  prev occurance of char name |T|
+      /fred\|joe   search for fred OR joe
 
     * Programming stuff:
-     |[[|       -- jump to top of current function
-     |]]|       -- jump to top of next function
-     |%|        -- find matching brace or paren
-     |=|        -- smart indent visual block (|==| indent line)
-     |gq|       -- format motion or visual block
+      |[[|	-- jump to top of current function
+      |]]|	-- jump to top of next function
+      |%|	-- find matching brace or paren
+      |=|	-- smart indent visual block (|==| indent line)
+      |gf|	-- open file under cursor
+      |gq|	-- format motion or visual block
+      |ga|	-- display dec,hex,octal value of ascii character under cursor
+      <C-A>	-- increment number under cursor |CTRL_A|
+      <C-X>	-- decrement number under cursor |CTRL_X|
+
+    * Auto completion (in insert mode)  |complete|
+      <C-N>     -- auto-complete next |i_CTRL-X_CTRL-N|
+      <C-P>     -- auto-complete previous |i_CTRL-X_CTRL-P|
 
     * Macros
       q<name>   -- create macro (end with q) |q|
@@ -138,29 +170,28 @@ jah_LocalVimSearch~
     * Cursor history
       <C-O>     -- jump to previous location in history |CTRL-O|
       <C-I>     -- jump to next location in history |CTRL-I|
-
-    * Auto completion (in insert mode)  |complete|
-      <C-N>     -- auto-complete next |i_CTRL-X_CTRL-N|
-      <C-P>     -- auto-complete previous |i_CTRL-X_CTRL-P|
-
-    * Screen navigation
-     |H|        -- jump to top of screen
-     |M|        -- jump to middle of screen
-     |L|        -- jump to bottom of screen
-      <C-E>     -- scroll one line down |CTRL-E|
-      <C-Y>     -- scroll one line up |CTRL-Y|
-
-    * Using Vim diffs
-     |]c|       -- next diff in file
-     |[c|       -- previous diff in file
-     |do|       -- diff obtain (get change from other window)
-     |dp|       -- diff put (put change into other window)
+      |'.|	-- jump to last modification line
+      |`.|	-- jump to exact spot in last modification line
 
     * Registers (Multiple Cut/Copy/Paste) |registers|
       :reg      -- list all register contents |:reg|
-      "xyy      -- yank lines [into register x] |yy|
+      "xyy      -- yank lines [into register x] |yy| |quote|
+      "Xyy      -- append lines into register x |yy| |quote|
       "xp       -- put the text [from register x] after the cursor |P|
 
+    * Miscellaneous
+      |guu|	-- make entire line lowercase
+      |gUU|	-- make entire line uppercase
+
+    * Ex commands
+      :map      -- shows all the key mappings |:map|
+      :verbose map
+      :set {option}?  shows what param is set to |:set|
+      :ls	-- list buffers |:buffers| |:ls|
+      :cd ..	-- move to parent directory
+      :h xyz<tab>     type <tab> for list of help topics containing xyz
+      :Ex	-- file explorer (netrw) |:Explore|
+      :his	-- list of all your commands |:history|
 
 ==============================================================================
                                                 *vim-help-files*
@@ -183,8 +214,5 @@ These are resources in the Vim online help documentation.
     * Command Line
         Special expansion characters  |cmdline-special|
 
-    * Online version of PDF manual: >
-        http://www.eandem.co.uk/mrw/vim/usr_doc/doc_ltrc.pdf
-<
 ==============================================================================
 vim:textwidth=78:tabstop=8:noexpandtab:filetype=help
