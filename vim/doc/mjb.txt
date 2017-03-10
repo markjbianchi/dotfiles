@@ -15,8 +15,8 @@ are the cases where I have found it easier to create my own mapping.
 
     * Getting help
       \<F1>     -- load this help file
-      <M-F1>    -- rebuild user help files |:helptags|
       <C-F1>    -- show help topic for word under cursor |{subject}|
+      <M-F1>    -- rebuild user help files |:helptags|
 
     * Vim searching:
       \<space>  -- toggle search highlighting |hlsearch|
@@ -43,17 +43,19 @@ are the cases where I have found it easier to create my own mapping.
       \<Tab>    -- apply current tab settings to file |:retab|
       <C-K>     -- ex command recall, <C-J>, <C-K to scroll dwn/up |cmdline-history|
       vy	-- select entire buffer
+      <C-Tab>	-- cycle forward  to next buffer
+      <C-S-Tab>	-- cycle backward to next buffer
       <F5>	-- list buffers and prompt for selection
       <F6>	-- toggle line wrap mode
       \rc	-- source vimrc file
       w!!	-- sudo (over)write of file
 
     * Navigating & using tag files:
+      <M-]>     -- go to tag location under cursor |CTRL-]|
+      <M-[>     -- return to previous tag location |CTRL-T|
       <C-}>     -- next tag match |:tnext|
       <C-{>     -- previous tag match |:tprev|
-      <M-]>     -- go to tag definition for word under cursor |CTRL-]|
-      <M-[>     -- return to previous tag location |CTRL-T|
-      <M-\>     -- split window on tag definition |:ptag|
+      <C-\>     -- split window on tag definition |:ptag|
 
 
 ==============================================================================
@@ -159,10 +161,6 @@ between windows, etc.
       <C-A>	-- increment number under cursor |CTRL_A|
       <C-X>	-- decrement number under cursor |CTRL_X|
 
-    * Auto completion (in insert mode)  |complete|
-      <C-N>     -- auto-complete next |i_CTRL-X_CTRL-N|
-      <C-P>     -- auto-complete previous |i_CTRL-X_CTRL-P|
-
     * Macros
       q<name>   -- create macro (end with q) |q|
       @<name>   -- run macro (@@ repeats last macro) |@|
@@ -185,6 +183,7 @@ between windows, etc.
 
     * Ex commands
       :map      -- shows all the key mappings |:map|
+      :he index -- shows all the default key mappings |index|
       :verbose map
       :set {option}?  shows what param is set to |:set|
       :ls	-- list buffers |:buffers| |:ls|

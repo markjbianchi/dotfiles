@@ -17,8 +17,10 @@ Plug 'junegunn/goyo.vim'
 
 " -- vim IDE GUI and such ---
 Plug 'scrooloose/nerdtree'
-"Plug 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar'
+Plug 'xolox/vim-easytags'
+"Plug 'xolox/vim-shell'                  " may need this on Windows for easytags and asyc option
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'                   "required by vim-session
 Plug 'bufexplorer.zip'
@@ -34,6 +36,7 @@ Plug 'bufexplorer.zip'
 "Plug 'tomtom/tlib_vim'                  "required for vim-snipmate
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/vim-easy-align'
+Plug 'ervandew/supertab'
 "Plug 'valloric/youcompleteme'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'terryma/vim-multiple-cursors'
@@ -77,7 +80,6 @@ let NERDTreeChDirMode = 0
 let NERDTreeHighlightCursorline = 1
 let NERDTreeIgnore = ['\~$', '*.pyc$', '*\.pdf$' ]
 nnoremap <F2> :NERDTreeMirrorToggle<CR>
-inoremap <F2> <ESC>:TagbarToggle<CR>
 
 " ----- xolox/vim-session -----
 let g:session_autosave = 'yes'
@@ -107,6 +109,14 @@ let g:tagbar_type_typescript = {
 \ }
 nnoremap <F3> :TagbarToggle<CR>
 inoremap <F3> <ESC>:TagbarToggle<CR>
+
+" ----- xolox/vim-easytags setting -----
+" Sensible defaults
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1          " run in the background for performance
+let g:easytags_dynamic_files = 1  " use project-specific tags file
+"let g:easytags_resolve_links = 1
+let g:easytags_suppress_ctags_warning = 1
 
 " ----- ntpeters/vim-better-whitespace settings -----
 nnoremap <LEADER>W :StripWhitespace<CR>

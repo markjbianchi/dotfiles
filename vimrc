@@ -71,7 +71,7 @@ set incsearch           " incremental search
 set nohlsearch          " turn off highlight search results
 set gdefault            " make search/replace global by default
 set iskeyword+=\$,-     " add extra characters that are valid parts of vars
-set nowrapscan          " search stops at EOF
+set wrapscan            " search doesn't stopcat EOF
 " Toggles highlighting of search
 noremap <LEADER><SPACE> :set hlsearch!<CR>
 " Ctrl-l to turn off higlighting and repaint
@@ -98,7 +98,8 @@ set showmatch           " highlights matching bracket
 set matchpairs+=<:>     " adds < > to bracket list
 set tildeop             " use ~ to toggle case as operator, not a motion
 set completeopt -=preview  " don't show extra info in a preview window
-set tags=./tags,tags;$HOME
+set tags=tags;          " default tags file name and location, .vim.local files
+                        " may modify this and path setting
 
 " Various things seem to turn off syntax highlighting, so make a quick toggle
 nnoremap <LEADER>X :syntax on<CR>
@@ -233,7 +234,13 @@ noremap <LEADER>rc :source $MYVIMRC<CR>
 
 " Help system
 nnoremap <LEADER><F1> :help mjb<CR>
-nnoremap <M-F1> :helptags $VIMFILES/doc<CR>
+nnoremap <M-F1> :execute "help " . expand("<cword>")<CR>
+"nnoremap <M-F1> :helptags $VIMFILES/doc<CR>
+" For when I accidentally it F1 instead of ESC, don't bring up vim help
+nnoremap <F1> <ESC>
+inoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
 
 " Use <space> and ctrl-space to page down and up
 "nnoremap <SPACE> <PAGEDOWN>
@@ -286,8 +293,11 @@ vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
 
 " Tag navigation
+nnoremap <C-[> <C-T>
 nnoremap <C-}> :tnext<CR>
 nnoremap <C-{> :tprev<CR>
+nnoremap <M-\> :execute "tag " . expand("<cword>")<CR>
+"nnoremap <C-\> :split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Break a comma-delimited list onto new lines
 vnoremap <LEADER>, :s/,/,\r/g<CR>
@@ -346,6 +356,9 @@ augroup END
 " Buffer commands --------------------------------------------------------
 " list buffers with ability to select one in command line
 nnoremap <F5> :buffers<CR>:buffer<space>
+" buffer navigation
+nnoremap <C-Tab> :bnext<CR>
+nnoremap <C-S-Tab> :bprev<CR>
 " \l        : switch to last-used buffer
 "nnoremap <LEADER>l :e#<CR>
 " close the current buffer and go to previous one
@@ -395,9 +408,9 @@ iabbrev #d #define
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
 
 " .vim.local file sourcing -----------------------------------------------
-let s:localvim = findfile(".vim.local", ".;")
-if s:localvim != ''
-  execute "source " . s:localvim
-endif
+"let s:localvim = findfile(".vim.local", ".;")
+"if s:localvim != ''
+"  execute "source " . s:localvim
+"endif
 
 "vim:ft=vim ts=2 sw=2 tw=2
