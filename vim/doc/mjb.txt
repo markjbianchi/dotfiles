@@ -15,8 +15,7 @@ are the cases where I have found it easier to create my own mapping.
 
     * Getting help
       \<F1>     -- load this help file
-      <C-F1>    -- show help topic for word under cursor |{subject}|
-      <M-F1>    -- rebuild user help files |:helptags|
+      <M-F1>    -- show help topic for word under cursor |{subject}|
 
     * Vim searching:
       \<space>  -- toggle search highlighting |hlsearch|
@@ -35,7 +34,7 @@ are the cases where I have found it easier to create my own mapping.
       S		-- split (sister to [J]oin command
       \,	-- split comma-delimited list into new lines
       \-	-- underline word with -
-      \=	-- underline word with +
+      \=	-- underline word with =
       \'	-- surround word with '
       \"	-- surround word with "
 
@@ -53,10 +52,7 @@ are the cases where I have found it easier to create my own mapping.
     * Navigating & using tag files:
       <M-]>     -- go to tag location under cursor |CTRL-]|
       <M-[>     -- return to previous tag location |CTRL-T|
-      <C-}>     -- next tag match |:tnext|
-      <C-{>     -- previous tag match |:tprev|
-      <C-\>     -- split window on tag definition |:ptag|
-
+      <M-\>     -- got to tag under cursor in preview window |:ptag|
 
 ==============================================================================
                                                 *plugin-mappings*
@@ -87,6 +83,12 @@ plugin manager http://github.com/junegunn/vim-plugin)
       <F2>	-- NERDtree panel toggle
       <F3>	-- Tagbar panel toggle
 
+    * Vim-Sessions:
+      :OpenSession	  -- presents list of sessions to open
+      :CloseSession	  -- closes current session, empty buffer in window
+      :SaveSession [name] -- saves session to name (default if blank)
+
+
     * Easy-Align:
       <Enter>	-- interactive, highlight in visual mode, then hit
 		   <Enter> then column number, then <space>
@@ -112,8 +114,8 @@ between windows, etc.
       gt	-- go to top left  window |:wincmd|
       gb	-- go to bot right window |:wincmd|
       gw	-- cycle through windows (clockwise) |:wincmd|
-      <M-j>     -- move down and maximize window
-      <M-k>     -- move up and maximize window
+      <M-J>     -- move down and maximize window
+      <M-K>     -- move up and maximize window
       g=        -- make all windows equal size
       gx        -- swap windows
       gH        -- maximize window height

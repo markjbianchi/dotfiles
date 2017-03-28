@@ -241,7 +241,6 @@ nnoremap <F1> <ESC>
 inoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-
 " Use <space> and ctrl-space to page down and up
 "nnoremap <SPACE> <PAGEDOWN>
 "vnoremap <SPACE> <PAGEDOWN>
@@ -293,11 +292,9 @@ vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
 
 " Tag navigation
-nnoremap <C-[> <C-T>
-nnoremap <C-}> :tnext<CR>
-nnoremap <C-{> :tprev<CR>
-nnoremap <M-\> :execute "tag " . expand("<cword>")<CR>
-"nnoremap <C-\> :split<CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <M-]> <C-]>
+nnoremap <M-[> <C-T>
+nnoremap <M-\> :execute "ptag " . expand("<cword>")<CR>
 
 " Break a comma-delimited list onto new lines
 vnoremap <LEADER>, :s/,/,\r/g<CR>
