@@ -14,9 +14,6 @@ alias path='echo $PATH | tr ":" "\n"'
 # set up CDPATH to be able to jump to Project dirs more easily
 export CDPATH=".:$HOME:$HOME/_Projects"
 
-#export JAVA_HOME='/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home'
-
 # This ignores file tab completion of hidden dirs/files (great for .svn|.git dirs)
 bind 'set match-hidden-files off'
 bind 'set completion-ignore-case on'    # case-insensitive completion
@@ -30,6 +27,9 @@ export VISUAL=vim
 export EDITOR=vim
 
 export LESS="--tabs=4 RMXg"
+
+#export JAVA_HOME='/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home'
 
 #export TERM="xterm-256color"
 
