@@ -29,9 +29,9 @@
   ls       = ls-tree --long --full-tree --abbrev HEAD
 #	find = !git ls-tree -r --name-only HEAD | grep --color $1
 #	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-  sync       = "!sh -c `git checkout --quiet --detach HEAD && \
+  sync       = "!sh -c 'git checkout --quiet --detach HEAD && \
                         git fetch origin master:master develop:develop ;\
-                        git checkout --quite -'"
+                        git checkout --quiet -'"
   s        = status --short
   show-rev = !sh -c 'git rev-list --reverse HEAD | awk NR==$0'
 
