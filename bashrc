@@ -29,7 +29,7 @@ export EDITOR=vim
 export LESS="--tabs=4 RMXg"
 
 #export JAVA_HOME='/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home'
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home'
 
 #export TERM="xterm-256color"
 
