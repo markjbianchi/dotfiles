@@ -23,7 +23,7 @@ Plug 'xolox/vim-easytags'
 "Plug 'xolox/vim-shell'                  " may need this on Windows for easytags and asyc option
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'                   "required by vim-session
-Plug 'bufexplorer.zip'
+Plug 'jlanzarotta/bufexplorer'
 
 " -- vim as a project/program's text editor ---
 "Plug 'scrooloose/syntastic'
