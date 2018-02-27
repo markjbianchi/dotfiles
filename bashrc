@@ -79,7 +79,4 @@ alias ackm='ack --type=make'
 # Include bash functions
 [[ -f $HOME/.bashrc.functions ]] && source $HOME/.bashrc.functions
 
-# Added by Microchip
-export PATH="$PATH:"/Applications/microchip/xc8/v1.37/bin""
-
 #vim:ft=bash ts=2 sw=2 tw=2
