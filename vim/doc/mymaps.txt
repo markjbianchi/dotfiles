@@ -1,0 +1,134 @@
+   Y           * y$
+   \-          * yypVr-
+   \=          * yypVr=
+   \<Space>    * :set hlsearch!<CR>
+   \<Tab>      * :retab<CR>
+   \rc         * :source $MYVIMRC<CR>
+   <C-K>         :<Up>
+   <C-L>       * :nohlsearch<CR><C-L>
+
+   <D-Down>    * <C-End>
+   <D-Left>    * <Home>
+   <D-Right>   * <End>
+   <D-Up>      * <C-Home>
+   <M-Left>    * <C-Left>
+   <M-Right>   * <C-Right>
+
+n  '           * `
+n  `           * '
+n  +           * <C-W>+
+n  -           * <C-W>-
+n  /           * ms/\v
+n  ;           * :
+n  <C-V>       * v
+n  v           * <C-V>
+n  <C-{>       * :tprev<CR>
+n  <C-}>       * :tnext<CR>
+n  \<F1>       * :help mjb<CR>
+n  <M-F1>      * :helptags $VIMFILES/doc<CR>
+n  <F5>        * :buffers<CR>:buffer<Space>
+n  <F6>        * :set wrap!<CR>
+n  H           * ^
+n  K           * k
+n  L           * $
+n  N           * Nzzzv
+n  n           * nzzzv
+n  Q           * @@
+n  S           * i<CR><Esc>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
+n  \"          * viw<Esc>a"<Esc>hbi"<Esc>lel
+n  \'          * viw<Esc>a'<Esc>hbi'<Esc>lel
+n  \N          * :set list!<CR>
+n  \X          * :syntax on<CR>
+n  \hs         * :split|:wincmd j<CR>
+n  \vs         * :vsplit|:wincmd l<CR>
+n  \sc         * :close<CR>
+n  go          * o<Esc>k
+n  gO          * O<Esc>j
+n  vy          * ggVG
+n  <M-J>       * <C-W>j<C-W>_
+n  <M-K>       * <C-W>k<C-W>_
+no D           * d$
+
+n  g=          * :wincmd =<CR>
+n  gH          * <C-W>_
+n  gV          * <C-W>|
+n  gb          * :wincmd b<CR>
+n  gh          * :wincmd h<CR>
+n  gj          * :wincmd j<CR>
+n  gk          * :wincmd k<CR>
+n  gl          * :wincmd l<CR>
+n  gp          * :wincmd p<CR>
+n  gt          * :wincmd t<CR>
+n  gw          * :wincmd w<CR>
+n  gx          * :wincmd x<CR>
+n  <SwipeLeft>  @:po<CR>
+n  <SwipeRight>  @:ta<CR>
+
+v  /           * ms/\v
+v  ;           * :
+v  <BS>          "-d
+v  K           * k
+v  L           * g_
+v  \,          * :s/,/,\r/g<CR>
+v  <C-V>       * v
+v  <S-Tab>     * <'<0v'>$
+v  <Tab>       * >'<0v'>$
+v  v           * <C-V>
+
+n  "           *@:<C-U>call peekaboo#peek(v:count1, 'quote',  0)<CR>
+n  @           *@:<C-U>call peekaboo#peek(v:count1, 'replay', 0)<CR>
+n  \a          * :A<CR>
+n  \\          * :BufExplorer<CR>
+n  \bs         & :BufExplorerHorizontalSplit<CR>
+n  \bv         & :BufExplorerVerticalSplit<CR>
+n  \G          * :Goyo<CR>
+n  <F2>        * :NERDTreeMirrorToggle<CR>
+n  <F3>        * :TagbarToggle<CR>
+n  \w          * :ToggleWhitespace<CR>
+n  \W          * :StripWhitespace<CR>
+n  \ih           :IHS<CR>
+n  \ihn          :IHN<CR>
+n  \is           :IHS<CR>:A<CR>
+
+n  <Plug>(EasyAlign) * :set opfunc=<SNR>52_easy_align_op<CR>g@
+n  <Plug>(EasyAlignOperator) * :set opfunc=<SNR>52_easy_align_op<CR>g@
+n  <Plug>(EasyAlignRepeat) * :call <SNR>52_easy_align_repeat()<CR>
+n  <Plug>(LiveEasyAlign) * :set opfunc=<SNR>52_live_easy_align_op<CR>g@
+v  <CR>        * :EasyAlign<CR>
+v  <Plug>(EasyAlign) * :<C-U>call <SNR>52_easy_align_op(visualmode(), 1)<CR>
+v  <Plug>(EasyAlignRepeat) * :<C-U>call <SNR>52_repeat_in_visual()<CR>
+v  <Plug>(LiveEasyAlign) * :<C-U>call <SNR>52_live_easy_align_op(visualmode(), 1)<CR>
+
+v  <Plug>NetrwBrowseXVis * :<C-U>call netrw#BrowseXVis()<CR>
+v  gx            <Plug>NetrwBrowseXVis
+
+v  <C-D>         <Plug>SchleppDupLeft
+v  <Down>        <Plug>SchleppDown
+v  <Left>        <Plug>SchleppLeft
+v  <Right>       <Plug>SchleppRight
+v  <Up>          <Plug>SchleppUp
+v  D             <Plug>SchleppDupLeft
+   <Plug>SchleppDown & <SNR>18_SchleppDown
+   <Plug>SchleppDup & <SNR>18_SchleppDup
+   <Plug>SchleppDupDown & <SNR>18_SchleppDupDown
+   <Plug>SchleppDupLeft & <SNR>18_SchleppDupLeft
+   <Plug>SchleppDupRight & <SNR>18_SchleppDupRight
+   <Plug>SchleppDupUp & <SNR>18_SchleppDupUp
+   <Plug>SchleppIndentDown & <SNR>18_SchleppIndentDown
+   <Plug>SchleppIndentUp & <SNR>18_SchleppIndentUp
+   <Plug>SchleppLeft & <SNR>18_SchleppLeft
+   <Plug>SchleppRight & <SNR>18_SchleppRight
+   <Plug>SchleppToggleReindent & <SNR>18_SchleppToggleReindent
+   <Plug>SchleppUp & <SNR>18_SchleppUp
+   <SNR>18_SchleppDown * :call <SNR>18_Schlepp("Down")<CR>
+   <SNR>18_SchleppDup * :call <SNR>18_SchleppDup()<CR>
+   <SNR>18_SchleppDupDown * :call <SNR>18_SchleppDup("Down")<CR>
+   <SNR>18_SchleppDupLeft * :call <SNR>18_SchleppDup("Left")<CR>
+   <SNR>18_SchleppDupRight * :call <SNR>18_SchleppDup("Right")<CR>
+   <SNR>18_SchleppDupUp * :call <SNR>18_SchleppDup("Up")<CR>
+   <SNR>18_SchleppIndentDown * :call <SNR>18_Schlepp("Down", 1)<CR>
+   <SNR>18_SchleppIndentUp * :call <SNR>18_Schlepp("Up", 1)<CR>
+   <SNR>18_SchleppLeft * :call <SNR>18_Schlepp("Left")<CR>
+   <SNR>18_SchleppRight * :call <SNR>18_Schlepp("Right")<CR>
+   <SNR>18_SchleppToggleReindent * :call <SNR>18_SchleppToggleReindent()<CR>
+   <SNR>18_SchleppUp * :call <SNR>18_Schlepp("Up")<CR>

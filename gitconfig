@@ -24,9 +24,10 @@
   undo     = checkout HEAD --
   unstage  = reset HEAD --
   unci     = reset --soft HEAD~1
-  lc       = config -l
+  lc       = rev-parse HEAD
+  lcfg     = config -l
   lt       = describe --tags
-  ls       = ls-tree --long --full-tree --abbrev HEAD
+  ls       = ls-tree --name-only HEAD
 #	find = !git ls-tree -r --name-only HEAD | grep --color $1
 #	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
   sync       = "!sh -c 'git checkout --quiet --detach HEAD && \

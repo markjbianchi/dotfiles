@@ -12,6 +12,14 @@ Install
 
     Plug 'crusoexia/vim-monokai'
 
+### Manually
+
+```bash
+mkdir -p ~/.vim/colors
+```
+    
+Download the `colors/monokai.vim` file from the repo to `~/.vim/colors`
+
 Usage
 -----
 
@@ -60,6 +68,11 @@ function assignment identifier highlight ( just as the screenshots ).
 2. [vim-javascript-lib](https://github.com/crusoexia/vim-javascript-lib), which is the companion of _vim-javascript_, 
 provide the popular javascript libraries key word highlight, such as [underscore](http://underscorejs.org/) and 
 [Backbone](http://backbonejs.org/).
+
+Typescript
+----------
+
+For better typescript highlight, please install the [yats](https://github.com/HerringtonDarkholme/yats.vim) syntax plugin.
 
 Screenshots
 -----------
