@@ -1,6 +1,6 @@
 [user]
-  name = Mark Bianchi
-  email = markjbianchi@gmail.com
+	name = Mark Bianchi
+	email = markjbianchi@gmail.com
 
 [color]
   ui          = auto
@@ -53,4 +53,4 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-  template = /Users/mbianchi/.stCommitMsg
+	template = /Users/mbianchi/.stCommitMsg
