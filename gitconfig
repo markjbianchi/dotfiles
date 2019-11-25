@@ -3,10 +3,10 @@
 	email = markjbianchi@gmail.com
 
 [includeIf "gitdir:~/_Projects/GSM"]
-  path = ~/_Projects/GSM
+  path = ~/_Projects/GSM/.gitconfig
 
 [includeIf "gitdir:~/_Projects/boltbox"]
-  path = ~/_Projects/boltbox
+  path = ~/_Projects/boltbox/.gitconfig
 
 [color]
   ui          = auto
