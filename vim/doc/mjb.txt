@@ -140,6 +140,7 @@ between windows, etc.
       |zb|	-- puts line w/ cursor at top of window
 
     * Navigation and searching
+      H  L	-- puts cursor at beginning / end of line
       |gg|	-- jump to first line in buffer
       |G|	-- jump to last line in buffer
       m{name}   -- set mark using a single character name |mark|

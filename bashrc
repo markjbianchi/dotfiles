@@ -73,7 +73,8 @@ alias ll='ls -Alo -G'
 alias la=hidden
 alias ackc='ack --cc'
 alias ackj='ack --java'
-alias ackm='ack --type=make'
+alias ackp='ack --python'
+alias ackm='ack --make'
 
 # Include bash functions
 [[ -f $HOME/.bashrc.functions ]] && source $HOME/.bashrc.functions
