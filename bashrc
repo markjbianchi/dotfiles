@@ -18,7 +18,10 @@ export CDPATH=".:$HOME:$HOME/_Projects"
 bind 'set match-hidden-files off'
 bind 'set completion-ignore-case on'    # case-insensitive completion
 # add brew's bash completion if installed
-[[ -f $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
+os=$(uname -s)
+if [ ${os} =  "Darwin" ] ; then
+  [[ -f $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
+fi
 
 
 # set vi command line

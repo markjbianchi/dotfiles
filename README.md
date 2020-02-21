@@ -8,16 +8,7 @@ online at <https://dotfiles.github.io>.
 I am mostly running on Mac OS X, sometimes linux and cygwin. On OS X, I am using
 Homebrew + iTerm2 most of the time.
 
-## Current brew packages
-ack           ascii         autoconf
-automake      cscope        ctags
-dos2unix      fzf           gdbm
-gettext       git libtool
-macvim        openssl       pcre
-pkg-config    pyenv         python3
-rcm           readline      scons
-sqlite        subversion    the_silver_searcher
-tree          xz
+Clone this repo into home directory into .dotfiles/ then install RCM and run rcup.
 
 ## RCM installation
 
