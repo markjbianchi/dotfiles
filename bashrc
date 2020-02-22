@@ -14,12 +14,15 @@ alias path='echo $PATH | tr ":" "\n"'
 # set up CDPATH to be able to jump to Project dirs more easily
 export CDPATH=".:$HOME:$HOME/_Projects"
 
-# This ignores file tab completion of hidden dirs/files (great for .svn|.git dirs)
-bind 'set match-hidden-files off'
-bind 'set completion-ignore-case on'    # case-insensitive completion
+# This ignores file tab completion of hidden dirs/files (great for .git dirs)
+# (only run if in interactive shell)
+if [ ! -z $PS1 ] ; then
+  bind 'set match-hidden-files off'
+  bind 'set completion-ignore-case on'    # case-insensitive completion
+fi
 # add brew's bash completion if installed
 os=$(uname -s)
-if [ ${os} =  "Darwin" ] ; then
+if [ ${os} = "Darwin" ] ; then
   [[ -f $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
 fi
 
