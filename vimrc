@@ -158,6 +158,7 @@ endif
 if has('gui_running')
   "set guifont=Sauce\ Code\ Powerline:h11  "Menlo\ Regular\ for\ Powerline:h12
   set guifont=JetBrains\ Mono:h12  "Menlo\ Regular\ for\ Powerline:h12
+  "set guifont=Consolas:h12
   " Remove all the UI cruft from guioptions (or go)
   set go-=T
   set go-=l

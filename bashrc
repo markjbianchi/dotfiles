@@ -4,8 +4,7 @@ if [ -f /etc/bashrc ] ; then
  fi
 
 # modify the PATH, remove duplicate paths
-#PATH="$HOME/bin:/usr/local/bin:${PATH}"
-PATH="$HOME/bin:${PATH}"
+PATH="$HOME/bin:/usr/local/sbin:${PATH}"
 #TMPPATH="${PATH}"
 #export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":"`
 
@@ -16,13 +15,13 @@ export CDPATH=".:$HOME:$HOME/_Projects"
 
 # This ignores file tab completion of hidden dirs/files (great for .git dirs)
 # (only run if in interactive shell)
-if [ ! -z $PS1 ] ; then
+if [ ! -z "${PS1}" ] ; then
   bind 'set match-hidden-files off'
   bind 'set completion-ignore-case on'    # case-insensitive completion
 fi
 # add brew's bash completion if installed
 os=$(uname -s)
-if [ ${os} = "Darwin" ] ; then
+if [ "${os}" = "Darwin" ] ; then
   [[ -f $(brew --prefix)/etc/bash_completion ]] && source $(brew --prefix)/etc/bash_completion
 fi
 
@@ -69,7 +68,6 @@ alias defines="gcc -DM -E - </dev/null"
 alias bk='echo && echo && echo =============================================================================='
 alias cb='clear && echo "==============================================================================" && echo "=============================================================================="'
 alias tree='tree -nF'
-alias gvim='mvim'
 alias vi='vim'
 # setup 'ls'
 alias l='/bin/ls -hF --color=never'
