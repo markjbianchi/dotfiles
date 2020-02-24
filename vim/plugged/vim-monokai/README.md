@@ -45,6 +45,11 @@ Otherwise, use below setting to activate the 256 color in terminal
 set t_Co=256  " vim-monokai now only support 256 colours in terminal.
 ```
 
+coc.nvim support
+--------------------
+
+[coc.nvim](https://github.com/neoclide/coc.nvim) is a powerful completion engine, it brings *vs-code*'s experience into vim. *vim-monokai* fits it well.
+
 Configuration
 -------------
 
@@ -72,11 +77,11 @@ provide the popular javascript libraries key word highlight, such as [underscore
 Typescript
 ----------
 
-For better typescript highlight, please install the [yats](https://github.com/HerringtonDarkholme/yats.vim) syntax plugin.
+For better typescript highlight, it is recommend to install the [yats.vim](https://github.com/HerringtonDarkholme/yats.vim) syntax plugin.
 
 Screenshots
 -----------
 
-![javascript](screenshots/javascript.png)
+![typescript](screenshots/typescript.png)
 
 ![html](screenshots/html.png)

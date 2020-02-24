@@ -75,7 +75,7 @@ function! s:append_group(title, regs)
         continue
       endif
       let s:regs[printf('%s', r)] = line('$')
-      call append(line('$'), printf(' %s: %s', r, val))
+      call append(line('$'), printf(' %s: %s', r, substitute(val, '^\s*', '', '')))
     catch
     endtry
   endfor
@@ -115,10 +115,10 @@ endfunction
 " Triggers gv to keep visual highlight on
 function! s:gv(visualmode, visible)
   if a:visualmode && a:visible
-    wincmd p
+    noautocmd wincmd p
     normal! gv
     redraw
-    wincmd p
+    noautocmd wincmd p
   else
     redraw
   endif
