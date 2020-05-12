@@ -1,20 +1,140 @@
 {
+    "breadcrumbs.enabled": true,
     "editor.minimap.enabled": false,
-    "breadcrumbs.enabled": false,
+    "editor.lineNumbers": "relative",
+    //"files.trimFinalNewlines": true,
+    //"files.trimTrailingWhitespace": true,
+    "workbench.activityBar.visible": true,
     "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.statusBar.visible": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "window.zoomLevel": 1,
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideTabs": false,
 
     // Vim settings
-    "vim.surround": true,
+    //----------------------------------------------------------------
+    "vim.easymotion": false,      // EasyMotion plugin
+    "vim.surround": true,         // Surround plugin
+    "vim.sneak": false,           // Sneak plugin
+
+    "vim.autoindent": true,
+    "vim.ignorecase": true,
+    "vim.smartcase": true,
+    "vim.hlsearch": false,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.wrapscan": true,
+    "vim.leader": "\\",
+    "vim.history": 400,
+    "vim.gdefault": true,
+    "vim.timeout": 1000,
+    "vim.showmodename": true,
+    "vim.scroll": 10,
+    "vim.showcmd": true,
+    "vim.useCtrlKeys": true,
+    "vim.changeWordIncludesWhitespace": true,
+    //"vim.textwidth": 80,
+    //"vim.startofline": true,
+    //"vim.visualstar": false,
+    //"vim.whichwrap": "",
+    //"vim.iskeyword": "\$,-",  (may break movement commands) add extra chars that are valid part of vars
+
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim",
+
+    "vim.handleKeys": {
+    //  "<C-a>": false,
+    //  "<C-f>": false
+    },
     "vim.insertModeKeyBindings": [
         {
           "before": ["j", "k"],
-          "after": ["<Escj"]
+          "after": ["<Esc>"]
         }
     ],
-    "editor.lineNumbers": "relative",
-    "vim.leader": "\\",
-    "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "vim.vimrc.enable": true,
+    "vim.normalModeKeyBindings": [
+        {
+          "before": ["L"],
+          "after": ["$"]
+        },
+        {
+          "before": ["H"],
+          "after": ["^"]
+        }
+     ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["<leader>", "w"],
+          "commands": ["workbench.action.splitEditor"]
+        },
+        {
+          "before": ["<leader>", "h"],
+          "commands": [":nohl"]
+        },
+        {
+          "before": ["<leader>", "<space>"],
+          "commands": [":set hlsearch!"]
+        },
+        {
+          "before": ["<leader>", "c"],
+          "commands": ["editor.action.commentLine"]
+        },
+        {
+          "before": ["<leader>", "t"],
+          "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        {
+          "before": ["<leader>", "f"],
+          "commands": ["revealInExplorer"]
+        },
+        {
+          "before": ["<leader>", "o", "g"],
+          "commands": ["workbench.action.showAllSymbols"]
+        },
+        {
+          "before": ["<leader>", "o", "p"],
+          "commands": ["workbench.action.quickOpen"]
+        },
+        /*
+        {
+          "before": ["<leader>", "N"],
+          "commands": [
+            {
+              "command": "editor.renderWhitespace",
+              "args": ["all"]
+            }
+          ]
+        },
+        */
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+          "before": ["H"],
+          "after": ["0"]
+        },
+        {
+          "before": ["L"],
+          "after": ["$"]
+        },
+        {
+          "before": ["<leader>", "c"],
+          "commands": [
+            "editor.action.commentLine", "extension.vim_escape"
+          ]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+      {
+        "before": [">"],
+        "commands": ["editor.action.indentLines"],
+      },
+      {
+        "before": ["<"],
+        "commands": ["editor.action.outdentLines"] ,
+      }
+    ],
+    "vim.commandLineModeKeyBindingsNonRecursive": [ ],
+    "vim.commandLineModeKeyBindings": [ ],
+
 }
