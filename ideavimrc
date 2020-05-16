@@ -1,20 +1,21 @@
 set clipboard+=unnamed
 set gdefault            " the ":substitute" flag 'g' is default on
-set history=768
+set history=400
 set nohlsearch
 set incsearch           " show where search pattern typed so far matches
 set ignorecase
 set matchpairs+=<:>
-set nrformats -=octal   " number formats recognized for CTRL-A command
+set nrformats-=octal    " number formats recognized for CTRL-A command
 set number
-"set relativenumber
+set relativenumber
 set scrolloff=1
 set showmode
 set sidescroll=3
 set smartcase
-set timeoutlen=1200     " time that is waited for a mapped key sequence
+set timeoutlen=1000     " time that is waited for a mapped key sequence
 set visualbell          " use visual bell instead of beeping
 set nowrapscan
+let mapleader = ","
 """"""""""""""""""""""""""""""""""""""""
 " supported set commands:
 """"""""""""""""""""""""""""""""""""""""
@@ -46,17 +47,16 @@ set nowrapscan
 " Mappings ---------------------------------------------------------------
 " Toggles highlighting of search
 noremap <LEADER><SPACE> :set hlsearch!<CR>
-" Ctrl-l to turn off higlighting and repaint
-noremap <C-L> :nohlsearch<CR><C-L>
 " Keep searching in the middle of the window
-nnoremap n nzzzv
-nnoremap N Nzzzv
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
 
 inoremap jk <ESC>
 
 " Make Y and D behanve like other capital commands
 noremap Y y$
-noremap D d$
 
 " Split line (sister to [J]oin lines)
 " The normal use of S is covered by cc, so don't worry about shadowing it.
@@ -67,10 +67,6 @@ nnoremap H ^
 nnoremap L $
 vnoremap L g_
 
-" Use ; for : in normal and visual mode, less keystrokes
-nnoremap ; :
-vnoremap ; :
-
 " Swap implementations of ` and ' jump-to markers
 " By default, ' jumps to the marked line, ` jumps to the mark line and column
 nnoremap ' `
@@ -78,10 +74,6 @@ nnoremap ` '
 
 " Select entire buffer (like Ctrl-A)
 nnoremap vy ggVG
-
-" Surround word with " or '
-nnoremap <LEADER>" viw<ESC>a"<ESC>hbi"<ESC>lel
-nnoremap <LEADER>' viw<ESC>a'<ESC>hbi'<ESC>lel
 
 " Use <tab> to indent in visual mode
 vnoremap <Tab> >'<0v'>$
@@ -97,12 +89,9 @@ vnoremap <LEADER>, :s/,/,\r/g<CR>
 " :vsplit
 " <C-w> commands
 " set mapleader ,
-" set surround             " vim-surround
+set surround             " vim-surround
 "     ys  cs  ds S    commands for comments using vim-surround
 
-" split window horizontally or veritcally *and* switch to the new split
-nnoremap <LEADER>hs :split<BAR><C-W>j
-nnoremap <LEADER>vs :vsplit<BAR><C-W>l
 " navigate splits with g command prepended to the analogous vim motion
 nnoremap gh <C-W>h
 nnoremap gj <C-W>j

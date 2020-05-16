@@ -10,8 +10,8 @@ else
 endif
 
 " Note: this line MUST come before any <LEADER> mappings
-"set mapleader=","       " leader character, \ by default
-"set localmapleader="\\"
+" leader character, \ by default (can't have appended comments after mapping keys)
+let mapleader = ","
 
 " Load plugins -----------------------------------------------------------
 if filereadable(expand("$HOME/.vimrc.bundles"))
@@ -46,7 +46,7 @@ set nobomb              " no byte order mark at start of file
 set viminfo=h,'50,n$VIMFILES/viminfo
 set ttimeout
 set ttimeoutlen=50      " make <ESC> work faster
-set timeoutlen=1200     " time to wait for a command (e.g., after a leader)
+set timeoutlen=1000     " time to wait for a command (e.g., after a leader)
 set scrolloff=2         " keep 2 lines above/below the cursor when scrolling
 set sidescrolloff=7     " keep 7 columns to left/right of cursor when scrolling
 set sidescroll=1        " minimum of 1 column to scroll
@@ -71,17 +71,17 @@ set incsearch           " incremental search
 set nohlsearch          " turn off highlight search results
 set gdefault            " make search/replace global by default
 set iskeyword+=\$,-     " add extra characters that are valid parts of vars
-set wrapscan            " search doesn't stopcat EOF
+set nowrapscan          " search doesn't stopcat EOF
 " Toggles highlighting of search
 noremap <LEADER><SPACE> :set hlsearch!<CR>
-" Ctrl-l to turn off higlighting and repaint
-noremap <C-L> :nohlsearch<CR><C-L>
 " Use python/java regex search and mark position before search (mark 's')
 nnoremap / ms/\v
 vnoremap / ms/\v
 " Keep searching in the middle of the window
-nnoremap n nzzzv
-nnoremap N Nzzzv
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
 
 " Text/Programming features ----------------------------------------------
 syntax enable
@@ -91,9 +91,9 @@ set shiftround          " round indent to multiple of shiftwidth
 set smarttab
 set expandtab           " turn tabs into spaces (use <C-V>Tab to insert real tabs
 set formatoptions+=j
-set nrformats -=octal
+set nrformats-=octal
 set nofoldenable        " I fucking hate code folding
-set complete -=i        " searching includes can be slow, so don't
+set complete-=i         " searching includes can be slow, so don't
 set showmatch           " highlights matching bracket
 set matchpairs+=<:>     " adds < > to bracket list
 set tildeop             " use ~ to toggle case as operator, not a motion
@@ -262,16 +262,6 @@ nnoremap H ^
 nnoremap L $
 vnoremap L g_
 
-" Use ; for : in normal and visual mode, less keystrokes
-nnoremap ; :
-vnoremap ; :
-
-" Visual block mode is far more useful than visual, so swap
-nnoremap v <C-V>
-nnoremap <C-V> v
-vnoremap v <C-V>
-vnoremap <C-V> v
-
 " Swap implementations of ` and ' jump-to markers
 " By default, ' jumps to the marked line, ` jumps to the mark line and column
 nnoremap ' `
@@ -285,7 +275,7 @@ noremap <LEADER>- yypVr-
 " Underline a line with equals
 noremap <LEADER>= yypVr=
 
-" Surround word with " or ':w
+" Surround word with " or '
 nnoremap <LEADER>" viw<ESC>a"<ESC>hbi"<ESC>lel
 nnoremap <LEADER>' viw<ESC>a'<ESC>hbi'<ESC>lel
 
@@ -300,9 +290,6 @@ nnoremap <M-\> :execute "ptag " . expand("<cword>")<CR>
 
 " Break a comma-delimited list onto new lines
 vnoremap <LEADER>, :s/,/,\r/g<CR>
-
-" Sudo to write
-cnoremap w!! w !sudo tee % >/dev/null
 
 " Create newlines without entering insert mode
 nnoremap go o<ESC>k
@@ -358,7 +345,7 @@ nnoremap <F5> :buffers<CR>:buffer<space>
 " buffer navigation
 nnoremap <C-Tab> :bnext<CR>
 nnoremap <C-S-Tab> :bprev<CR>
-" \l        : switch to last-used buffer
+" ,l        : switch to last-used buffer
 "nnoremap <LEADER>l :e#<CR>
 " close the current buffer and go to previous one
 "nnoremap <LEADER>bq :bp <BAR> bd #<CR>

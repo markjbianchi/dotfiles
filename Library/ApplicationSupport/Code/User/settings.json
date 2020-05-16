@@ -1,59 +1,64 @@
 {
+    "window.zoomLevel": 1,
     "breadcrumbs.enabled": true,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.editor.highlightModifiedTabs": true,
+
+    "workbench.settings.editor": "json",
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.settings.useSplitJSON": true,
+    //"workbench.settings.openDefaultKeybindings": true,
+
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
-    //"files.trimFinalNewlines": true,
-    //"files.trimTrailingWhitespace": true,
-    "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "Visual Studio Dark",
-    "workbench.statusBar.visible": true,
-    "workbench.editor.highlightModifiedTabs": true,
-    "window.zoomLevel": 1,
+    "editor.fontSize": 11,
+    // "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontWeight": "normal",
+    "editor.occurrencesHighlight": false,
+    /*
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    */
+    "files.insertFinalNewline": false,
+    "files.trimFinalNewlines": true,
+
     "zenMode.hideStatusBar": false,
     "zenMode.hideTabs": false,
 
-    // Vim settings
+
+    // Vim extention (only differences from default included here)
     //----------------------------------------------------------------
-    "vim.easymotion": false,      // EasyMotion plugin
-    "vim.surround": true,         // Surround plugin
-    "vim.sneak": false,           // Sneak plugin
-
-    "vim.autoindent": true,
-    "vim.ignorecase": true,
-    "vim.smartcase": true,
-    "vim.hlsearch": false,
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.wrapscan": true,
-    "vim.leader": "\\",
-    "vim.history": 400,
-    "vim.gdefault": true,
-    "vim.timeout": 1000,
-    "vim.showmodename": true,
-    "vim.scroll": 10,
-    "vim.showcmd": true,
-    "vim.useCtrlKeys": true,
-    "vim.changeWordIncludesWhitespace": true,
-    //"vim.textwidth": 80,
-    //"vim.startofline": true,
-    //"vim.visualstar": false,
-    //"vim.whichwrap": "",
-    //"vim.iskeyword": "\$,-",  (may break movement commands) add extra chars that are valid part of vars
-
-    "vim.enableNeovim": true,
+    "vim.enableNeovim": true,       // enables some more powerful commands (must have nvim installed)
     "vim.neovimPath": "/usr/local/bin/nvim",
+    // settings that could have workspace/file overrides
+    //"editor.tabSize": 4,
+    //"editor.insertSpaces": true,
+    //"editor.wordWrap": "off",
+    //"editor.autoIndent": "full",
+    //"vim.autoindent": true,
 
+    //"vim.wrapscan": true,           // if true, stops searching at EOF
+    "vim.gdefault": true,           // enables substitutions of all occurrances on a line
+    "vim.leader": ",",              // , is convenient, default is \
+    "vim.changeWordIncludesWhitespace": true,   // makes consistent with yw and dw
+    "vim.useSystemClipboard": true,
+    "vim.history": 400,             // remember more commands used
+    "vim.scroll": 10,
     "vim.handleKeys": {
-    //  "<C-a>": false,
-    //  "<C-f>": false
+        //"<C-h>": true
+        //"<C-l>": true,
     },
+
     "vim.insertModeKeyBindings": [
-        {
+        { // type jk instead of reaching for <esc>
           "before": ["j", "k"],
           "after": ["<Esc>"]
         }
     ],
-    "vim.normalModeKeyBindings": [
+    "vim.normalModeKeyBindings": [ ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // make L and H move the full line amount of l and h
         {
           "before": ["L"],
           "after": ["$"]
@@ -61,16 +66,61 @@
         {
           "before": ["H"],
           "after": ["^"]
-        }
-     ],
-    "vim.normalModeKeyBindingsNonRecursive": [
+        },
+        { // yank entire line, make L act like other capital commands
+          "before": ["Y"],
+          "after": ["y", "$"]
+        },
+        // searches that keep results in middle of window
         {
-          "before": ["<leader>", "w"],
-          "commands": ["workbench.action.splitEditor"]
+          "before": ["*"],
+          "after": ["*", "z", "z"]
         },
         {
-          "before": ["<leader>", "h"],
-          "commands": [":nohl"]
+          "before": ["#"],
+          "after": ["#", "z", "z"]
+        },
+        {
+          "before": ["n"],
+          "after": ["n", "z", "z"]
+        },
+        {
+          "before": ["N"],
+          "after": ["N", "z", "z"]
+        },
+        { // repeat execution of last run macro
+          "before": ["Q"],
+          "after": ["@", "@"]
+        },
+        {
+          "before": ["g", "o"],
+          "after": ["o", "<Esc>", "k", "^"]
+
+        },
+        {
+          "before": ["g", "y"],
+          "after": ["g", "g", "V", "G"]
+
+        },
+        {
+          "before": ["g", "O"],
+          "after": ["O", "<Esc>", "j", "^"]
+        },
+        {
+          "before": ["Z", "Z"],
+          "commands": [":wq"]
+        },
+        {
+          "before": ["tab"],
+          "commands": ["editor.action.indentLines"]
+        },
+        {
+          "before": ["shift+tab"],
+          "commands": ["editor.action.outdentLines"]
+        },
+        {
+          "before": ["<leader>", "v", "s"],
+          "commands": ["workbench.action.splitEditor"]
         },
         {
           "before": ["<leader>", "<space>"],
@@ -80,8 +130,21 @@
           "before": ["<leader>", "c"],
           "commands": ["editor.action.commentLine"]
         },
+        // Can be replaced by vim-commentary gcc
         {
-          "before": ["<leader>", "t"],
+          "before": ["<leader>", "c"],
+          "commands": ["editor.action.commentLine"]
+        },
+        {
+          "before": ["<leader>", "w"],
+          "commands": ["trailing-spaces.highlightTrailingSpaces"]
+        },
+        {
+          "before": ["<leader>", "W"],
+          "commands": ["trailing-spaces.deleteTrailingSpaces"]
+        },
+        {
+          "before": ["<leader>", "b"],
           "commands": ["workbench.action.toggleSidebarVisibility"]
         },
         {
@@ -96,7 +159,6 @@
           "before": ["<leader>", "o", "p"],
           "commands": ["workbench.action.quickOpen"]
         },
-        /*
         {
           "before": ["<leader>", "N"],
           "commands": [
@@ -106,9 +168,20 @@
             }
           ]
         },
-        */
     ],
     "vim.visualModeKeyBindings": [
+        {
+          "before": ["<leader>", "c"],
+          "commands": [
+            "editor.action.commentLine", "extension.vim_escape"
+          ]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+          "before": [";"],
+          "after": [":"]
+        },
         {
           "before": ["H"],
           "after": ["0"]
@@ -118,23 +191,49 @@
           "after": ["$"]
         },
         {
-          "before": ["<leader>", "c"],
-          "commands": [
-            "editor.action.commentLine", "extension.vim_escape"
-          ]
+          "before": ["J"],
+          "after": ["j"]
         },
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-      {
-        "before": [">"],
-        "commands": ["editor.action.indentLines"],
-      },
-      {
-        "before": ["<"],
-        "commands": ["editor.action.outdentLines"] ,
-      }
+        {
+          "before": ["K"],
+          "after": ["k"]
+        },
+        {
+          "before": [ ">" ],
+          "commands": [ "editor.action.indentLines" ],
+        },
+        {
+          "before": ["<"],
+          "commands": ["editor.action.outdentLines"],
+        },
+        {
+          "before": ["tab"],
+          "commands": ["editor.action.indentLines"]
+        },
+        {
+          "before": ["shift+tab"],
+          "commands": ["editor.action.outdentLines"]
+        },
     ],
     "vim.commandLineModeKeyBindingsNonRecursive": [ ],
     "vim.commandLineModeKeyBindings": [ ],
+
+    // vim-sneak plugin emulation
+    //-------------------------
+    //"vim.sneak": false,
+
+    // vim-surround plugin emulation
+    //-------------------------
+    // ys<motion><desired char>           surround something with something using motion
+    // S<desired char>                    surround when in visual mode
+    // ds<existing char>                  deletes existing surround
+    // cs<existing char><desired char>    deletes existing surround
+    // can use  t  to mean an html/xml tag
+    // use right )]}> to surround tight, left ([{< to separate with a space
+
+    // Trailing Spaces extention
+    //----------------------------------------------------------------
+    "trailing-spaces.syntaxIgnore": ["markdown"],
+    "trailing-spaces.highlightCurrentLine": false,
 
 }

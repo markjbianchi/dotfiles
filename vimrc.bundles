@@ -91,7 +91,7 @@ set sessionoptions-=help
 set sessionoptions-=buffers
 
 " ----- bufexplorer -----
-nnoremap <LEADER>\ :BufExplorer<CR>
+nnoremap <LEADER><LEADER> :BufExplorer<CR>
 
 " ----- majutsushi/tagbar settings -----
 " Uncomment to open tagbar automatically whenever possible
