@@ -71,7 +71,7 @@ set incsearch           " incremental search
 set nohlsearch          " turn off highlight search results
 set gdefault            " make search/replace global by default
 set iskeyword+=\$,-     " add extra characters that are valid parts of vars
-set nowrapscan          " search doesn't stopcat EOF
+set wrapscan            " search doesn't stopcat EOF
 " Toggles highlighting of search
 noremap <LEADER><SPACE> :set hlsearch!<CR>
 " Use python/java regex search and mark position before search (mark 's')

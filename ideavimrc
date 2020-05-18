@@ -2,49 +2,25 @@ set clipboard+=unnamed
 set gdefault            " the ":substitute" flag 'g' is default on
 set history=400
 set nohlsearch
-set incsearch           " show where search pattern typed so far matches
 set ignorecase
+set incsearch           " show where search pattern typed so far matches
 set matchpairs+=<:>
 set nrformats-=octal    " number formats recognized for CTRL-A command
 set number
 set relativenumber
-set scrolloff=1
+set scroll=10
+set scrolloff=2
 set showmode
-set sidescroll=3
+set sidescroll=1
+set sidescrolloff=7
 set smartcase
+set timeout             " use timeout for mapped key sequences
 set timeoutlen=1000     " time that is waited for a mapped key sequence
 set visualbell          " use visual bell instead of beeping
-set nowrapscan
+set wrapscan
 let mapleader = ","
-""""""""""""""""""""""""""""""""""""""""
-" supported set commands:
-""""""""""""""""""""""""""""""""""""""""
-"set clipboard           " clipboard options
-"set digraph             " enable the entering of digraphs in Insert mode
-"set gdefault            " the ":substitute" flag 'g' is default on
-"set history             " number of command-lines that are remembered
-"set hlsearch            " highlight matches with last search pattern
-"set ignorecase          " ignore case in search patterns
-"set incsearch           " show where search pattern typed so far matches
-"set matchpairs          " pairs of characters that "%" can match
-"set nrformats           " number formats recognized for CTRL-A command
-"set number              " print the line number in front of each line
-"set relativenumber      " show the line number relative to the line with the cursor
-"set scroll              " lines to scroll with CTRL-U and CTRL-D
-"set scrolljump          " minimum number of lines to scroll
-"set scrolloff           " minimum nr. of lines above and below cursor
-"set selection           " what type of selection to use
-"set showmode            " message on status line to show current mode
-"set sidescroll          " minimum number of columns to scroll horizontal
-"set sidescrolloff       " min. nr. of columns to left and right of cursor
-"set smartcase           " no ignore case when pattern has uppercase
-"set timeout             " use timeout for mapped key sequences
-"set timeoutlen          " time that is waited for a mapped key sequence
-"set undolevels          " maximum number of changes that can be undone
-"set viminfo             " information to remember after restart
-"set visualbell          " use visual bell instead of beeping
-"set wrapscan            " searches wrap around the end of the file
 " Mappings ---------------------------------------------------------------
+inoremap jk <ESC>
 " Toggles highlighting of search
 noremap <LEADER><SPACE> :set hlsearch!<CR>
 " Keep searching in the middle of the window
@@ -53,19 +29,17 @@ nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
 
-inoremap jk <ESC>
+" Make movement to begining/endo of line easier
+nnoremap H ^
+nnoremap L $
+vnoremap L g_
 
-" Make Y and D behanve like other capital commands
+" Make Y behave like other capital commands
 noremap Y y$
 
 " Split line (sister to [J]oin lines)
 " The normal use of S is covered by cc, so don't worry about shadowing it.
 nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
-
-" Make movement to beginning/endo of line easier
-nnoremap H ^
-nnoremap L $
-vnoremap L g_
 
 " Swap implementations of ` and ' jump-to markers
 " By default, ' jumps to the marked line, ` jumps to the mark line and column
@@ -83,14 +57,24 @@ vnoremap <S-Tab> <'<0v'>$
 vnoremap <LEADER>, :s/,/,\r/g<CR>
 
 """"""""""""""""""""""""""""""""""""""""
-" supported commands
+" emulated vim plugins
 """"""""""""""""""""""""""""""""""""""""
+" ys<motion|text object><desired char>      surround something
+" S<desired char>                           surround when in visual mode
+" ds<existing char>                         deletes existing surround
+" cs<existing char><desired char>           changes existing surround with desired
+set surround             " vim-surround
+
+" gcc                       comment line
+" gc<motion|text object>    comment out a block
+" gc                        comment out block in visual mode
+set commentary
+
+
+
+" <C-w> commands
 " :split
 " :vsplit
-" <C-w> commands
-" set mapleader ,
-set surround             " vim-surround
-"     ys  cs  ds S    commands for comments using vim-surround
 
 " navigate splits with g command prepended to the analogous vim motion
 nnoremap gh <C-W>h
