@@ -11,7 +11,7 @@ endif
 
 " Note: this line MUST come before any <LEADER> mappings
 " leader character, \ by default (can't have appended comments after mapping keys)
-let mapleader = ","
+"let mapleader = ","
 
 " Load plugins -----------------------------------------------------------
 if filereadable(expand("$HOME/.vimrc.bundles"))
@@ -249,35 +249,17 @@ vnoremap <F1> <ESC>
 "nnoremap <C-SPACE> <PAGEUP>
 "vnoremap <C-SPACE> <PAGEUP>
 
-" Make Y and D behanve like other capital commands
+" Make Y and D behave like other capital commands
 noremap Y y$
 noremap D d$
-
-" Split line (sister to [J]oin lines)
-" The normal use of S is covered by cc, so don't worry about shadowing it.
-nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
 
 " Make movement to beginning/endo of line easier
 nnoremap H ^
 nnoremap L $
 vnoremap L g_
 
-" Swap implementations of ` and ' jump-to markers
-" By default, ' jumps to the marked line, ` jumps to the mark line and column
-nnoremap ' `
-nnoremap ` '
-
 " Select entire buffer (like Ctrl-A)
 nnoremap vy ggVG
-
-" Underline a line with hyphens
-noremap <LEADER>- yypVr-
-" Underline a line with equals
-noremap <LEADER>= yypVr=
-
-" Surround word with " or '
-nnoremap <LEADER>" viw<ESC>a"<ESC>hbi"<ESC>lel
-nnoremap <LEADER>' viw<ESC>a'<ESC>hbi'<ESC>lel
 
 " Use <tab> to indent in visual mode
 vnoremap <Tab> >'<0v'>$
@@ -312,16 +294,6 @@ nnoremap Q @@
 " remove doc lookup maping because it's easy to fat finger and never useful
 nnoremap K k
 vnoremap K k
-
-" Convenience mappings ---------------------------------------------------
-" Make arrow keys move visual blocks around
-vmap <UP>    <Plug>SchleppUp
-vmap <DOWN>  <Plug>SchleppDown
-vmap <LEFT>  <Plug>SchleppLeft
-vmap <RIGHT> <Plug>SchleppRight
-
-vmap D       <Plug>SchleppDupLeft
-vmap <C-D>   <Plug>SchleppDupLeft
 
 " Autocommands -----------------------------------------------------------
 augroup bufcmds
@@ -379,10 +351,6 @@ nnoremap gx :wincmd x<CR>
 " maximize window height, width
 nnoremap gH <C-W>_
 nnoremap gV <C-W><BAR>
-
-" resize windows vertically or horizontally
-nnoremap - <C-W>-
-nnoremap + <C-W>+
 
 " Abbreviations/Typo fixes -----------------------------------------------
 iabbrev teh the

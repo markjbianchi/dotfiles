@@ -18,7 +18,7 @@ set timeout             " use timeout for mapped key sequences
 set timeoutlen=1000     " time that is waited for a mapped key sequence
 set visualbell          " use visual bell instead of beeping
 set wrapscan
-let mapleader = ","
+"let mapleader = ","
 " Mappings ---------------------------------------------------------------
 inoremap jk <ESC>
 " Toggles highlighting of search
@@ -37,24 +37,12 @@ vnoremap L g_
 " Make Y behave like other capital commands
 noremap Y y$
 
-" Split line (sister to [J]oin lines)
-" The normal use of S is covered by cc, so don't worry about shadowing it.
-nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
-
-" Swap implementations of ` and ' jump-to markers
-" By default, ' jumps to the marked line, ` jumps to the mark line and column
-nnoremap ' `
-nnoremap ` '
-
 " Select entire buffer (like Ctrl-A)
 nnoremap vy ggVG
 
 " Use <tab> to indent in visual mode
 vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
-
-" Break a comma-delimited list onto new lines
-vnoremap <LEADER>, :s/,/,\r/g<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 " emulated vim plugins
@@ -69,8 +57,6 @@ set surround             " vim-surround
 " gc<motion|text object>    comment out a block
 " gc                        comment out block in visual mode
 set commentary
-
-
 
 " <C-w> commands
 " :split

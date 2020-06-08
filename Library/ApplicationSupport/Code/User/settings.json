@@ -1,6 +1,7 @@
 {
     "window.zoomLevel": 1,
     "breadcrumbs.enabled": true,
+    "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "vscode-icons",
     "workbench.editor.highlightModifiedTabs": true,
 
@@ -20,11 +21,11 @@
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     */
-    "files.insertFinalNewline": false,
+    "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
 
     "zenMode.hideStatusBar": false,
-    "zenMode.hideTabs": false,
+    // "zenMode.hideTabs": false,
 
 
     // Vim extention (only differences from default included here)
@@ -38,9 +39,7 @@
     //"editor.autoIndent": "full",
     //"vim.autoindent": true,
 
-    //"vim.wrapscan": true,           // if true, stops searching at EOF
     "vim.gdefault": true,           // enables substitutions of all occurrances on a line
-    "vim.leader": ",",              // , is convenient, default is \
     "vim.changeWordIncludesWhitespace": true,   // makes consistent with yw and dw
     "vim.useSystemClipboard": true,
     "vim.history": 400,             // remember more commands used
@@ -48,6 +47,8 @@
     "vim.handleKeys": {
         //"<C-h>": true
         //"<C-l>": true,
+        "<C-k>": true,
+        "<C-j>": true,
     },
 
     "vim.insertModeKeyBindings": [
@@ -67,7 +68,7 @@
           "before": ["H"],
           "after": ["^"]
         },
-        { // yank entire line, make L act like other capital commands
+        { // yank entire line, act like other capital commands
           "before": ["Y"],
           "after": ["y", "$"]
         },
@@ -92,24 +93,24 @@
           "before": ["Q"],
           "after": ["@", "@"]
         },
+        // open a line below/above current one witout entering insert mode
         {
           "before": ["g", "o"],
           "after": ["o", "<Esc>", "k", "^"]
-
-        },
-        {
-          "before": ["g", "y"],
-          "after": ["g", "g", "V", "G"]
-
         },
         {
           "before": ["g", "O"],
           "after": ["O", "<Esc>", "j", "^"]
         },
-        {
+        { // select entire buffer in visual mode (like ctrl-A in windows)
+          "before": ["g", "y"],
+          "after": ["g", "g", "V", "G"]
+        },
+        { // standard vim ZZ to write and quite/clode buffer
           "before": ["Z", "Z"],
           "commands": [":wq"]
         },
+        // indent/outdent line using tab/shift+tab
         {
           "before": ["tab"],
           "commands": ["editor.action.indentLines"]
@@ -118,32 +119,23 @@
           "before": ["shift+tab"],
           "commands": ["editor.action.outdentLines"]
         },
-        {
+        { // ,vs to vertically split buffer into two tabs
           "before": ["<leader>", "v", "s"],
           "commands": ["workbench.action.splitEditor"]
         },
-        {
+        { // ,<space> to toggle on/off highlight search
           "before": ["<leader>", "<space>"],
           "commands": [":set hlsearch!"]
         },
-        {
-          "before": ["<leader>", "c"],
-          "commands": ["editor.action.commentLine"]
-        },
-        // Can be replaced by vim-commentary gcc
-        {
-          "before": ["<leader>", "c"],
-          "commands": ["editor.action.commentLine"]
-        },
-        {
+        { // ,w to turn on highlighting of trailing whitespace
           "before": ["<leader>", "w"],
           "commands": ["trailing-spaces.highlightTrailingSpaces"]
         },
-        {
+        { // ,W to delte trailing whitespace
           "before": ["<leader>", "W"],
           "commands": ["trailing-spaces.deleteTrailingSpaces"]
         },
-        {
+        { // ,b to toggle sidebar visability
           "before": ["<leader>", "b"],
           "commands": ["workbench.action.toggleSidebarVisibility"]
         },
@@ -168,36 +160,39 @@
             }
           ]
         },
-    ],
-    "vim.visualModeKeyBindings": [
         {
-          "before": ["<leader>", "c"],
-          "commands": [
-            "editor.action.commentLine", "extension.vim_escape"
-          ]
+          "before": ["ctrl+k"],
+          "after": [":", "<Up>"]
         },
     ],
+    // {
+    //   "before": ["g", "h"],
+    //   "commands": ["workbench.action.previousEditor"]
+    // },
+    // {
+    //   "before": ["g", "l"],
+    //   "commands": ["workbench.action.nextEditor"]
+    // },
+    // {
+    //   "before": ["g", "j"],
+    //   "commands": ["workbench.action.focusBelowGroup"]
+    // },
+    // {
+    //   "before": ["g", "k"],
+    //   "commands": ["workbench.action.focusAboveGroup"]
+    // },
+    "vim.visualModeKeyBindings": [ ],
     "vim.visualModeKeyBindingsNonRecursive": [
-        {
-          "before": [";"],
-          "after": [":"]
-        },
+        // make L and H move the full line amount of l and h
         {
           "before": ["H"],
           "after": ["0"]
         },
         {
           "before": ["L"],
-          "after": ["$"]
+          "after": ["g", "_"]
         },
-        {
-          "before": ["J"],
-          "after": ["j"]
-        },
-        {
-          "before": ["K"],
-          "after": ["k"]
-        },
+        // indent/outdent line using >/< or tab/shift+tab
         {
           "before": [ ">" ],
           "commands": [ "editor.action.indentLines" ],
@@ -216,11 +211,20 @@
         },
     ],
     "vim.commandLineModeKeyBindingsNonRecursive": [ ],
-    "vim.commandLineModeKeyBindings": [ ],
+    "vim.commandLineModeKeyBindings": [
+        {
+          "before": ["ctrl+k"],
+          "after": ["<Up>"]
+        },
+        {
+          "before": ["ctrl+j"],
+          "after": ["<Down>"]
+        },
+     ],
 
     // vim-sneak plugin emulation
     //-------------------------
-    //"vim.sneak": false,
+    "vim.sneak": true,
 
     // vim-surround plugin emulation
     //-------------------------
@@ -235,5 +239,4 @@
     //----------------------------------------------------------------
     "trailing-spaces.syntaxIgnore": ["markdown"],
     "trailing-spaces.highlightCurrentLine": false,
-
 }

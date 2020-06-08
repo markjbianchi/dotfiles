@@ -29,7 +29,7 @@ Plug 'jlanzarotta/bufexplorer'
 "Plug 'scrooloose/syntastic'
 "Plug 'sheerun/vim-polyglot'
 "Plug 'tomtom/tcomment_vim'
-"Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 "Plug 'tpope/vim-repeat'                 "fixes the . cmd when using a surround
 "Plug 'garbas/vim-snipmate'
 "Plug 'MarcWeber/vim-addon-mw-utils'     "required for vim-snipmate
@@ -37,6 +37,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/vim-easy-align'
 Plug 'ervandew/supertab'
+Plug 'justinmk/vim-sneak'
 "Plug 'valloric/youcompleteme'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'terryma/vim-multiple-cursors'
@@ -140,5 +141,8 @@ let g:peekaboo_window = 'vertical botright 30new'
 let g:peekaboo_delay = 750
 " " Compact display; do not display the names of the register groups
 let g:peekaboo_compact = 1
+
+" ----- justinmk/vim-sneak -----
+let g:sneak#label = 1
 
 "vim:ft=vim ts=2 sw=2 tw=2
