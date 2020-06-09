@@ -82,3 +82,5 @@ nnoremap gj <C-W>j
 nnoremap gk <C-W>k
 nnoremap gl <C-W>l
 
+set ideajoin
+
