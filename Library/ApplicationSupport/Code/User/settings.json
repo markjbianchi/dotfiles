@@ -6,9 +6,7 @@
     "workbench.editor.highlightModifiedTabs": true,
 
     "workbench.settings.editor": "json",
-    "workbench.settings.openDefaultSettings": true,
-    "workbench.settings.useSplitJSON": true,
-    //"workbench.settings.openDefaultKeybindings": true,
+    //"workbench.settings.useSplitJSON": true,
 
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
@@ -110,46 +108,55 @@
           "before": ["Z", "Z"],
           "commands": [":wq"]
         },
-        // indent/outdent line using tab/shift+tab
+        // vertically/horizontally split editor into two editors
         {
-          "before": ["tab"],
-          "commands": ["editor.action.indentLines"]
-        },
-        {
-          "before": ["shift+tab"],
-          "commands": ["editor.action.outdentLines"]
-        },
-        { // ,vs to vertically split buffer into two tabs
           "before": ["<leader>", "v", "s"],
           "commands": ["workbench.action.splitEditor"]
         },
-        { // ,<space> to toggle on/off highlight search
+        { // \hs to horizontally split editor into two editors
+          "before": ["<leader>", "h", "s"],
+          "commands": ["workbench.action.splitEditorDown"]
+        },
+        // navigate splits with g command prepended to the analogous vim motion
+        {
+          "before": ["g", "h"],
+          "after": ["<C-w>", "h"]
+        },
+        {
+          "before": ["g", "j"],
+          "after": ["<C-w>", "j"]
+        },
+        {
+          "before": ["g", "k"],
+          "after": ["<C-w>", "k"]
+        },
+        {
+          "before": ["g", "l"],
+          "after": ["<C-w>", "l"]
+        },
+        { // <C-k> to recall command line history (similar to k motion)
+          "before": ["ctrl+k"],
+          "after": [":", "<Up>"]
+        },
+        { // \<space> to toggle on/off highlight search
           "before": ["<leader>", "<space>"],
           "commands": [":set hlsearch!"]
         },
-        { // ,w to turn on highlighting of trailing whitespace
+        { // \w to turn on highlighting of trailing whitespace
           "before": ["<leader>", "w"],
           "commands": ["trailing-spaces.highlightTrailingSpaces"]
         },
-        { // ,W to delte trailing whitespace
+        { // \W to delete trailing whitespace
           "before": ["<leader>", "W"],
           "commands": ["trailing-spaces.deleteTrailingSpaces"]
         },
-        { // ,b to toggle sidebar visability
+        { // \b to toggle sidebar visability
           "before": ["<leader>", "b"],
           "commands": ["workbench.action.toggleSidebarVisibility"]
         },
         {
           "before": ["<leader>", "f"],
           "commands": ["revealInExplorer"]
-        },
-        {
-          "before": ["<leader>", "o", "g"],
-          "commands": ["workbench.action.showAllSymbols"]
-        },
-        {
-          "before": ["<leader>", "o", "p"],
-          "commands": ["workbench.action.quickOpen"]
         },
         {
           "before": ["<leader>", "N"],
@@ -160,27 +167,7 @@
             }
           ]
         },
-        {
-          "before": ["ctrl+k"],
-          "after": [":", "<Up>"]
-        },
     ],
-    // {
-    //   "before": ["g", "h"],
-    //   "commands": ["workbench.action.previousEditor"]
-    // },
-    // {
-    //   "before": ["g", "l"],
-    //   "commands": ["workbench.action.nextEditor"]
-    // },
-    // {
-    //   "before": ["g", "j"],
-    //   "commands": ["workbench.action.focusBelowGroup"]
-    // },
-    // {
-    //   "before": ["g", "k"],
-    //   "commands": ["workbench.action.focusAboveGroup"]
-    // },
     "vim.visualModeKeyBindings": [ ],
     "vim.visualModeKeyBindingsNonRecursive": [
         // make L and H move the full line amount of l and h
@@ -210,8 +197,8 @@
           "commands": ["editor.action.outdentLines"]
         },
     ],
-    "vim.commandLineModeKeyBindingsNonRecursive": [ ],
-    "vim.commandLineModeKeyBindings": [
+    "vim.commandLineModeKeyBindings": [ ],
+    "vim.commandLineModeKeyBindingsNonRecursive": [
         {
           "before": ["ctrl+k"],
           "after": ["<Up>"]

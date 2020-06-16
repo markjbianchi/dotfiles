@@ -38,11 +38,29 @@ vnoremap L g_
 noremap Y y$
 
 " Select entire buffer (like Ctrl-A)
-nnoremap vy ggVG
+nnoremap gy ggVG
 
 " Use <tab> to indent in visual mode
 vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
+
+" Command line editing
+map <C-K> :<Up>
+cnoremap <C-H> <LEFT>
+cnoremap <C-L> <RIGHT>
+cnoremap <C-J> <DOWN>
+cnoremap <C-K> <UP>
+
+" Create split editor windows
+nnoremap <leader>vs :action SplitVertically<CR>
+nnoremap <leader>hs :action SplitHorizontally<CR>
+nnoremap <leader>us :action Unsplit<CR>
+
+" navigate splits with g command prepended to the analogous vim motion
+nnoremap gh <C-W>h
+nnoremap gj <C-W>j
+nnoremap gk <C-W>k
+nnoremap gl <C-W>l
 
 """"""""""""""""""""""""""""""""""""""""
 " emulated vim plugins
@@ -57,14 +75,4 @@ set surround             " vim-surround
 " gc<motion|text object>    comment out a block
 " gc                        comment out block in visual mode
 set commentary
-
-" <C-w> commands
-" :split
-" :vsplit
-
-" navigate splits with g command prepended to the analogous vim motion
-nnoremap gh <C-W>h
-nnoremap gj <C-W>j
-nnoremap gk <C-W>k
-nnoremap gl <C-W>l
 
