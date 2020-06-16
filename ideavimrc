@@ -76,3 +76,5 @@ set surround             " vim-surround
 " gc                        comment out block in visual mode
 set commentary
 
+set ideajoin
+
