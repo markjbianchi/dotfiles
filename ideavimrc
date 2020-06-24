@@ -1,5 +1,5 @@
 set clipboard+=unnamed
-set gdefault            " the ":substitute" flag 'g' is default on
+"set gdefault            " the ":substitute" flag 'g' is default on
 set history=400
 set nohlsearch
 set ignorecase

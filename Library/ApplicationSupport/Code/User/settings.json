@@ -38,7 +38,6 @@
     //"editor.autoIndent": "full",
     //"vim.autoindent": true,
 
-    "vim.gdefault": true,           // enables substitutions of all occurrances on a line
     "vim.changeWordIncludesWhitespace": true,   // makes consistent with yw and dw
     "vim.useSystemClipboard": true,
     "vim.history": 400,             // remember more commands used

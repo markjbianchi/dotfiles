@@ -69,7 +69,7 @@ set ignorecase          " case insensitive search
 set smartcase           " search string determines case matching
 set incsearch           " incremental search
 set nohlsearch          " turn off highlight search results
-set gdefault            " make search/replace global by default
+"set gdefault            " make search/replace global by default
 set iskeyword+=\$,-     " add extra characters that are valid parts of vars
 set wrapscan            " search doesn't stopcat EOF
 " Toggles highlighting of search
