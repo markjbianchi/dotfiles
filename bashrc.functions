@@ -1,19 +1,12 @@
 #------------------------------------------------------------------------------
 # general functions
 #------------------------------------------------------------------------------
-vman() {
-  vim -c "SuperMan $*"
-  if [ "$?" != "0" ]; then
-    echo "No manual entry for $*"
-  fi
-}
-
 hidden() {
   ls -AF "$@" |  grep '^\.';
 }
 
 A () {
-  ack --cc "$1" source src system 2>/dev/null
+  ack --cc "$1" source src inc include 2>/dev/null
 }
 
 # Simple recursive grep function that ignores .svn|.git directories

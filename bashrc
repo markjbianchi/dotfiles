@@ -38,6 +38,13 @@ export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Ho
 
 #export TERM="xterm-256color"
 
+if command -v pyenv 1>/dev/null 2>&1 ; then
+  eval "$(pyenv init -)"
+fi
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/sqlite/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/sqlite/include"
+
+
 #------------------------------------------------------------------------------
 # Here is an assortment of command line prompts.  Choose one by
 # deleting or commenting-out all others.
