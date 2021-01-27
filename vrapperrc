@@ -12,8 +12,8 @@ set autoindent
 "set list                " show whitespace (see \N mapping below)
 set cursorline          " high entire line cursor is on
 set autochdir           " automatically change the cwd to parent of file edited
-set softtabstop=2
-set tabstop=2
+set softtabstop=4
+set tabstop=4
 set expandtab           " turn tabs into spaces (use <C-V>Tab to insert real tabs
 set shiftround          " round indent to multiple of shiftwidth
 set shiftwidth=4
@@ -40,6 +40,8 @@ noremap <C-L> :nohlsearch<CR><C-L>
 nnoremap \N :set list!<CR>
 " Change tabs to spaces in buffer
 nnoremap <LEADER><TAB> :retab<CR>
+nnoremap <c-d> <PageDown>
+nnoremap <c-u> <PageUp>
 
 " Keep searching in the middle of the window
 nnoremap n nzz
@@ -52,12 +54,15 @@ nnoremap H ^
 nnoremap L $
 vnoremap L g_
 
-" Make Y and D behanve like other capital commands
+" Make Y and D behave like other capital commands
 noremap Y y$
 noremap D d$
 
 " Select entire buffer (like Ctrl-A)
 nnoremap vy ggVG
+
+" Select last inserted text
+nnoremap gV `[v`]
 
 " Use <tab> to indent in visual mode
 vnoremap <Tab> >'<0v'>$
@@ -65,6 +70,10 @@ vnoremap <S-Tab> <'<0v'>$
 
 " Break a comma-delimited list onto new lines
 vnoremap \, :s/,/,\r/g<CR>
+
+" Create newlines without entering insert mode
+nnoremap go o<ESC>k
+nnoremap gO O<ESC>j
 
 " Command line editing
 map <C-K> :<Up>
@@ -98,13 +107,24 @@ vnoremap ; :
 " instead.
 nnoremap Q @@
 
-" Split line (sister to [J]oin lines)
-" The normal use of S is covered by cc, so don't worry about shadowing it.
-nnoremap S i<CR><ESC>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
-
 " Surround word with " or '
 nnoremap \" viw<ESC>a"<ESC>hbi"<ESC>lel
 nnoremap \' viw<ESC>a'<ESC>hbi'<ESC>lel
+
+" Eclipse Actions --------------------------------------------------------
+eclipseaction eclipsefindref org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace
+nnoremap gr :eclipsefindref<cr>
+
+eclipseuiaction eclipsegotoimpl org.eclipse.jdt.ui.edit.text.java.open.implementation
+nnoremap gi :eclipsegotoimpl<cr>
+
+" go to type
+eclipseuiaction eclipsegototype org.eclipse.jdt.ui.navigate.open.type
+nnoremap g/t :eclipsegototype<cr>
+
+" amazing 'omnibox' that searches buffers, commands, views, menus, preferences, etc.
+eclipseaction eclipsecmdsearch org.eclipse.ui.window.quickAccess
+nnoremap <space> :eclipsecmdsearch<cr>
 
 
 "vim:ft=vim ts=2 sw=2 tw=2

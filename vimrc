@@ -261,6 +261,9 @@ vnoremap L g_
 " Select entire buffer (like Ctrl-A)
 nnoremap vy ggVG
 
+" Select last inserted text
+nnoremap gV `[v`]
+
 " Use <tab> to indent in visual mode
 vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
@@ -348,9 +351,6 @@ nnoremap gw :wincmd w<CR>
 nnoremap g= :wincmd =<CR>
 " swap windows
 nnoremap gx :wincmd x<CR>
-" maximize window height, width
-nnoremap gH <C-W>_
-nnoremap gV <C-W><BAR>
 
 " Abbreviations/Typo fixes -----------------------------------------------
 iabbrev teh the

@@ -40,6 +40,9 @@ noremap Y y$
 " Select entire buffer (like Ctrl-A)
 nnoremap gy ggVG
 
+" Select last inserted text
+nnoremap gV `[v`]
+
 " Use <tab> to indent in visual mode
 vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
