@@ -43,6 +43,9 @@ nnoremap <LEADER><TAB> :retab<CR>
 nnoremap <c-d> <PageDown>
 nnoremap <c-u> <PageUp>
 
+" Toggle maximizing editor
+nnoremap <LEADER>G :maximize<CR>
+
 " Keep searching in the middle of the window
 nnoremap n nzz
 nnoremap N Nzz
@@ -82,22 +85,18 @@ cnoremap <C-L> <RIGHT>
 cnoremap <C-J> <DOWN>
 cnoremap <C-K> <UP>
 
-" split window horizontally or veritcally *and* switch to the new split
-""nnoremap <LEADER>hs :split<BAR><C-W>j<CR>
-""nnoremap <LEADER>vs :vsplit<BAR><C-W>l<CR>
-" close the current window
-""nnoremap <LEADER>sc :close<CR>
+" split window horizontally or vertically
+nnoremap <LEADER>hs :split<CR>
+nnoremap <LEADER>vs :vsplit<CR>
 
 " navigate splits with g command prepended to the analogous vim motion
-""nnoremap gh <C-W>h
-""nnoremap gj <C-W>j
-""nnoremap gk <C-W>k
-""nnoremap gl <C-W>l
-" go to previous, next, top left, bottom right splits/tabs
-nnoremap gp :tabprevious<CR>
-nnoremap gw :tabnext<CR>
-nnoremap gt :tabrewind<CR>
-nnoremap gb :tablast<CR>
+nnoremap gh <C-W>h
+nnoremap gj <C-W>j
+nnoremap gk <C-W>k
+nnoremap gl <C-W>l
+" go to next, previous tab
+nnoremap gt <C-W>gt
+nnoremap gT <C-W>gT
 
 " Use ; for : in normal and visual mode, less keystrokes
 nnoremap ; :
