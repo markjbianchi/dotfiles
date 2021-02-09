@@ -40,8 +40,8 @@ noremap <C-L> :nohlsearch<CR><C-L>
 nnoremap \N :set list!<CR>
 " Change tabs to spaces in buffer
 nnoremap <LEADER><TAB> :retab<CR>
-nnoremap <c-d> <PageDown>
-nnoremap <c-u> <PageUp>
+nnoremap <C-D> <PAGEDOWN>
+nnoremap <C-U> <PAGEUP>
 
 " Toggle maximizing editor
 nnoremap <LEADER>G :maximize<CR>
@@ -67,19 +67,22 @@ nnoremap vy ggVG
 " Select last inserted text
 nnoremap gV `[v`]
 
-" Use <tab> to indent in visual mode
-vnoremap <Tab> >'<0v'>$
-vnoremap <S-Tab> <'<0v'>$
-
-" Break a comma-delimited list onto new lines
-vnoremap \, :s/,/,\r/g<CR>
+" Use <TAB> to indent in visual mode
+vnoremap <TAB> >'<0v'>$
+vnoremap <S-TAB> <'<0v'>$
 
 " Create newlines without entering insert mode
 nnoremap go o<ESC>k
 nnoremap gO O<ESC>j
 
+" Update (save) active buffer
+nnoremap gs :update<CR>
+
+" Break a comma-delimited list onto new lines
+vnoremap <LEADER>, :s/,/,\r/g<CR>
+
 " Command line editing
-map <C-K> :<Up>
+map <C-K> :<UP>
 cnoremap <C-H> <LEFT>
 cnoremap <C-L> <RIGHT>
 cnoremap <C-J> <DOWN>
@@ -98,10 +101,6 @@ nnoremap gl <C-W>l
 nnoremap gt <C-W>gt
 nnoremap gT <C-W>gT
 
-" Use ; for : in normal and visual mode, less keystrokes
-nnoremap ; :
-vnoremap ; :
-
 " disable the ever-annoying Ex mode shortcut key. make Q repeat the last macro
 " instead.
 nnoremap Q @@
@@ -112,18 +111,18 @@ nnoremap \' viw<ESC>a'<ESC>hbi'<ESC>lel
 
 " Eclipse Actions --------------------------------------------------------
 eclipseaction eclipsefindref org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace
-nnoremap gr :eclipsefindref<cr>
+nnoremap gr :eclipsefindref<CR>
 
 eclipseuiaction eclipsegotoimpl org.eclipse.jdt.ui.edit.text.java.open.implementation
-nnoremap gi :eclipsegotoimpl<cr>
+nnoremap gi :eclipsegotoimpl<CR>
 
 " go to type
 eclipseuiaction eclipsegototype org.eclipse.jdt.ui.navigate.open.type
-nnoremap g/t :eclipsegototype<cr>
+nnoremap g/t :eclipsegototype<CR>
 
 " amazing 'omnibox' that searches buffers, commands, views, menus, preferences, etc.
 eclipseaction eclipsecmdsearch org.eclipse.ui.window.quickAccess
-nnoremap <space> :eclipsecmdsearch<cr>
+nnoremap <S-SPACE> :eclipsecmdsearch<CR>
 
 
 "vim:ft=vim ts=2 sw=2 tw=2

@@ -55,7 +55,13 @@
           "after": ["<Esc>"]
         }
     ],
-    "vim.normalModeKeyBindings": [ ],
+    "vim.normalModeKeyBindings": [
+        // pull up the command pallette
+        {
+          "before": ["shift+space"],
+          "commands": [ "workbench.action.showCommands", ]
+        }
+     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         // make L and H move the full line amount of l and h
         {
@@ -103,6 +109,14 @@
         { // select entire buffer in visual mode (like ctrl-A in windows)
           "before": ["g", "y"],
           "after": ["g", "g", "V", "G"]
+        },
+        { // select last inserted text
+          "before": ["g", "V"],
+          "after": ["g", "`", "[", "`", "]"]
+        },
+        { // update (save) active buffer
+          "before": ["g", "s"],
+          "commands": [":update"]
         },
         { // standard vim ZZ to write and quite/clode buffer
           "before": ["Z", "Z"],

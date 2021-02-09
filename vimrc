@@ -264,21 +264,19 @@ nnoremap vy ggVG
 " Select last inserted text
 nnoremap gV `[v`]
 
-" Use <tab> to indent in visual mode
+" Use <TAB> to indent in visual mode
 vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
-
-" Tag navigation
-nnoremap <M-]> <C-]>
-nnoremap <M-[> <C-T>
-nnoremap <M-\> :execute "ptag " . expand("<cword>")<CR>
-
-" Break a comma-delimited list onto new lines
-vnoremap <LEADER>, :s/,/,\r/g<CR>
 
 " Create newlines without entering insert mode
 nnoremap go o<ESC>k
 nnoremap gO O<ESC>j
+
+" Update (save) active buffer
+nnoremap gs :update<CR>
+
+" Break a comma-delimited list onto new lines
+vnoremap <LEADER>, :s/,/,\r/g<CR>
 
 " Command line editing
 map <C-K> :<Up>
@@ -297,6 +295,11 @@ nnoremap Q @@
 " remove doc lookup maping because it's easy to fat finger and never useful
 nnoremap K k
 vnoremap K k
+
+" Tag navigation
+nnoremap <M-]> <C-]>
+nnoremap <M-[> <C-T>
+nnoremap <M-\> :execute "ptag " . expand("<cword>")<CR>
 
 " Autocommands -----------------------------------------------------------
 augroup bufcmds

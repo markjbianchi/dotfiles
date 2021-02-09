@@ -47,6 +47,13 @@ nnoremap gV `[v`]
 vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
 
+" Create newlines without entering insert mode
+nnoremap go o<ESC>k
+nnoremap gO O<ESC>j
+
+" Update (save) active buffer
+nnoremap gs :update<CR>
+
 " Command line editing
 map <C-K> :<Up>
 cnoremap <C-H> <LEFT>
