@@ -31,7 +31,6 @@ are the cases where I have found it easier to create my own mapping.
       <S-Tab>   -- outdent 1 level (visual mode) |<|
       go	-- open line below w/o entering insert mode (normal mode)
       gO	-- open line above w/o entering insert mode (normal mode)
-      S		-- split (sister to [J]oin command
       \,	-- split comma-delimited list into new lines
       \-	-- underline word with -
       \=	-- underline word with =
@@ -42,6 +41,8 @@ are the cases where I have found it easier to create my own mapping.
       \<Tab>    -- apply current tab settings to file |:retab|
       <C-K>     -- ex command recall, <C-J>, <C-K to scroll dwn/up |cmdline-history|
       vy	-- select entire buffer
+      gV	-- go to last inserted text
+      gs	-- update (save) current buffer
       <C-Tab>	-- cycle forward  to next buffer
       <C-S-Tab>	-- cycle backward to next buffer
       <F5>	-- list buffers and prompt for selection
@@ -77,8 +78,6 @@ plugin manager http://github.com/junegunn/vim-plugin)
       \w	-- toggle on/off trailing whitespace
       \W	-- remove trailing whitespace
 
-    * Schlepp:
-
     * NERDtree pannel and Tagbar panel:
       <F2>	-- NERDtree panel toggle
       <F3>	-- Tagbar panel toggle
@@ -87,7 +86,6 @@ plugin manager http://github.com/junegunn/vim-plugin)
       :OpenSession	  -- presents list of sessions to open
       :CloseSession	  -- closes current session, empty buffer in window
       :SaveSession [name] -- saves session to name (default if blank)
-
 
     * Easy-Align:
       <Enter>	-- interactive, highlight in visual mode, then hit
@@ -118,8 +116,6 @@ between windows, etc.
       <M-K>     -- move up and maximize window
       g=        -- make all windows equal size
       gx        -- swap windows
-      gH        -- maximize window height
-      gV        -- maximize window width
       +         -- increase window height
       -         -- decrease window height
 

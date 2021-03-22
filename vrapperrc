@@ -3,9 +3,9 @@ set clipboard+=unnamed,unnamedplus
 set nohlsearch          " turn off highlight search results
 set ignorecase          " case insensitive search
 set incsearch           " incremental search
-"set number              " absolute line numbers
-set scrolloff=2         " keep 2 lines above/below the cursor when scrolling
-set scrolljump=1        " when needing to scroll, jump 1 line
+set number              " absolute line numbers
+"set scrolloff=2         " keep 2 lines above/below the cursor when scrolling
+set scrolljump=1
 set smartcase           " search string determines case matching
 set smartindent         " indents after <RETURN> appropriately
 set autoindent
@@ -43,7 +43,7 @@ nnoremap <LEADER><TAB> :retab<CR>
 nnoremap <C-D> <PAGEDOWN>
 nnoremap <C-U> <PAGEUP>
 
-" Toggle maximizing editor
+" Toggle maximizing editor (same as ctrl-M)
 nnoremap <LEADER>G :maximize<CR>
 
 " Keep searching in the middle of the window
@@ -51,6 +51,10 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
+
+" Use python/java regex search and mark position before search (mark 's')
+nnoremap / ms/\v
+vnoremap / ms/\v
 
 " Make movement to beginning/endo of line easier
 nnoremap H ^

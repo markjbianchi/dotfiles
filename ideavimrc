@@ -7,7 +7,7 @@ set incsearch           " show where search pattern typed so far matches
 set matchpairs+=<:>
 set nrformats-=octal    " number formats recognized for CTRL-A command
 set number
-set relativenumber
+"set relativenumber
 set scroll=10
 set scrolloff=2
 set showmode
@@ -28,6 +28,10 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
+
+" Use python/java regex search and mark position before search (mark 's')
+nnoremap / ms/\v
+vnoremap / ms/\v
 
 " Make movement to begining/endo of line easier
 nnoremap H ^

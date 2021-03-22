@@ -10,7 +10,7 @@
     //"workbench.settings.useSplitJSON": true,
 
     "editor.minimap.enabled": false,
-    "editor.lineNumbers": "relative",
+    "editor.lineNumbers": "on",
     "editor.fontSize": 11,
     // "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
     // "editor.fontWeight": "normal",
@@ -114,9 +114,9 @@
           "before": ["g", "V"],
           "after": ["g", "`", "[", "`", "]"]
         },
-        { // update (save) active buffer
+        { // write (save) active buffer
           "before": ["g", "s"],
-          "commands": [":update"]
+          "commands": [":write"]
         },
         { // standard vim ZZ to write and quite/clode buffer
           "before": ["Z", "Z"],

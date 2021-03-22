@@ -33,8 +33,7 @@ export EDITOR=vim
 
 export LESS="--tabs=4 RMXg"
 
-#export JAVA_HOME='/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home'
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 #export TERM="xterm-256color"
 
@@ -91,3 +90,4 @@ alias ackm='ack --make'
 [[ -f $HOME/.bashrc.functions ]] && source $HOME/.bashrc.functions
 
 #vim:ft=bash ts=2 sw=2 tw=2
+
