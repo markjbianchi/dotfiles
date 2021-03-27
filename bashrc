@@ -35,7 +35,7 @@ export LESS="--tabs=4 RMXg"
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 
-#export TERM="xterm-256color"
+export TERM="xterm-color"
 
 if command -v pyenv 1>/dev/null 2>&1 ; then
   eval "$(pyenv init -)"

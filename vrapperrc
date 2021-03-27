@@ -52,9 +52,9 @@ nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
 
-" Use python/java regex search and mark position before search (mark 's')
-nnoremap / ms/\v
-vnoremap / ms/\v
+" Mark position before search (mark 's')
+nnoremap / ms/
+vnoremap / ms/
 
 " Make movement to beginning/endo of line easier
 nnoremap H ^

@@ -74,9 +74,9 @@ set iskeyword+=\$,-     " add extra characters that are valid parts of vars
 set wrapscan            " search doesn't stopcat EOF
 " Toggles highlighting of search
 noremap <LEADER><SPACE> :set hlsearch!<CR>
-" Use python/java regex search and mark position before search (mark 's')
-nnoremap / ms/\v
-vnoremap / ms/\v
+" Mark position before search (mark 's')
+nnoremap / ms/
+vnoremap / ms/
 " Keep searching in the middle of the window
 nnoremap n nzz
 nnoremap N Nzz
