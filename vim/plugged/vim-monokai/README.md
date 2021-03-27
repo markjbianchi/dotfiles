@@ -3,8 +3,6 @@ vim-monokai
 
 Refined monokai color scheme for vim. 
 
-* The colour palette from [sickill/vim-monokai](https://github.com/sickill/vim-monokai). 
-
 Install
 -------
 
@@ -55,23 +53,25 @@ Configuration
 
 ### Italic
 
-By default the gui enables italic but terminal. They both can be configured.
-    
-If you are using a font support italic, paste below command in `.vimrc` to turn on terminal italic:
+If you are using a font which support italic, paste below command in `.vimrc` to turn on gui/terminal italic effect:
 
     let g:monokai_term_italic = 1
     let g:monokai_gui_italic = 1
 
-Recommend vim syntax plugins
-----------------------------
+> Note: If you are using vim with [tmux](https://github.com/tmux/tmux/wiki), you need to turn-off the italic. __tmux__ doesn't support italic font, all _italic_ effect will become _"reverse"_.
 
-Below plugins would give you better experience when using with *vim-monokai*:
+Recommend syntax plugins
+------------------------
 
-| Language   | Plugins                              |
-|------------|--------------------------------------|
-| Javascript | [vim-javascript](https://github.com/pangloss/vim-javascript)<br>[vim-javascript-lib](https://github.com/crusoexia/vim-javascript-lib) |
-| Typescript | [yats.vim](https://github.com/HerringtonDarkholme/yats.vim) |
-| JSX        | [vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty) |
+Below plugins would give you better experience when using *vim-monokai*:
+
+| Language     | Plugins                                                                                                                               |
+| ------------ | --------------------------------------                                                                                                |
+| Javascript   | [vim-javascript](https://github.com/pangloss/vim-javascript)<br>[vim-javascript-lib](https://github.com/crusoexia/vim-javascript-lib) |
+| Typescript   | [yats.vim](https://github.com/HerringtonDarkholme/yats.vim)                                                                           |
+| Dart         | [dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin)                                                                       |
+| JSX          | [vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty)                                                                         |
+| Markdown     | [vim-markdown](https://github.com/tpope/vim-markdown)                                                                                 |
 
 Screenshots
 -----------
