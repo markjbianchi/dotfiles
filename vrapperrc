@@ -24,7 +24,7 @@ set wrapscan            " search wraps around EOF
 set novisualmouse
 set gvimpath=/usr/local/bin/gvim
 set cleanindent         " new autoindented line has indent removed if no text added
-"set contentassistmode
+set contentassistmode
 set startnormalmode
 
 " Custom commands --------------------------------------------------------
@@ -97,13 +97,13 @@ nnoremap <LEADER>hs :split<CR>
 nnoremap <LEADER>vs :vsplit<CR>
 
 " navigate splits with g command prepended to the analogous vim motion
-nnoremap gh <C-W>h
-nnoremap gj <C-W>j
-nnoremap gk <C-W>k
-nnoremap gl <C-W>l
+nnoremap gh :wincmd h<CR>
+nnoremap gj :wincmd j<CR>
+nnoremap gk :wincmd k<CR>
+nnoremap gl :wincmd l<CR>
 " go to next, previous tab
-nnoremap gt <C-W>gt
-nnoremap gT <C-W>gT
+nnoremap gt :tabnext<CR>
+nnoremap gT :tabprev<CR>
 
 " disable the ever-annoying Ex mode shortcut key. make Q repeat the last macro
 " instead.

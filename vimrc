@@ -74,6 +74,9 @@ nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
 
+" Remap escape key
+inoremap jk <ESC>
+
 " Text/Programming features ----------------------------------------------
 syntax enable
 set smartindent         " indents after <CR> appropriately
@@ -91,6 +94,10 @@ set tildeop             " use ~ to toggle case as operator, not a motion
 set completeopt -=preview  " don't show extra info in a preview window
 set tags=tags;          " default tags file name and location, .vim.local files
                         " may modify this and path setting
+" Mappings for plugins ---------------------------------------------------
+if filereadable(expand("$HOME/.vimrc.bundles"))
+  source $HOME/.vimrc.bundles
+endif
 
 " Various things seem to turn off syntax highlighting, so make a quick toggle
 nnoremap <LEADER>X :syntax on<CR>
@@ -192,12 +199,6 @@ if has('gui_running')
   endif
 endif
 
-" Only remap escape keys and cursorline if in a gui or good terminal
-if has('gui_running') || $TERM =~ '-256color'
-  inoremap jk <ESC>
-  "inoremap <ESC> <NOP>
-endif
-
 " Only show cursorline in the current window and in normal mode
 augroup cursline
   au!
@@ -208,10 +209,6 @@ augroup END
 " --- Set the colorscheme
 " Toggle thie to 'light' for light colorschemes
 set background=dark
-if $TERM =~ '-256color'
-  set t_Co=256
-endif
-
 try
   colorscheme onedark
 catch
@@ -354,11 +351,6 @@ iabbrev pritn print
 iabbrev #i #include
 iabbrev #d #define
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
-
-" Mappings for plugins ---------------------------------------------------
-if filereadable(expand("$HOME/.vimrc.bundles"))
-  source $HOME/.vimrc.bundles
-endif
 
 " .vim.local file sourcing -----------------------------------------------
 "let s:localvim = findfile(".vim.local", ".;")
