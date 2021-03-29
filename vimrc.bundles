@@ -1,61 +1,22 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Plugins!
-"  managed with vim-plug
-"  https://github.com/junegunn/vim-plug
+"  managed by Vim 8's package manager in vim/pack/*/start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
 
 " --- make vim look pretty ---
-Plug 'crusoexia/vim-monokai'
-Plug 'crusoexia/vim-dracula'
-Plug 'tomasr/molokai'
-Plug 'altercation/vim-colors-solarized'
-Plug 'nanotech/jellybeans.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/goyo.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'junegunn/goyo.vim'
 
 " -- vim IDE GUI and such ---
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'majutsushi/tagbar'
-Plug 'xolox/vim-easytags'
-"Plug 'xolox/vim-shell'                  " may need this on Windows for easytags and asyc option
-Plug 'xolox/vim-session'
-Plug 'xolox/vim-misc'                   "required by vim-session
-Plug 'jlanzarotta/bufexplorer'
+" Plug 'jlanzarotta/bufexplorer'
 
 " -- vim as a project/program's text editor ---
-"Plug 'scrooloose/syntastic'
-"Plug 'sheerun/vim-polyglot'
-"Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-repeat'                 "fixes the . cmd when using a surround
-"Plug 'garbas/vim-snipmate'
-"Plug 'MarcWeber/vim-addon-mw-utils'     "required for vim-snipmate
-"Plug 'tomtom/tlib_vim'                  "required for vim-snipmate
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'junegunn/vim-easy-align'
-Plug 'ervandew/supertab'
-Plug 'justinmk/vim-sneak'
-"Plug 'valloric/youcompleteme'
-"Plug 'easymotion/vim-easymotion'
-"Plug 'terryma/vim-multiple-cursors'
-"Plug 'jiangmiao/auto-pairs'
-
-" --- file, fuzzy searching ---
-"Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'Shougo/vimproc.vim'               "needed by unite.vim
-"Plug 'Shougo/unite.vim'                 "you have to go to .vim/plugged/vimproc.vim and do a ./make
-"Plug 'rking/ag.vim'
-Plug 'vim-scripts/a.vim'
-"Plug 'derekwyatt/vim-fswitch'          "upgrade to a.vim
-
-" --- utilities ---
-"Plug 'tpope/vim-fugitive'
-Plug 'junegunn/vim-peekaboo'            "show register contents
-
-call plug#end()
+" Plug 'tpope/surround'
+" Plug 'ntpeters/vim-better-whitespace'
+" Plug 'junegunn/vim-easy-align'
+" Plug 'justinmk/vim-sneak'
+" Plug 'vim-scripts/a.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin-Specific Settings
@@ -74,73 +35,15 @@ let g:airline#extensions#whitespace#enabled = 1
 " ----- junegunn/goyo.vim -----
 nnoremap <LEADER>G :Goyo<CR>
 
-" ----- jistr/vim-nerdtree-tabs -----
-let g:nerdtree_tabs_open_on_gui_startup = 0
-let g:nerdtree_tabs_open_on_console_startup = 0
-let NERDTreeChDirMode = 0
-let NERDTreeHighlightCursorline = 1
-let NERDTreeIgnore = ['\~$', '*.pyc$', '*\.pdf$' ]
-nnoremap <F2> :NERDTreeMirrorToggle<CR>
-
-" ----- xolox/vim-session -----
-let g:session_autosave = 'yes'
-let g:session_autoload = 'no'
-let g:session_default_to_last = 1
-" Don't save/restore help windows in sessions
-set sessionoptions-=help
-" Don't save/restore hidden and unloaded buffers in sessions
-set sessionoptions-=buffers
-
 " ----- bufexplorer -----
 nnoremap <LEADER><LEADER> :BufExplorer<CR>
-
-" ----- majutsushi/tagbar settings -----
-" Uncomment to open tagbar automatically whenever possible
-"autocmd BufEnter * nested :call tagbar#autoopen(0)
-" Treat .ts in Vim as .js in ctags
-let g:tagbar_type_typescript = {
-  \ 'ctagstype': 'JavaScript',
-  \ 'kinds': [
-    \ 'f:functions',
-    \ 'c:classes',
-    \ 'm:members',
-    \ 'p:properties',
-    \ 'v:globals',
-  \ ]
-\ }
-nnoremap <F3> :TagbarToggle<CR>
-inoremap <F3> <ESC>:TagbarToggle<CR>
-
-" ----- xolox/vim-easytags setting -----
-" Sensible defaults
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1          " run in the background for performance
-let g:easytags_dynamic_files = 1  " use project-specific tags file
-"let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
 
 " ----- ntpeters/vim-better-whitespace settings -----
 nnoremap <LEADER>W :StripWhitespace<CR>
 nnoremap <LEADER>w :ToggleWhitespace<CR>
 
-" ----- junegunn/vim-easy-align -----
-" Easy align interactive
-vnoremap <ENTER> :EasyAlign<CR>
-" Start interactive EasyAlign in a visual mode (e.g., vipga)
-"xnoremap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g., gaip)
-"noremap ga <Plug>(EasyAlign)
-
 " ----- vim-scripts/a.vim settings -----
 nnoremap <LEADER>a :A<CR>
-
-" ----- junegunn/vim-peekaboo -----
-" Default peekaboo window
-let g:peekaboo_window = 'vertical botright 30new'
-" " Delay opening of peekaboo window (in ms. default: 0)
-let g:peekaboo_delay = 750
-" " Compact display; do not display the names of the register groups
-let g:peekaboo_compact = 1
 
 " ----- justinmk/vim-sneak -----
 let g:sneak#label = 1

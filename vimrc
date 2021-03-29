@@ -9,15 +9,6 @@ else
   let $VIMFILES=$HOME . "/.vim"
 endif
 
-" Note: this line MUST come before any <LEADER> mappings
-" leader character, \ by default (can't have appended comments after mapping keys)
-"let mapleader = ","
-
-" Load plugins -----------------------------------------------------------
-if filereadable(expand("$HOME/.vimrc.bundles"))
-  source $HOME/.vimrc.bundles
-endif
-
 " Basic options ----------------------------------------------------------
 set enc=utf-8
 set fenc=utf-8
@@ -222,7 +213,7 @@ if $TERM =~ '-256color'
 endif
 
 try
-  colorscheme monokai   "monokai molokai dracula jellybeans solarized vividchalk
+  colorscheme onedark
 catch
 endtry
 if (exists('+colorcolumn'))
@@ -363,6 +354,11 @@ iabbrev pritn print
 iabbrev #i #include
 iabbrev #d #define
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
+
+" Mappings for plugins ---------------------------------------------------
+if filereadable(expand("$HOME/.vimrc.bundles"))
+  source $HOME/.vimrc.bundles
+endif
 
 " .vim.local file sourcing -----------------------------------------------
 "let s:localvim = findfile(".vim.local", ".;")
