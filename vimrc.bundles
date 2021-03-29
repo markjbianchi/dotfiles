@@ -1,24 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  Plugins!
-"  managed by Vim 8's package manager in vim/pack/*/start
+"  Plugins managed by Vim 8's package manager in vim/pack/*/start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" --- make vim look pretty ---
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'junegunn/goyo.vim'
-
-" -- vim IDE GUI and such ---
-" Plug 'jlanzarotta/bufexplorer'
-
-" -- vim as a project/program's text editor ---
-" Plug 'tpope/surround'
-" Plug 'ntpeters/vim-better-whitespace'
-" Plug 'junegunn/vim-easy-align'
-" Plug 'justinmk/vim-sneak'
-" Plug 'vim-scripts/a.vim'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin-Specific Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ----- vim-airline/vim-airline settings -----
