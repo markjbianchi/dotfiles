@@ -3,7 +3,7 @@
 PACK=vim/pack/myplugins/start
 
 op=pull
-if [ $1 == "-a" ]; then
+if [ $# -ne 0 ] && [ $1 == "-a" ]; then
   op=add
 fi
 
