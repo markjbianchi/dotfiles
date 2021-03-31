@@ -47,10 +47,10 @@ nnoremap <C-U> <PAGEUP>
 nnoremap <LEADER>G :maximize<CR>
 
 " Keep searching in the middle of the window
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
+"nnoremap n nzz
+"nnoremap N Nzz
+"nnoremap * *zz
+"nnoremap # #zz
 
 " Mark position before search (mark 's')
 nnoremap / ms/

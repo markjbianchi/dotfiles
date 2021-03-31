@@ -69,10 +69,10 @@ noremap <LEADER><SPACE> :set hlsearch!<CR>
 nnoremap / ms/
 vnoremap / ms/
 " Keep searching in the middle of the window
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
+"nnoremap n nzz
+"nnoremap N Nzz
+"nnoremap * *zz
+"nnoremap # #zz
 
 " Remap escape key
 inoremap jk <ESC>
