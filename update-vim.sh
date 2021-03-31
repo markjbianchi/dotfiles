@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-PACK=$HOME/.vim/pack/myplugins/start
+PACK=vim/pack/myplugins/start
 
 op=pull
 if [ $1 == "-a" ]; then
