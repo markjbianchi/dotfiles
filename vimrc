@@ -94,11 +94,6 @@ set tildeop             " use ~ to toggle case as operator, not a motion
 set completeopt -=preview  " don't show extra info in a preview window
 set tags=tags;          " default tags file name and location, .vim.local files
                         " may modify this and path setting
-" Mappings for plugins ---------------------------------------------------
-if filereadable(expand("$HOME/.vimrc.bundles"))
-  source $HOME/.vimrc.bundles
-endif
-
 " Various things seem to turn off syntax highlighting, so make a quick toggle
 nnoremap <LEADER>X :syntax on<CR>
 
@@ -351,6 +346,11 @@ iabbrev pritn print
 iabbrev #i #include
 iabbrev #d #define
 iabbrev ddate <C-R>=strftime("%Y-%m-%d")<CR>
+
+" Mappings for plugins ---------------------------------------------------
+if filereadable(expand("$HOME/.vimrc.bundles"))
+  source $HOME/.vimrc.bundles
+endif
 
 " .vim.local file sourcing -----------------------------------------------
 "let s:localvim = findfile(".vim.local", ".;")
