@@ -18,7 +18,7 @@ git subtree $op --prefix $PACK/commentary https://github.com/tpope/vim-commentar
 git subtree $op --prefix $PACK/a.vim https://github.com/vim-scripts/a.vim.git master --squash
 git subtree $op --prefix $PACK/bufexplorer https://github.com/jlanzarotta/bufexplorer.git master --squash
 git subtree $op --prefix $PACK/vim-better-whitespace https://github.com/ntpeters/vim-better-whitespace.git master --squash
-git subtree $op --prefix $PACK/onedark https://github.com/ukyouz/onedark.git master --squash
+git subtree $op --prefix $PACK/onedark.vim https://github.com/ukyouz/onedark.vim.git master --squash
 git subtree $op --prefix $PACK/goyo.vim https://github.com/junegunn/goyo.vim.git master --squash
 git subtree $op --prefix $PACK/vim-sneak https://github.com/justinmk/vim-sneak.git master --squash
 
