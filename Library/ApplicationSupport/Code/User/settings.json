@@ -76,23 +76,6 @@
           "before": ["Y"],
           "after": ["y", "$"]
         },
-        // searches that keep results in middle of window
-        {
-          "before": ["*"],
-          "after": ["*", "z", "z"]
-        },
-        {
-          "before": ["#"],
-          "after": ["#", "z", "z"]
-        },
-        {
-          "before": ["n"],
-          "after": ["n", "z", "z"]
-        },
-        {
-          "before": ["N"],
-          "after": ["N", "z", "z"]
-        },
         { // repeat execution of last run macro
           "before": ["Q"],
           "after": ["@", "@"]
