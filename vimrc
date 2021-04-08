@@ -153,15 +153,18 @@ if has('gui_running')
   set guifont=JetBrains\ Mono:h12  "Menlo\ Regular\ for\ Powerline:h12
   "set guifont=Consolas:h12
   " Remove all the UI cruft from guioptions (or go)
-  set go-=T
-  set go-=l
-  set go-=L
-  set go-=r
-  set go-=R
+  set go-=T       " no toolbar
+  set go-=r       " no righthand scrollbar
+  set go-=R       " not even when vertically split window
+  set go-=l       " no lefthand scrollbar
+  set go-=L       " not even when vertically split window
+  set go+=d       " use dark theme variant if available
   " Different cursors for different modes.
   "set guicursor=n-c:block-Cursor-blinkon0
   "set guicursor+=v:block-vCursor-blinkon0
   "set guicursor+=i-ci:ver20-iCursor
+  " hack for re-setting colorscheme because it is light when launching macvim
+  nnoremap <LEADER>C :colorscheme onedark<CR>
 
   if has("gui_macvim")
     set macmeta
@@ -202,7 +205,7 @@ augroup cursline
 augroup END
 
 " --- Set the colorscheme
-" Toggle thie to 'light' for light colorschemes
+" Toggle this to 'light' for light colorschemes
 set background=dark
 try
   colorscheme onedark
@@ -304,8 +307,8 @@ augroup END
 " list buffers with ability to select one in command line
 nnoremap <F5> :buffers<CR>:buffer<space>
 " buffer navigation
-nnoremap <C-Tab> :bnext<CR>
-nnoremap <C-S-Tab> :bprev<CR>
+nnoremap gt :bnext<CR>
+nnoremap gT :bprev<CR>
 " ,l        : switch to last-used buffer
 "nnoremap <LEADER>l :e#<CR>
 " close the current buffer and go to previous one
@@ -323,20 +326,6 @@ nnoremap gh :wincmd h<CR>
 nnoremap gj :wincmd j<CR>
 nnoremap gk :wincmd k<CR>
 nnoremap gl :wincmd l<CR>
-" move and maximize window
-nnoremap <M-J> <C-W>j<C-W>_
-nnoremap <M-K> <C-W>k<C-W>_
-
-" go to previous, top left, bottom right window; cycle through windows
-nnoremap gp :wincmd p<CR>
-nnoremap gt :wincmd t<CR>
-nnoremap gb :wincmd b<CR>
-nnoremap gw :wincmd w<CR>
-
-" equal size windows
-nnoremap g= :wincmd =<CR>
-" swap windows
-nnoremap gx :wincmd x<CR>
 
 " Abbreviations/Typo fixes -----------------------------------------------
 iabbrev teh the
