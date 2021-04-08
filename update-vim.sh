@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-PACK=vim/pack/myplugins/start
+PACK=vim/pack/default/start
 
 op=pull
 if [ $# -ne 0 ] && [ $1 == "-a" ]; then
