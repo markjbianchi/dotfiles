@@ -22,7 +22,7 @@ set ttyfast             " smoother performance since we are using modern termina
 set backspace=indent,eol,start
 set ruler
 set number              " absolute line numbers
-set relativenumber      " plus relative line numbers
+"set relativenumber      " plus relative line numbers
 set laststatus=2        " always show the statusline
 set history=768
 "set list                " shows unprintable chars

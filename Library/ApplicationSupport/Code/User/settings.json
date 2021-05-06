@@ -5,6 +5,7 @@
     "workbench.iconTheme": "vscode-icons",
     "workbench.editor.highlightModifiedTabs": true,
     "editor.renderWhitespace": "none",
+    "terminal.integrated.shell.osx": "/bin/zsh",
 
     "workbench.settings.editor": "json",
     //"workbench.settings.useSplitJSON": true,
