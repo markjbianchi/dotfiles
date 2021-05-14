@@ -19,9 +19,8 @@ fi
 export TERM="xterm-color"
 export LESS="--tabs=4 RMXg"
 
-# This ignores file tab completion of hidden dirs/files (great for .git dirs)
-#bind 'set match-hidden-files off'
-#bind 'set completion-ignore-case on'    # case-insensitive completion
+# Start the autocompletion system
+autoload -Uz compinit && compinit
 compdef g=git
 
 #------------------------------------------------------------------------------

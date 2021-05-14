@@ -1,5 +1,7 @@
 # modify the PATH, remove duplicate paths
-PATH="$HOME/bin:/usr/local/sbin:${PATH}"
+if [ -d "/opt/homebrew/bin" ]; then
+  PATH="/opt/homebrew/bin:/usr/local/sbin:${PATH}"
+fi
 #TMPPATH="${PATH}"
 #export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":"`
 
