@@ -5,9 +5,6 @@
 [includeIf "gitdir:~/_Projects/GSM"]
   path = ~/_Projects/GSM/.gitconfig
 
-[includeIf "gitdir:~/_Projects/boltbox"]
-  path = ~/_Projects/boltbox/.gitconfig
-
 [color]
   ui          = auto
   diff        = auto
@@ -64,5 +61,3 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-[commit]
-	template = /Users/mbianchi/.stCommitMsg
