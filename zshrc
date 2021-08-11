@@ -31,6 +31,7 @@ PS1='markb$ '
 #PS1='[$PWD] '
 #PS1='$(typeset -u PWD;echo $PWD)>' # force pathname to uppercase
 PS1="%n[%1~]$ "
+DISABLE_AUTO_TITLE="true"
 
 #------------------------------------------------------------------------------
 # setup various command aliases
@@ -51,6 +52,7 @@ alias bk='echo && echo && echo =================================================
 alias cb='clear && echo "==============================================================================" && echo "=============================================================================="'
 alias tree='tree -nF'
 alias vi='vim'
+alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
 # setup 'ls'
 alias l='/bin/ls -hF --color=never'
 alias lsf='ls -b -FC -G'
