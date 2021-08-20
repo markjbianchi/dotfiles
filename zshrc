@@ -31,6 +31,11 @@ PS1='markb$ '
 #PS1='[$PWD] '
 #PS1='$(typeset -u PWD;echo $PWD)>' # force pathname to uppercase
 PS1="%n[%1~]$ "
+if [ $ITERM_SESSION_ID ]; then
+  precmd() {
+    echo -ne "\e]0;$PWD\a"
+  }
+fi
 
 #------------------------------------------------------------------------------
 # setup various command aliases
@@ -81,3 +86,5 @@ unsetopt nomatch
 
 
 #vim:ft=zsh ts=2 sw=2 tw=2
+
+
