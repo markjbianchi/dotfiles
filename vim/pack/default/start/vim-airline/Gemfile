@@ -1,2 +1,1 @@
-source 'https://rubygems.org'
-gem 'vim-flavor', '~> 2.2.2'
+/Users/mbianchi/.dotfiles/vim/pack/default/start/vim-airline/Gemfile

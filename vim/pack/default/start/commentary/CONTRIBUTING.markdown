@@ -1,1 +1,1 @@
-See the [contribution guidelines for pathogen.vim](https://github.com/tpope/vim-pathogen/blob/master/CONTRIBUTING.markdown).
+/Users/mbianchi/.dotfiles/vim/pack/default/start/commentary/CONTRIBUTING.markdown

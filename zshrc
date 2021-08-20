@@ -80,12 +80,14 @@ alias l='/bin/ls -hF --color=never'
 alias lsf='ls -b -FC -G'
 alias lsr='ls -R -G'
 alias ll='ls -Alo -G'
-alias la=hidden
+alias lh='ls -Alod -FG .*'
 # setup 'ack'
 alias ackc='ack --cc'
 alias ackj='ack --java'
 alias ackp='ack --python'
 alias ackm='ack --make'
+# mis-typing
+alias mroe=more
 
 # Include custom functions
 [[ -f $HOME/.custom-alias ]] && source $HOME/.custom-alias
