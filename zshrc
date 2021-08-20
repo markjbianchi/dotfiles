@@ -36,6 +36,7 @@ if [ $ITERM_SESSION_ID ]; then
     echo -ne "\e]0;$PWD\a"
   }
 fi
+#DISABLE_AUTO_TITLE="true"
 
 #------------------------------------------------------------------------------
 # setup various command aliases
@@ -56,6 +57,7 @@ alias bk='echo && echo && echo =================================================
 alias cb='clear && echo "==============================================================================" && echo "=============================================================================="'
 alias tree='tree -nF'
 alias vi='vim'
+alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
 # setup 'ls'
 alias l='/bin/ls -hF --color=never'
 alias lsf='ls -b -FC -G'

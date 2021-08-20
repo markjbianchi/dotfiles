@@ -75,6 +75,10 @@ mine () {
   local dir=${1:-.};
   find ${dir} \( -type d -name .git \) -prune -false -o -exec chown $USER {} \;
 }
+Mine () {
+  local dir=${1:-.};
+  sudo find ${dir} \( -type d -name .git \) -prune -false -o -exec chown $USER {} \;
+}
 
 #----------------------------------------
 # Function to list all files in a directory, minus the hidden svn/git ones

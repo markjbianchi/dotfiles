@@ -54,7 +54,7 @@
 	path = 
 
 [mergetool "sourcetree"]
-	cmd = /Users/mbianchi/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
@@ -65,3 +65,5 @@
 	template = /Users/mbianchi/.stCommitMsg
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
