@@ -3,10 +3,15 @@ if [ -f /etc/zshrc ] ; then
    . /etc/zshrc
 fi
 
-# vi mode key bindings
-bindkey -v
-bindkey "^F" vi-cmd-mode
-export VISUAL=vim
+# modify the PATH, removing duplicate paths
+if [ -d "/opt/homebrew" ] ; then
+  export HOMEBREW_ROOT="/opt/homebrew"
+else
+  export HOMEBREW_ROOT="/usr/local/Homebrew"
+fi
+PATH="$HOMEBREW_ROOT/bin:$PATH"
+TMPPATH=$PATH
+export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":"`
 
 # set up CDPATH to be able to jump to Project dirs more easily
 export CDPATH=".:$HOME:$HOME/_Projects"
@@ -16,8 +21,20 @@ if command -v pyenv 1>/dev/null 2>&1 ; then
   eval "$(pyenv init -)"
 fi
 
+export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
+
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/sqlite/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -L/usr/local/opt/sqlite/include"
+
+# vi mode key bindings
+bindkey -v
+bindkey "^F" vi-cmd-mode
+export VISUAL=vim
+
 export TERM="xterm-color"
 export LESS="--tabs=4 RMXg"
+export EDITOR=vim
+export PAGER=less
 
 # Start the autocompletion system
 autoload -Uz compinit && compinit
@@ -27,7 +44,7 @@ compdef g=git
 # Here is an assortment of command line prompts.  Choose one by
 # deleting or commenting-out all others.
 #------------------------------------------------------------------------------
-PS1='markb$ '
+#PS1='markb$ '
 #PS1='[$PWD] '
 #PS1='$(typeset -u PWD;echo $PWD)>' # force pathname to uppercase
 PS1="%n[%1~]$ "
@@ -88,5 +105,3 @@ unsetopt nomatch
 
 
 #vim:ft=zsh ts=2 sw=2 tw=2
-
-
