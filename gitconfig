@@ -63,3 +63,5 @@
 	clean = git-lfs clean -- %f
 [commit]
 	template = /Users/mbianchi/.stCommitMsg
+[init]
+	defaultBranch = main
