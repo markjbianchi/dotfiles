@@ -196,6 +196,9 @@
 
     // vim-surround plugin emulation
     //-------------------------
-    "vim.surround": true
+    "vim.surround": true,
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 
 }

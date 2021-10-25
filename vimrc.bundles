@@ -1,6 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Plugins managed by Vim 8's package manager in vim/pack/*/start
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set packpath=~/.vim/pack/plugin,~/.vim/pack/colors,
+"packloadall!
+
 " Plugin-Specific Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ----- vim-airline/vim-airline settings -----
