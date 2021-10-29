@@ -1,1 +1,0 @@
-/Users/mbianchi/.dotfiles/vim/pack/default/start/goyo.vim/plugin/goyo.vim

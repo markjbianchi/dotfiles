@@ -1,1 +1,1 @@
-/Users/mbianchi/.dotfiles/vim/ftdetect/txt.vim
+"au! BufRead,BufNewFile *    set filetype=txt

@@ -1,1 +1,0 @@
-/Users/mbianchi/.dotfiles/vim/pack/default/start/onedark.vim/autoload/lightline/colorscheme/onedark.vim

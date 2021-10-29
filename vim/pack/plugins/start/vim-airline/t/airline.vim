@@ -1,1 +1,0 @@
-/Users/mbianchi/.dotfiles/vim/pack/default/start/vim-airline/t/airline.vim
