@@ -9,7 +9,7 @@ if [ -d "/opt/homebrew" ] ; then
 else
   export HOMEBREW_ROOT="/usr/local/Homebrew"
 fi
-PATH="$HOMEBREW_ROOT/bin:$PATH"
+PATH="$HOMEBREW_ROOT/bin:$PATH:/usr/local/sbin"
 TMPPATH=$PATH
 export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":"`
 
@@ -17,9 +17,24 @@ export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":"`
 export CDPATH=".:$HOME:$HOME/_Projects"
 
 # Change python environment based on directory
-if command -v pyenv 1>/dev/null 2>&1 ; then
-  eval "$(pyenv init -)"
-fi
+function cd() {
+  builtin cd "$@"
+
+  if [[ -z "$VIRTUAL_ENV" ]] ; then
+    # if not already activated and found a ./venv file in this directory
+    # activate the virtual env
+    if [[ -d ./venv ]] ; then
+      source ./venv/bin/activate
+    fi
+  else
+    # if already activated, check whether now current diretory belongs to the
+    # previous virtual env folder: if yes do nothing, if no deactivate
+    parentdir="$(dirname "$VIRTUAL_ENV")"
+    if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+      deactivate
+    fi
+  fi
+}
 
 export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 
