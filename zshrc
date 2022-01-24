@@ -9,12 +9,14 @@ if [ -d "/opt/homebrew" ] ; then
 else
   export HOMEBREW_ROOT="/usr/local/Homebrew"
 fi
-PATH="$HOMEBREW_ROOT/bin:$PATH:/usr/local/sbin"
+PATH="$HOMEBREW_ROOT/bin:/usr/local/opt/postgresql@11/bin:$PATH:/usr/local/sbin"
 TMPPATH=$PATH
 export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":"`
 
 # set up CDPATH to be able to jump to Project dirs more easily
 export CDPATH=".:$HOME:$HOME/_Projects"
+
+export DJANGO_SETTINGS_MODULE="sabik.development"
 
 # Change python environment based on directory
 function cd() {
@@ -122,4 +124,5 @@ unsetopt nomatch
 
 
 #vim:ft=zsh ts=2 sw=2 tw=2
+
 
