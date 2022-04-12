@@ -45,9 +45,24 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include -L/usr/local/opt/sqlite/include"
 
 # vi mode key bindings
 bindkey -v
-bindkey "^F" vi-cmd-mode
-export VISUAL=vim
+bindkey "^J" vi-cmd-mode                  # switch to command mode with Ctrl-J
+bindkey -M vicmd "^V" edit-command-line   # use Ctrl-V to edit command in vi
+export KEYTIMEOUT=1                       # make vi mode transitions faster (in 1/100th secs)
+# incremental search in insert mode
+bindkey "^F" history-incremental-search-forward
+bindkey "^R" history-incremental-search-backward
+# beginning search in insert mode
+bindkey "^P" history-search-forward
+bindkey "^N" history-search-backward
+# incremental search in command mode
+bindkey -M vicmd "/" history-incremental-search-forward
+bindkey -M vicmd "?" history-incremental-search-backward
+# navigate search in vi command mode
+bindkey -M viins "^F" history-incremental-search-forward
+bindkey -M viins "^R" history-incremental-search-backward
 
+
+export VISUAL=vim
 export TERM="xterm-color"
 export LESS="--tabs=4 RMXg"
 export EDITOR=vim
@@ -78,6 +93,8 @@ fi
 alias path='echo $PATH | tr ":" "\n"'
 alias less='less -R'
 alias more=less
+alias h=history
+alias hg='history | grep'
 alias RM='/bin/rm -f'
 alias rm='/bin/rm -i'
 alias cp='/bin/cp -i'
@@ -86,7 +103,8 @@ alias ln='ln -v'
 alias S='sudo'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias defines="gcc -DM -E - </dev/null"
+alias defines="gcc -E -DM -xc /dev/null"
+alias includes="gcc -E -Wp,-v -xc /dev/null"
 alias bk='echo && echo && echo =============================================================================='
 alias cb='clear && echo "==============================================================================" && echo "=============================================================================="'
 alias tree='tree -nF'
