@@ -1,9 +1,9 @@
 # Compiled source #
 ###################
 *.com
-*.class
-*.dll
-*.exe
+#*.class
+#*.dll
+#*.exe
 *.o
 *.so
 *.py[co]
@@ -15,12 +15,12 @@ tags
 # git has its own built in compression methods
 *.7z
 *.dmg
-*.gz
+#*.gz
 *.iso
-*.jar
+#*.jar
 *.rar
-*.tar
-*.zip
+#*.tar
+#*.zip
 
 # Logs and databases #
 ######################
@@ -35,6 +35,7 @@ tags
 .settings
 .launches
 *.lock
+venv
 
 # Vim
 ######################
