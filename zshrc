@@ -16,7 +16,10 @@ export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":"`
 # set up CDPATH to be able to jump to Project dirs more easily
 export CDPATH=".:$HOME:$HOME/_Projects"
 
+# For divi sabik development
 export DJANGO_SETTINGS_MODULE="sabik.development"
+# To enable analog measurements in Logic2 (requires executing from command line: ~/Applications/Logic2.app/Contents/MacOS/Logic)
+export ENABLE_MEASUREMENTS_V2="1"
 
 # Change python environment based on directory
 function cd() {
