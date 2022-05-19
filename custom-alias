@@ -5,6 +5,12 @@ A () {
   ack --cc "$1" source src inc include 2>/dev/null
 }
 
+P () {
+  local i="packs/onsemi/include"
+  local f="packs/onsemi/source/firmware"
+  ack --cc "$1" ${i} ${f} 2>/dev/null
+}
+
 # Simple recursive grep function that ignores .svn|.git directories
 # Usage: f "pattern" [dir_to_search]
 #        default dir_to_search is current dir (the ./ dir)
@@ -94,15 +100,23 @@ how () {
 #------------------------------------------------------------------------------
 # git functions
 #------------------------------------------------------------------------------
-git_rev() {
+gitrev() {
   local d=`date +%Y%m%d`
   local c=`git rev-list --count HEAD | xargs -n1 printf %04d`
   local h=`git rev-list --abbrev-commit HEAD | head -1`
   echo ${c}:${h}:${d}
 }
 
+gitcat() {
+  if [ $# -eq 0 ] ; then
+    echo "usage: $0 file commit"
+  else
+    local file=${1}
+    local commit=${2:-HEAD};
+    git show ${commit}:${file}
+  fi
+}
+
 # Aliases for git
-alias add="git add"
-alias dff="git df"
 alias st="git st"
 

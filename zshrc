@@ -1,20 +1,24 @@
-# Source the global definitions
-if [ -f /etc/zshrc ] ; then
-   . /etc/zshrc
-fi
+# On MacOS, here is order of file inclusion for zsh:
+#   /etc/zshenv     (doesn't exist)
+#   ~/.zshenv
+#   /etc/zprofile
+#   ~/.zprofile
+#   /etc/zshrc
+#   ~/.zshrc
+#   /etc/zlogin     (doesn't exist)
+#   ~/.zlogin
 
-# modify the PATH, removing duplicate paths
 if [ -d "/opt/homebrew" ] ; then
   export HOMEBREW_ROOT="/opt/homebrew"
 else
   export HOMEBREW_ROOT="/usr/local/Homebrew"
 fi
-PATH="$HOMEBREW_ROOT/bin:/usr/local/opt/postgresql@11/bin:$PATH:/usr/local/sbin"
-TMPPATH=$PATH
-export PATH=`echo $TMPPATH | tr ":" "\n" | uniq | tr "\n" ":"`
+PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${HOMEBREW_ROOT}/bin:${PATH}"
+PATH="${PATH}:/usr/local/opt/postgresql@11/bin"
+export PATH
 
 # set up CDPATH to be able to jump to Project dirs more easily
-export CDPATH=".:$HOME:$HOME/_Projects"
+export CDPATH=".:${HOME}:${HOME}/_Projects"
 
 # For divi sabik development
 export DJANGO_SETTINGS_MODULE="sabik.development"
