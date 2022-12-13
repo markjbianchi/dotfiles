@@ -13,8 +13,9 @@ if [ -d "/opt/homebrew" ] ; then
 else
   export HOMEBREW_ROOT="/usr/local/Homebrew"
 fi
-PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${HOMEBREW_ROOT}/bin:${PATH}"
-PATH="${PATH}:/usr/local/opt/postgresql@11/bin"
+PATH="${HOMEBREW_ROOT}/bin:${PATH}"
+#PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${HOMEBREW_ROOT}/bin:${PATH}"
+#PATH="${PATH}:/usr/local/opt/postgresql@11/bin"
 export PATH
 
 # set up CDPATH to be able to jump to Project dirs more easily
@@ -49,6 +50,10 @@ export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 
 export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/sqlite/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include -L/usr/local/opt/sqlite/include"
+
+# Fix ssh issues
+export APPLE_SSH_ADD_BEHAVIOR="openssh"
+ssh-add >/dev/null 2>&1
 
 # vi mode key bindings
 bindkey -v
@@ -100,6 +105,7 @@ fi
 alias path='echo $PATH | tr ":" "\n"'
 alias less='less -R'
 alias more=less
+alias make=gmake
 alias h=history
 alias hg='history | grep'
 alias RM='/bin/rm -f'
@@ -149,5 +155,3 @@ unsetopt nomatch
 
 
 #vim:ft=zsh ts=2 sw=2 tw=2
-
-
