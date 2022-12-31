@@ -26,6 +26,10 @@ export DJANGO_SETTINGS_MODULE="sabik.development"
 # To enable analog measurements in Logic2 (requires executing from command line: ~/Applications/Logic2.app/Contents/MacOS/Logic)
 export ENABLE_MEASUREMENTS_V2="1"
 
+# Path variable for Thinklabs build (if not set will be set to defaults)
+export TOOLCHAIN_PATH=/opt/gcc-arm-none-eabi-10-2020-q4-major/bin
+export JLINK_PATH=/opt/SEGGER/JLink
+
 # Change python environment based on directory
 function cd() {
   builtin cd "$@"
@@ -53,7 +57,9 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include -L/usr/local/opt/sqlite/include"
 
 # Fix ssh issues
 export APPLE_SSH_ADD_BEHAVIOR="openssh"
-ssh-add >/dev/null 2>&1
+for identity in ~/.ssh/*.pub ; do
+  ssh-add $identity:r >/dev/null 2>&1
+done
 
 # vi mode key bindings
 bindkey -v

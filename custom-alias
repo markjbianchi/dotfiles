@@ -5,10 +5,22 @@ A () {
   ack --cc "$1" source src inc include 2>/dev/null
 }
 
+AA () {
+  local b="bootloader/source bootloader/RTE"
+  local f="custom_fota/source custom_fota/RTE"
+  ack --cc "$1" source RTE bootloader/source ${b} ${f} 2>/dev/null
+}
+
 P () {
   local i="packs/onsemi/include"
   local f="packs/onsemi/source/firmware"
   ack --cc "$1" ${i} ${f} 2>/dev/null
+}
+
+PP () {
+  local o="packs/onsemi"
+  local f="packs/freertos"
+  ack --cc "$1" ${o} ${f} 2>/dev/null
 }
 
 # Simple recursive grep function that ignores .svn|.git directories
