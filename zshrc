@@ -9,14 +9,11 @@
 #   ~/.zlogin
 
 if [ -d "/opt/homebrew" ] ; then
-  export HOMEBREW_ROOT="/opt/homebrew"
+  BREW_PATH=/opt/homebrew/bin
 else
-  export HOMEBREW_ROOT="/usr/local/Homebrew"
+  BREW_PATH=/usr/local/bin
 fi
-PATH="${HOMEBREW_ROOT}/bin:${PATH}"
-#PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:${HOMEBREW_ROOT}/bin:${PATH}"
-#PATH="${PATH}:/usr/local/opt/postgresql@11/bin"
-export PATH
+eval $(${BREW_PATH}/brew shellenv)
 
 # set up CDPATH to be able to jump to Project dirs more easily
 export CDPATH=".:${HOME}:${HOME}/_Projects"
