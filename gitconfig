@@ -5,6 +5,9 @@
 [includeIf "gitdir:~/_Projects/GSM"]
   path = ~/_Projects/GSM/.gitconfig
 
+[includeIf "gitdir:~/_Projects/StreamGuide"]
+  path = ~/_Projects/StreamGuide/.gitconfig
+
 [color]
   ui          = auto
   diff        = auto
