@@ -18,7 +18,7 @@ let g:airline#extentions#bufferline#enabled = 0
 let g:airline#extensions#whitespace#enabled = 1
 
 " ----- junegunn/goyo.vim -----
-nnoremap <LEADER>G :Goyo<CR>
+nnoremap <LEADER>z :Goyo<CR>
 
 " ----- bufexplorer -----
 nnoremap <LEADER><LEADER> :BufExplorer<CR>

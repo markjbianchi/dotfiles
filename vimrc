@@ -266,9 +266,6 @@ nnoremap gO O<ESC>j
 " Paste into highlighted item without loosing current copy
 xnoremap <leader>p \"+dP
 
-" Search/replace of word sitting on
-nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
-
 " Update (save) active buffer
 nnoremap gs :update<CR>
 

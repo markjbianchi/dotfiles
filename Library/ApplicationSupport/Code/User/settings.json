@@ -101,10 +101,6 @@
           "before": ["<leader>", "p"],
           "after": ["g", "\\", "\"", "+", "d", "P"]
         },
-        { // search/replace of word sitting on
-          "before": ["<leader>", "s"],
-          "commands": [":%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>"]
-        },
         { // write (save) active buffer
           "before": ["g", "s"],
           "commands": [":write"]
@@ -147,9 +143,22 @@
           "before": ["<leader>", "<space>"],
           "commands": [":set hlsearch!"]
         },
-        { // \n to toggle sidebar visability
-          "before": ["<leader>", "n"],
+        // toggle sidebar(s) visability
+        { // primary (left) sidebar
+          "before": ["<leader>", "b"],
           "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        { // secondary (right) sidebar
+          "before": ["<leader>", "r"],
+          "commands": ["workbench.action.toggleAuxiliaryBar"]
+        },
+        { // \j toggles panel (bottom)
+          "before": ["<leader>", "j"],
+          "commands": ["workbench.action.togglePanel"]
+        },
+        { // \z toggles Zen mode
+          "before": ["<leader>", "z"],
+          "commands": ["workbench.action.toggleZenMode"]
         },
         { // \f to reveal/highlight current file in Explorer sidebar
           "before": ["<leader>", "f"],
