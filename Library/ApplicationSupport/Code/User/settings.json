@@ -4,28 +4,24 @@
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "vscode-icons",
     "workbench.editor.highlightModifiedTabs": true,
-    "editor.renderWhitespace": "none",
     "terminal.integrated.shell.osx": "/bin/zsh",
 
     "workbench.settings.editor": "json",
     //"workbench.settings.useSplitJSON": true,
+    "workbench.editor.enablePreview": false,
 
+    "editor.renderWhitespace": "none",
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "on",
     "editor.fontSize": 11,
-    // "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
-    // "editor.fontWeight": "normal",
+    //"editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+    //"editor.fontWeight": "normal",
     "editor.occurrencesHighlight": false,
-    /*
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    */
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
 
     "zenMode.hideStatusBar": false,
-    // "zenMode.hideTabs": false,
+    "zenMode.hideTabs": false,
 
 
     // Vim extention (only differences from default included here)
@@ -38,9 +34,9 @@
     //"editor.wordWrap": "off",
     //"editor.autoIndent": "full",
     //"vim.autoindent": true,
-
-    "vim.changeWordIncludesWhitespace": true,   // makes consistent with yw and dw
+    "vim.mouseSelectionGoesIntoVisualMode": false,
     "vim.useSystemClipboard": true,
+    "vim.smartRelativeLine": true,
     "vim.history": 400,             // remember more commands used
     "vim.scroll": 10,
     "vim.handleKeys": {
@@ -59,10 +55,19 @@
         // pull up the command pallette
         {
           "before": ["shift+space"],
-          "commands": [ "workbench.action.showCommands", ]
+          "commands": [ "workbench.action.showCommands"]
         }
      ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        // move up and down stay in middle of the screen
+        {
+          "before": ["ctrl+d"],
+          "after": ["ctrl+d", "z","z"]
+        },
+        {
+          "before": ["ctrl+u"],
+          "after": ["ctrl+u", "z","z"]
+        },
         // make L and H move the full line amount of l and h
         {
           "before": ["L"],
@@ -76,9 +81,13 @@
           "before": ["Y"],
           "after": ["y", "$"]
         },
-        { // repeat execution of last run macro
-          "before": ["Q"],
-          "after": ["@", "@"]
+        { // select entire buffer in visual mode (like ctrl-A in windows)
+          "before": ["g", "y"],
+          "after": ["g", "g", "V", "G"]
+        },
+        { // select last inserted text
+          "before": ["g", "V"],
+          "after": ["g", "`", "[", "`", "]"]
         },
         // open a line below/above current one witout entering insert mode
         {
@@ -89,17 +98,21 @@
           "before": ["g", "O"],
           "after": ["O", "<Esc>", "j", "^"]
         },
-        { // select entire buffer in visual mode (like ctrl-A in windows)
-          "before": ["g", "y"],
-          "after": ["g", "g", "V", "G"]
+        { // paste into highlighted item without losing currenty copy buffer
+          "before": ["<leader>", "p"],
+          "after": ["g", "\\", "\"", "+", "d", "P"]
         },
-        { // select last inserted text
-          "before": ["g", "V"],
-          "after": ["g", "`", "[", "`", "]"]
+        { // search/replace of word sitting on
+          "before": ["<leader>", "s"],
+          "commands": [":%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>"]
         },
         { // write (save) active buffer
           "before": ["g", "s"],
           "commands": [":write"]
+        },
+        { // repeat execution of last run macro
+          "before": ["Q"],
+          "after": ["@", "@"]
         },
         { // standard vim ZZ to write and quite/clode buffer
           "before": ["Z", "Z"],
@@ -131,24 +144,33 @@
           "before": ["g", "l"],
           "after": ["<C-w>", "l"]
         },
-        { // <C-k> to recall command line history (similar to k motion)
-          "before": ["ctrl+k"],
-          "after": [":", "<Up>"]
-        },
         { // \<space> to toggle on/off highlight search
           "before": ["<leader>", "<space>"],
           "commands": [":set hlsearch!"]
         },
-        { // \b to toggle sidebar visability
-          "before": ["<leader>", "b"],
+        { // \n to toggle sidebar visability
+          "before": ["<leader>", "n"],
           "commands": ["workbench.action.toggleSidebarVisibility"]
         },
-        {
+        { // \f to reveal/highlight current file in Explorer sidebar
           "before": ["<leader>", "f"],
           "commands": ["revealInExplorer"]
+        },
+        { // show definition/detail about function or variable (equivalent of mouse hover)
+          "before": ["K"],
+          "commands": ["editor.action.showHover"]
         }
     ],
-    "vim.visualModeKeyBindings": [ ],
+    "vim.visualModeKeyBindings": [
+        {
+          "before": ["J"],
+          "commands": ["editor.action.moveLinesDownAction"]
+        },
+        {
+          "before": ["K"],
+          "commands": ["editor.action.moveLinesUpAction"]
+        }
+    ],
     "vim.visualModeKeyBindingsNonRecursive": [
         // make L and H move the full line amount of l and h
         {
@@ -196,4 +218,13 @@
     // vim-surround plugin emulation
     //-------------------------
     "vim.surround": true,
+
+    "[c]": {
+      "editor.wordBasedSuggestions": false,
+      "editor.suggest.insertMode": "replace",
+      "editor.semanticHighlighting.enabled": true
+    },
+    "explorer.autoReveal": "focusNoScroll",
+    "git.openRepositoryInParentFolders": "never",
+    "window.density.editorTabHeight": "compact"
 }

@@ -22,7 +22,7 @@ set ttyfast             " smoother performance since we are using modern termina
 set backspace=indent,eol,start
 set ruler
 set number              " absolute line numbers
-"set relativenumber      " plus relative line numbers
+set relativenumber      " plus relative line numbers
 set laststatus=2        " always show the statusline
 set history=768
 "set list                " shows unprintable chars
@@ -38,7 +38,7 @@ set viminfo=h,'50,n$VIMFILES/viminfo
 set ttimeout
 set ttimeoutlen=50      " make <ESC> work faster
 set timeoutlen=1000     " time to wait for a command (e.g., after a leader)
-set scrolloff=2         " keep 2 lines above/below the cursor when scrolling
+set scrolloff=8         " keep 8 lines above/below the cursor when scrolling
 set sidescrolloff=7     " keep 7 columns to left/right of cursor when scrolling
 set sidescroll=1        " minimum of 1 column to scroll
 set fileformats=unix,dos
@@ -69,13 +69,10 @@ noremap <LEADER><SPACE> :set hlsearch!<CR>
 nnoremap / ms/
 vnoremap / ms/
 " Keep searching in the middle of the window
-"nnoremap n nzz
-"nnoremap N Nzz
-"nnoremap * *zz
-"nnoremap # #zz
-
-" Remap escape key
-inoremap jk <ESC>
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap * *zzzv
+nnoremap # #zzzv
 
 " Text/Programming features ----------------------------------------------
 syntax enable
@@ -217,8 +214,8 @@ if (exists('+colorcolumn'))
 endif
 
 " Convenience mappings ---------------------------------------------------
-" Reload ~/.vimrc
-noremap <LEADER>rc :source $MYVIMRC<CR>
+" Remap escape key
+inoremap jk <ESC>
 
 " Help system
 nnoremap <LEADER><F1> :help mjb<CR>
@@ -234,15 +231,19 @@ vnoremap <F1> <ESC>
 "vnoremap <SPACE> <PAGEDOWN>
 "nnoremap <C-SPACE> <PAGEUP>
 "vnoremap <C-SPACE> <PAGEUP>
-
-" Make Y and D behave like other capital commands
-noremap Y y$
-noremap D d$
+"
+" Movement down and up stay in the middle of the screen
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 
 " Make movement to beginning/endo of line easier
 nnoremap H ^
 nnoremap L $
 vnoremap L g_
+
+" Make Y and D behave like other capital commands
+noremap Y y$
+noremap D d$
 
 " Select entire buffer (like Ctrl-A)
 nnoremap vy ggVG
@@ -254,15 +255,22 @@ nnoremap gV `[v`]
 vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
 
+" Move visually selected lines up and down as a group
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " Create newlines without entering insert mode
 nnoremap go o<ESC>k
 nnoremap gO O<ESC>j
 
+" Paste into highlighted item without loosing current copy
+xnoremap <leader>p \"+dP
+
+" Search/replace of word sitting on
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
 " Update (save) active buffer
 nnoremap gs :update<CR>
-
-" Break a comma-delimited list onto new lines
-vnoremap <LEADER>, :s/,/,\r/g<CR>
 
 " Command line editing
 map <C-K> :<Up>
@@ -270,6 +278,9 @@ cnoremap <C-H> <LEFT>
 cnoremap <C-L> <RIGHT>
 cnoremap <C-J> <DOWN>
 cnoremap <C-K> <UP>
+
+" Break a comma-delimited list onto new lines
+vnoremap <LEADER>, :s/,/,\r/g<CR>
 
 " Set the working directory of that of the current file
 cnoremap cwd lcd %:p:h
@@ -280,7 +291,6 @@ nnoremap Q @@
 
 " remove doc lookup maping because it's easy to fat finger and never useful
 nnoremap K k
-vnoremap K k
 
 " Tag navigation
 nnoremap <M-]> <C-]>

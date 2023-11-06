@@ -20,17 +20,17 @@ set visualbell          " use visual bell instead of beeping
 set wrapscan
 " Mappings ---------------------------------------------------------------
 inoremap jk <ESC>
+
 " Toggles highlighting of search
 noremap <LEADER><SPACE> :set hlsearch!<CR>
-" Keep searching in the middle of the window
-"nnoremap n nzz
-"nnoremap N Nzz
-"nnoremap * *zz
-"nnoremap # #zz
-
 " Mark position before search (mark 's')
 nnoremap / ms/
 vnoremap / ms/
+" Keep searching in the middle of the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap * *zzzv
+nnoremap # #zzzv
 
 " Make movement to begining/endo of line easier
 nnoremap H ^
@@ -50,9 +50,19 @@ nnoremap gV `[v`]
 vnoremap <Tab> >'<0v'>$
 vnoremap <S-Tab> <'<0v'>$
 
+" Move visually selected lines up and down as a group
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " Create newlines without entering insert mode
 nnoremap go o<ESC>k
 nnoremap gO O<ESC>j
+
+" Paste into highlighted item without loosing current copy
+xnoremap <leader>p \"+dP
+
+" Search/replace of word sitting on
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " Update (save) active buffer
 nnoremap gs :update<CR>
