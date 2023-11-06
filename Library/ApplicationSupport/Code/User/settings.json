@@ -27,7 +27,6 @@
     // Vim extention (only differences from default included here)
     //----------------------------------------------------------------
     "vim.enableNeovim": true,       // enables some more powerful commands (must have nvim installed)
-    "vim.neovimPath": "/usr/local/bin/nvim",
     // settings that could have workspace/file overrides
     //"editor.tabSize": 4,
     //"editor.insertSpaces": true,
